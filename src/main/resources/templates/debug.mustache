@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adam debug</title>
+</head>
+<body>
+
+    <div>
+        <form method="post">
+            <input type="text" name="sum" placeholder="1235"/>
+            <input type="text" name="category" placeholder="категория"></input>
+            <input type="text" name="comment" placeholder="comment"/>
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+
+    {{#transactions}}
+    <div>
+        <b>{{id}} </b>
+        <i>{{sum}} </i>
+        <u>{{category}}</u>
+        <b>{{comment}}</b>
+    </div>
+    {{/transactions}}
+</body>
+</html>
