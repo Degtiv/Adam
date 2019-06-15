@@ -8,5 +8,12 @@
 <div>
     <b>-Greetings, your majesty! Adam, financial consultant at your service!</b>
 </div>
+<div>
+    <a href="/main">See transactions</a>
+    <form action="/logout" method="post">
+        <input type="submit" value="Sign Out"/>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"></input>
+    </form>
+</div>
 </body>
 </html>
