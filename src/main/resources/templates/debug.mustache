@@ -8,9 +8,12 @@
 
     <div>
         <form method="post">
-            <input type="text" name="sum" placeholder="1235"/>
-            <input type="text" name="category" placeholder="категория"></input>
-            <input type="text" name="comment" placeholder="comment"/>
+            <input type="text" name="name" placeholder="name"/>
+            <input type="date" name="dateText"/>
+            <input type="text" name="value" placeholder="value"></input>
+            <input type="text" name="description" placeholder="description"></input>
+            <input type="text" name="status" placeholder="status"/>
+            <input type="text" name="categoryName" placeholder="category"></input>
             <input type="hidden" name="_csrf" value="{{_csrf.token}}"></input>
             <button type="submit">Добавить</button>
         </form>
@@ -19,9 +22,14 @@
     {{#transactions}}
     <div>
         <b>{{id}} </b>
-        <i>{{sum}} </i>
-        <u>{{category}}</u>
-        <b>{{comment}}</b>
+        <i>{{name}} </i>
+        <u>{{date}}</u>
+        <b>{{value}}</b>
+        <i>{{description}}</i>
+        <u>{{status}}</u>
+        <b>{{milestoneId}}</b>
+        <i>{{categoryName}}</i>
+        <i>{{userName}}</i>
     </div>
     {{/transactions}}
 </body>

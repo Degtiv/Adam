@@ -14,7 +14,7 @@ public class MainController {
     private TransactionRepository transactionRepository;
 
     @GetMapping("/main")
-    public String debug (Map<String, Object> model) {
+    public String main (Map<String, Object> model) {
         Iterable<Transaction> transactions = transactionRepository.findAll();
         model.put("transactions", transactions);
 
