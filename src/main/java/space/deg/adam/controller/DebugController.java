@@ -3,15 +3,14 @@ package space.deg.adam.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import space.deg.adam.domain.Category;
-import space.deg.adam.domain.Milestone;
 import space.deg.adam.domain.Transaction;
 import space.deg.adam.domain.User;
 import space.deg.adam.repository.CategoryRepository;
-import space.deg.adam.repository.MilestoneRepository;
 import space.deg.adam.repository.TransactionRepository;
 
 import java.math.BigDecimal;
@@ -28,9 +27,9 @@ public class DebugController {
     private CategoryRepository categoryRepository;
 
     @GetMapping("/debug")
-    public String debug (Map<String, Object> model) {
+    public String debug (Model model) {
         Iterable<Transaction> transactions = transactionRepository.findAll();
-        model.put("transactions", transactions);
+        model.addAttribute("transactions", transactions);
 
         return "debug";
     }
@@ -45,7 +44,7 @@ public class DebugController {
             @RequestParam String description,
             @RequestParam Integer status,
             @RequestParam String categoryName,
-            Map<String, Object> model) {
+            Model model) {
 
         Category category = categoryRepository.findByName(categoryName);
         SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
@@ -60,7 +59,7 @@ public class DebugController {
         Transaction transaction = new Transaction(name, date, value, description, status, null, category, user);
         transactionRepository.save(transaction);
         Iterable<Transaction> transactions = transactionRepository.findAll();
-        model.put("transactions", transactions);
+        model.addAttribute("transactions", transactions);
 
         return "debug";
     }

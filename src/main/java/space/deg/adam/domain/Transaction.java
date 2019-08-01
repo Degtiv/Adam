@@ -3,6 +3,7 @@ package space.deg.adam.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //TODO: write like it should be
@@ -73,6 +74,12 @@ public class Transaction {
         if (user != null)
             return user.getUsername();
         return "<None>";
+    }
+
+    public String getDateString() {
+        SimpleDateFormat format = new SimpleDateFormat();
+        format.applyPattern("dd.MM.yyy");
+        return format.format(date);
     }
 
     public User getUser() {

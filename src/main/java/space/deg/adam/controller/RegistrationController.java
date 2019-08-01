@@ -2,6 +2,7 @@ package space.deg.adam.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import space.deg.adam.domain.Role;
@@ -17,17 +18,20 @@ public class RegistrationController {
     UserRepository userRepository;
 
     @GetMapping("/registration")
-    public String registration() {
+    public String registration(Map<String, Object> model) {
+        model.put("message", "");
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model) {
+    public String addUser(User user, Model model) {
         User userFromRepository = userRepository.findByUsername(user.getUsername());
 
         if (userFromRepository != null) {
-            model.put("message", "User exist!");
+            model.addAttribute("message", "User exist!");
             return ("/registration");
+        } else {
+            model.addAttribute("message", "");
         }
 
         user.setActive(true);
