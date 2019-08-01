@@ -1,5 +1,8 @@
 package space.deg.adam.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -12,17 +15,25 @@ import java.util.Date;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private Long id;
 
     @NotNull
+    @Getter
+    @Setter
     private String name;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
+    @Getter
+    @Setter
     private Date date;
 
     @NotNull
     @Column(precision = 16, scale = 2)
+    @Getter
+    @Setter
     private BigDecimal value = BigDecimal.ZERO;
 
     @Column(length = 1000)
@@ -30,21 +41,29 @@ public class Transaction {
 
     @NotNull
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Getter
+    @Setter
     private Integer status = 0;
 
     //TODO: add 'ON DELETE SET NULL'
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "c_milestioneID")
+    @Getter
+    @Setter
     private Milestone milestone;
 
     //TODO: add 'ON DELETE SET NULL'
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "c_categoryID")
+    @Getter
+    @Setter
     private Category category;
 
     //TODO: add 'ON DELETE SET NULL'
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "c_UserID")
+    @Getter
+    @Setter
     private User user;
 
 
@@ -82,54 +101,6 @@ public class Transaction {
         return format.format(date);
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public BigDecimal getValue() {
-        return value;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
     public String getMilestoneId() {
         if (milestone != null)
             return milestone.getId().toString();
@@ -142,31 +113,5 @@ public class Transaction {
             return category.getName();
         else
             return "null";
-    }
-
-    public Milestone getMilestone() {
-        return milestone;
-    }
-
-    public void setMilestone(Milestone milestone) {
-        this.milestone = milestone;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

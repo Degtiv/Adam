@@ -1,5 +1,8 @@
 package space.deg.adam.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,18 +10,28 @@ import javax.persistence.*;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private Long id;
 
+    @Getter
+    @Setter
     private String name;
 
     @Column(length = 1000)
+    @Getter
+    @Setter
     private String description;
 
+    @Getter
+    @Setter
     private String color = "122FAA";
 
     //TODO: add 'ON DELETE SET NULL'
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "c_sectionID")
+    @Getter
+    @Setter
     private Section section;
 
     public Category(String name,
@@ -32,45 +45,5 @@ public class Category {
     }
 
     public Category() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public Section getSection() {
-        return section;
-    }
-
-    public void setSection(Section section) {
-        this.section = section;
     }
 }
