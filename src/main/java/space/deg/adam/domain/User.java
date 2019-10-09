@@ -31,6 +31,12 @@ public class User implements UserDetails {
     @Setter
     private boolean active;
 
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "t_roles", joinColumns = @JoinColumn(name = "c_userID"))
+    @Getter
+    @Setter
+    private Set<Role> roles;
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -56,17 +62,4 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "t_roles", joinColumns = @JoinColumn(name = "c_userID"))
-    private Set<Role> roles;
-
 }

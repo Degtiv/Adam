@@ -1,26 +1,33 @@
 package space.deg.adam.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import space.deg.adam.domain.Category;
 import space.deg.adam.domain.Transaction;
 import space.deg.adam.domain.User;
 import space.deg.adam.repository.CategoryRepository;
 import space.deg.adam.repository.TransactionRepository;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class DebugController {
+    @Value("${upload.path}")
+    private String uploadPath;
+
     @Autowired
     private TransactionRepository transactionRepository;
     @Autowired
@@ -44,10 +51,12 @@ public class DebugController {
             @RequestParam String description,
             @RequestParam Integer status,
             @RequestParam String categoryName,
-            Model model) {
+            @RequestParam("file") MultipartFile file,
+            Model model) throws IOException {
 
         Category category = categoryRepository.findByName(categoryName);
         SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+
 
         Date date = null;
         try {
@@ -57,6 +66,21 @@ public class DebugController {
         }
 
         Transaction transaction = new Transaction(name, date, value, description, status, null, category, user);
+
+        if (file != null && !file.getOriginalFilename().isEmpty()) {
+            File uploadDir = new File (uploadPath);
+
+            if (!uploadDir.exists())
+                uploadDir.mkdir();
+
+            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = uuidFile + "." + file.getOriginalFilename();
+
+            file.transferTo(new File(uploadPath + "/" + resultFilename));
+            transaction.setImage(resultFilename);
+        }
+
+
         transactionRepository.save(transaction);
         Iterable<Transaction> transactions = transactionRepository.findAll();
         model.addAttribute("transactions", transactions);

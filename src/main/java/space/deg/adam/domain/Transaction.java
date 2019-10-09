@@ -37,6 +37,8 @@ public class Transaction {
     private BigDecimal value = BigDecimal.ZERO;
 
     @Column(length = 1000)
+    @Getter
+    @Setter
     private String description;
 
     @NotNull
@@ -66,7 +68,9 @@ public class Transaction {
     @Setter
     private User user;
 
-
+    @Getter
+    @Setter
+    private String image;
 
     public Transaction(){}
 

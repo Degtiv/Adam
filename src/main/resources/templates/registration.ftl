@@ -5,7 +5,7 @@
     <div>
         <p> Add new user</p>
         <p style="color:red;">
-            ${message}
+            ${message?ifExists}
         </p>
     </div>
 <@l.login "/registration" "Registration"/>

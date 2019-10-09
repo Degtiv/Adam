@@ -1,14 +1,15 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
     <div>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="name"/>
             <input type="date" name="dateText"/>
-            <input type="text" name="value" placeholder="value"></input>
-            <input type="text" name="description" placeholder="description"></input>
+            <input type="text" name="value" placeholder="value"/>
+            <input type="text" name="description" placeholder="description"/>
             <input type="text" name="status" placeholder="status"/>
-            <input type="text" name="categoryName" placeholder="category"></input>
-            <input type="hidden" name="_csrf" value="${_csrf.token}"></input>
+            <input type="text" name="categoryName" placeholder="category"/>
+            <input type="file" name="file" />
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <button type="submit">Добавить</button>
         </form>
     </div>
@@ -38,6 +39,11 @@
     </#if>
     <#if transaction.category??>
         <i>${transaction.category}</i>
+    </#if>
+</div>
+<div>
+    <#if transaction.image??>
+        <img src="/img/${transaction.image}"/>
     </#if>
 </div>
 <#else>
