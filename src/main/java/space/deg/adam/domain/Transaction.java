@@ -1,121 +1,51 @@
 package space.deg.adam.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 //TODO: write like it should be
 @Entity
-@Table(name = "t_transactions")
+@Table(name = "transactions")
+@Data
+@NoArgsConstructor
 public class Transaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
-    private Long id;
+    @Column(length = 100)
+    private String uuid;
 
-    @NotNull
-    @Getter
-    @Setter
-    private String name;
-
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    @Getter
-    @Setter
-    private Date date;
-
-    @NotNull
-    @Column(precision = 16, scale = 2)
-    @Getter
-    @Setter
-    private BigDecimal value = BigDecimal.ZERO;
-
-    @Column(length = 1000)
-    @Getter
-    @Setter
-    private String description;
-
-    @NotNull
-    @Column(columnDefinition = "TINYINT UNSIGNED")
-    @Getter
-    @Setter
-    private Integer status = 0;
-
-    //TODO: add 'ON DELETE SET NULL'
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "c_milestioneID")
-    @Getter
-    @Setter
-    private Milestone milestone;
-
-    //TODO: add 'ON DELETE SET NULL'
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "c_categoryID")
-    @Getter
-    @Setter
-    private Category category;
-
-    //TODO: add 'ON DELETE SET NULL'
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "c_UserID")
-    @Getter
-    @Setter
+    @JoinColumn(name = "user_id")
     private User user;
+    @Column(precision = 16, scale = 2)
+    private BigDecimal amount;
+    private String currency;
 
-    @Getter
-    @Setter
-    private String image;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+    private String title;
+    private String description;
+    private String status;
+    private String category;
 
-    public Transaction(){}
-
-
-    public Transaction(@NotNull String name,
-                       @NotNull Date date,
-                       @NotNull BigDecimal value,
-                       String description,
-                       @NotNull Integer status,
-                       Milestone milestone,
-                       Category category,
-                       User user) {
-        this.name = name;
+    public Transaction(User user, BigDecimal amount, String currency, Date date, String title, String description, String status, String category) {
+        this.uuid = UUID.randomUUID().toString();
+        this.user = user;
+        this.amount = amount;
+        this.currency = currency;
         this.date = date;
-        this.value = value;
+        this.title = title;
         this.description = description;
         this.status = status;
-        this.milestone = milestone;
         this.category = category;
-        this.user = user;
-    }
-
-    public String getUserName() {
-        if (user != null)
-            return user.getUsername();
-        return "<None>";
     }
 
     public String getDateString() {
-        SimpleDateFormat format = new SimpleDateFormat();
-        format.applyPattern("dd.MM.yyy");
-        return format.format(date);
-    }
-
-    public String getMilestoneId() {
-        if (milestone != null)
-            return milestone.getId().toString();
-        else
-            return "null";
-    }
-
-    public String getCategoryName() {
-        if (category != null)
-            return category.getName();
-        else
-            return "null";
+        return new SimpleDateFormat("dd-MM-yyyy").format(date);
     }
 }
