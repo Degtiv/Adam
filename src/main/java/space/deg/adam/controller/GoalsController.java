@@ -7,10 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import space.deg.adam.domain.Transaction;
+import space.deg.adam.domain.Goal;
 import space.deg.adam.domain.User;
-import space.deg.adam.repository.CategoryRepository;
-import space.deg.adam.repository.TransactionRepository;
+import space.deg.adam.repository.GoalRepository;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -18,22 +17,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-public class DebugController {
+public class GoalsController {
     @Autowired
-    private TransactionRepository transactionRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private GoalRepository goalRepository;
 
-    @GetMapping("/debug")
+    @GetMapping("/goals")
     public String debug (Model model) {
-        Iterable<Transaction> transactions = transactionRepository.findAll();
-        model.addAttribute("transactions", transactions);
+        Iterable<Goal> goals = goalRepository.findAll();
+        model.addAttribute("goals", goals);
 
-        return "debug";
+        return "goals";
     }
 
     //TODO: rewrite milestone logic, rewrite category logic
-    @PostMapping("/debug")
+    @PostMapping("/goals")
     public String add (
             @AuthenticationPrincipal User user,
             @RequestParam String title,
@@ -41,7 +38,7 @@ public class DebugController {
             @RequestParam BigDecimal amount,
             @RequestParam String description,
             @RequestParam String status,
-            @RequestParam String categoryName,
+            @RequestParam String url,
             Model model){
 
         Date date = null;
@@ -51,12 +48,12 @@ public class DebugController {
             System.out.println("Ошибка при получении даты");
         }
 
-        Transaction transaction = new Transaction(user, amount, "RUR", date, title, description, status, categoryName);
+        Goal goal = new Goal(user, title, description, date, amount, "RUR", status, "picture_url", url);
 
-        transactionRepository.save(transaction);
-        Iterable<Transaction> transactions = transactionRepository.findAll();
-        model.addAttribute("transactions", transactions);
+        goalRepository.save(goal);
+        Iterable<Goal> goals = goalRepository.findAll();
+        model.addAttribute("goals", goals);
 
-        return "debug";
+        return "goals";
     }
 }

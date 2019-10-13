@@ -18,7 +18,7 @@
     <b>${transaction.uuid} </b>
     <i>${transaction.title} </i>
     <i>${transaction.dateString}</i>
-    <b>${transaction.amount}</b>
+    <b>${transaction.amount} ${transaction.currency}</b>
     <i>${transaction.description}</i>
     <i>${transaction.status}</i>
     <i>${transaction.category}</i>

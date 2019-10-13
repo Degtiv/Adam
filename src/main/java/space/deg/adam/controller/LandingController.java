@@ -12,4 +12,9 @@ public class LandingController {
         return "landing";
     }
 
+    @GetMapping("/")
+    public String landing() {
+        return "redirect:/landing";
+    }
+
 }

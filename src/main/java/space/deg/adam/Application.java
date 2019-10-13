@@ -19,15 +19,5 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public CommandLineRunner AdminCreation(UserRepository userRepository) {
-        return r -> {
-            User user = new User();
-            user.setUsername("Admin");
-            user.setPassword("Admin");
-            user.setActive(true);
-            user.setRoles(Collections.singleton(Role.ADMIN));
-            userRepository.save(user);
-        };
-    }
+
 }

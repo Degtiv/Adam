@@ -10,10 +10,10 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "transactions")
+@Table(name = "goals")
 @Data
 @NoArgsConstructor
-public class Transaction {
+public class Goal {
     @Id
     @Column(length = 100)
     private String uuid;
@@ -21,18 +21,23 @@ public class Transaction {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    private String title;
+
+    private String description;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+
     @Column(precision = 16, scale = 2)
     private BigDecimal amount;
     private String currency;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
-    private String title;
-    private String description;
     private String status;
-    private String category;
+    private String pictureUrl;
+    private String url;
 
-    public Transaction(User user, BigDecimal amount, String currency, Date date, String title, String description, String status, String category) {
+    public Goal(User user, String title, String description, Date date, BigDecimal amount, String currency, String status, String pictureUrl, String url) {
         this.uuid = UUID.randomUUID().toString();
         this.user = user;
         this.amount = amount;
@@ -41,7 +46,8 @@ public class Transaction {
         this.title = title;
         this.description = description;
         this.status = status;
-        this.category = category;
+        this.pictureUrl = pictureUrl;
+        this.url = url;
     }
 
     public String getDateString() {
