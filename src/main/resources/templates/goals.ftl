@@ -9,7 +9,7 @@
             <input type="text" name="status" placeholder="status"/>
             <input type="text" name="url" placeholder="url"/>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button type="submit">Добавить</button>
+            <button type="submit">Add</button>
         </form>
     </div>
 

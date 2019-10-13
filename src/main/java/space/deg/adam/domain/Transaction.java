@@ -45,6 +45,6 @@ public class Transaction {
     }
 
     public String getDateString() {
-        return new SimpleDateFormat("dd-MM-yyyy").format(date);
+        return new SimpleDateFormat("dd.MM.yyyy").format(date);
     }
 }

@@ -1,6 +1,8 @@
 package space.deg.adam.domain;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,31 +12,20 @@ import java.util.Collection;
 import java.util.Set;
 
 @Entity
-@Table(name="t_users")
+@Table(name="users")
+@Data
+@NoArgsConstructor
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private Long id;
-
-    @Getter
-    @Setter
     private String username;
-
-    @Getter
-    @Setter
     private String password;
-
-    @Getter
-    @Setter
     private boolean active;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "t_roles", joinColumns = @JoinColumn(name = "c_userID"))
-    @Getter
-    @Setter
+    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "user_id"))
     private Set<Role> roles;
 
 
