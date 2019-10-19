@@ -2,12 +2,12 @@
 <@c.page>
     <div>
         <form method="post" enctype="multipart/form-data">
-            <input type="text" name="title" placeholder="title"/>
-            <input type="date" name="dateText"/>
-            <input type="text" name="amount" placeholder="amount"/>
-            <input type="text" name="description" placeholder="description"/>
-            <input type="text" name="status" placeholder="status"/>
-            <input type="text" name="categoryName" placeholder="category"/>
+            <input type="text" name="title" placeholder="title" required/>
+            <input type="date" name="dateText" required/>
+            <input type="text" name="amount" placeholder="amount" required/>
+            <input type="text" name="description" placeholder="description" required/>
+            <input type="text" name="status" placeholder="status" required/>
+            <input type="text" name="categoryName" placeholder="category" required/>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <button type="submit">Add</button>
         </form>

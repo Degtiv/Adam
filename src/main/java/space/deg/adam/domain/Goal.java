@@ -36,8 +36,9 @@ public class Goal {
     private String status;
     private String pictureUrl;
     private String url;
+    private String category;
 
-    public Goal(User user, String title, String description, Date date, BigDecimal amount, String currency, String status, String pictureUrl, String url) {
+    public Goal(User user, String title, String description, Date date, BigDecimal amount, String currency, String status, String pictureUrl, String url, String category) {
         this.uuid = UUID.randomUUID().toString();
         this.user = user;
         this.amount = amount;
@@ -48,6 +49,7 @@ public class Goal {
         this.status = status;
         this.pictureUrl = pictureUrl;
         this.url = url;
+        this.category = category;
     }
 
     public String getDateString() {

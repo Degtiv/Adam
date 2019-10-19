@@ -39,7 +39,9 @@ public class GoalsController {
             @RequestParam String description,
             @RequestParam String status,
             @RequestParam String url,
+            @RequestParam String category,
             Model model){
+
 
         Date date = null;
         try {
@@ -48,7 +50,7 @@ public class GoalsController {
             System.out.println("Ошибка при получении даты");
         }
 
-        Goal goal = new Goal(user, title, description, date, amount, "RUR", status, "picture_url", url);
+        Goal goal = new Goal(user, title, description, date, amount, "RUR", status, "picture_url", url, category);
 
         goalRepository.save(goal);
         Iterable<Goal> goals = goalRepository.findAll();

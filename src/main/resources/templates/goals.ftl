@@ -1,30 +1,95 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
-    <div>
-        <form method="post" enctype="multipart/form-data">
-            <input type="text" name="title" placeholder="title" required/>
-            <input type="date" name="dateText" required/>
-            <input type="text" name="amount" placeholder="amount" required/>
-            <input type="text" name="description" placeholder="description"/>
-            <input type="text" name="status" placeholder="status"/>
-            <input type="text" name="url" placeholder="url"/>
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button type="submit">Add</button>
-        </form>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="input-group mb-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="title_input">Title</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Title" aria-label="title" aria-describedby="title_input"
+               name="title" required>
+
+        <div class="input-group-prepend ml-1">
+            <span class="input-group-text" id="date_input">Date</span>
+        </div>
+        <input type="date" class="form-control" aria-label="date" aria-describedby="date_input" name="dateText"
+               required>
+
+        <div class="input-group-prepend ml-1">
+            <span class="input-group-text" id="amount_input">Amount</span>
+        </div>
+        <input type="text" class="form-control" placeholder="0.00" aria-label="amount"
+               aria-describedby="amount_input" name="amount" required>
+
+        <div class="input-group-prepend ml-1">
+            <label class="input-group-text" for="category_input">Category</label>
+        </div>
+        <select class="custom-select" id="category_input" name="category">
+            <option selected value="Base">Base</option>
+            <option value="Comfort">Comfort</option>
+            <option value="Luxury">Luxury</option>
+        </select>
     </div>
 
-<#list goals as goal>
-<div>
-    <b>${goal.uuid} </b>
-    <i>${goal.title} </i>
-    <i>${goal.dateString}</i>
-    <b>${goal.amount} ${goal.currency}</b>
-    <i>${goal.description}</i>
-    <i>${goal.status}</i>
-    <i>${goal.pictureUrl}</i>
-    <i><a href="${goal.url}">Ссылка</a></i>
-</div>
-<#else>
-No goals
+    <div class="input-group mb-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="description_input">Description</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Description" aria-label="description"
+               aria-describedby="description_input"
+               name="description">
+
+        <div class="input-group-prepend ml-1">
+            <label class="input-group-text" for="status_input">Status</label>
+        </div>
+        <select class="custom-select" id="status_input" name="status">
+            <option selected value="Planned">Planned</option>
+            <option value="In progress">In progress</option>
+            <option value="Come true">Come true</option>
+        </select>
+
+        <div class="input-group-prepend ml-1">
+            <span class="input-group-text" id="url_input">URL</span>
+        </div>
+        <input type="text" class="form-control" placeholder="http://..." aria-label="url"
+               aria-describedby="url_input" name="url">
+
+        <div class="input-group-append ml-1">
+            <button class="btn btn-primary rounded-right" type="submit" id="submit_button">Add</button>
+        </div>
+
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    </div>
+</form>
+
+<div class="card-columns my-5">
+    <#list goals as goal>
+    <div class="card">
+        <div class="card-header h-auto">
+            ${goal.status}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">${goal.title}</h5>
+            <p class="card-text small">${goal.category}</p>
+            <!--            <img class="card-img-top" src="${goal.pictureUrl}" alt="Card image cap">-->
+            <p class="card-text">${goal.description}</p>
+            <a href="${goal.url}" class="btn btn-primary">Link</a>
+        </div>
+
+
+        <div class="card-footer text-muted">
+            <div class="row">
+                <div class="col-sm-8 text-left">
+                    <em>${goal.amount} ${goal.currency}</em>
+                </div>
+                <div class="col-sm-4 text-right">
+                    ${goal.dateString}
+                </div>
+            </div>
+        </div>
+    </div>
+    <#else>
+    No goals
 </#list>
+</div>
 </@c.page>
