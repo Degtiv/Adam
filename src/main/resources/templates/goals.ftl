@@ -54,6 +54,11 @@
         <input type="text" class="form-control" placeholder="http://..." aria-label="url"
                aria-describedby="url_input" name="url">
 
+        <div class="custom-file ml-1">
+            <input type="file" class="custom-file-input" id="image_input" aria-describedby="image" name="image">
+            <label class="custom-file-label" for="image_input">Image</label>
+        </div>
+
         <div class="input-group-append ml-1">
             <button class="btn btn-primary rounded-right" type="submit" id="submit_button">Add</button>
         </div>
@@ -69,13 +74,17 @@
             ${goal.status}
         </div>
         <div class="card-body">
-            <h5 class="card-title">${goal.title}</h5>
-            <p class="card-text small">${goal.category}</p>
-            <!--            <img class="card-img-top" src="${goal.pictureUrl}" alt="Card image cap">-->
-            <p class="card-text">${goal.description}</p>
-            <a href="${goal.url}" class="btn btn-primary">Link</a>
+                <a href="${goal.url}">
+                    <h5 class="card-title">${goal.title}</h5>
+                </a>
+                <p class="card-text small">${goal.category}</p>
+            <#if goal.image??>
+                <a href="${goal.url}">
+                    <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
+                </a>
+            </#if>
+            <p class="card-text my-2">${goal.description}</p>
         </div>
-
 
         <div class="card-footer text-muted">
             <div class="row">
