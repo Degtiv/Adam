@@ -70,8 +70,15 @@
 <div class="card-columns my-5">
     <#list goals as goal>
     <div class="card">
-        <div class="card-header h-auto">
-            ${goal.status}
+        <div class="card-header h-auto clearfix">
+            <div class="float-left">
+                ${goal.status}
+            </div>
+            <div class="float-right">
+                <a href="/goals/edit/${goal.uuid}">
+                    <i class="material-icons btn-outline-dark" style="border-radius:20px; font-size: 15px; padding:3px;">create</i>
+                </a>
+            </div>
         </div>
         <div class="card-body">
                 <a href="${goal.url}">

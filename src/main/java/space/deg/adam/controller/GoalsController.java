@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import space.deg.adam.domain.Goal;
 import space.deg.adam.domain.User;
@@ -22,6 +20,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Controller
+@RequestMapping("/goals")
 public class GoalsController {
     @Autowired
     private GoalRepository goalRepository;
@@ -29,7 +28,7 @@ public class GoalsController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    @GetMapping("/goals")
+    @GetMapping
     public String debug (Model model) {
         Iterable<Goal> goals = goalRepository.findAll();
         model.addAttribute("goals", goals);
@@ -38,7 +37,7 @@ public class GoalsController {
     }
 
     //TODO: rewrite milestone logic, rewrite category logic
-    @PostMapping("/goals")
+    @PostMapping
     public String add (
             @AuthenticationPrincipal User user,
             @RequestParam String title,
@@ -51,8 +50,6 @@ public class GoalsController {
             @RequestParam MultipartFile image,
             Model model) throws IOException {
 
-
-
         Date date = null;
         try {
             date =  new SimpleDateFormat ("yyyy-MM-dd").parse(dateText);
@@ -62,7 +59,7 @@ public class GoalsController {
 
         Goal goal = new Goal(user, title, description, date, amount, "RUR", status, url, category);
 
-        if (image != null) {
+        if (image != null && !image.isEmpty()) {
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
@@ -77,5 +74,11 @@ public class GoalsController {
         model.addAttribute("goals", goals);
 
         return "goals";
+    }
+
+    @GetMapping("/edit/{goal}")
+    public String goalEditForm(@PathVariable Goal goal, Model model) {
+        model.addAttribute("goal", goal);
+        return "goalEdit";
     }
 }
