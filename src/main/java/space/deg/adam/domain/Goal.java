@@ -2,6 +2,7 @@ package space.deg.adam.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -22,21 +23,37 @@ public class Goal {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @NonNull
     private String title;
 
     private String description;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @NonNull
     private Date date;
 
     @Column(precision = 16, scale = 2)
+    @NonNull
     private BigDecimal amount;
+    @NonNull
     private String currency;
 
+    @NonNull
     private String status;
     private String image;
     private String url;
+    @NonNull
     private String category;
+
+    public Goal(User user, String title, Date date, BigDecimal amount, String status, String category) {
+        this.uuid = UUID.randomUUID().toString();
+        this.user = user;
+        this.amount = amount;
+        this.date = date;
+        this.title = title;
+        this.status = status;
+        this.category = category;
+    }
 
     public Goal(User user, String title, String description, Date date, BigDecimal amount, String currency, String status, String url, String category) {
         this.uuid = UUID.randomUUID().toString();
@@ -53,5 +70,9 @@ public class Goal {
 
     public String getDateString() {
         return new SimpleDateFormat("dd.MM.yyyy").format(date);
+    }
+
+    public String getDateField() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(date);
     }
 }

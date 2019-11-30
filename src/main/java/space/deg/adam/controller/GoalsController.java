@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import space.deg.adam.domain.Category;
 import space.deg.adam.domain.Goal;
 import space.deg.adam.domain.User;
 import space.deg.adam.repository.GoalRepository;
@@ -29,14 +30,14 @@ public class GoalsController {
     private String uploadPath;
 
     @GetMapping
-    public String debug (Model model) {
+    public String goals (Model model) {
         Iterable<Goal> goals = goalRepository.findAll();
         model.addAttribute("goals", goals);
+        model.addAttribute("categories", Category.values());
 
         return "goals";
     }
 
-    //TODO: rewrite milestone logic, rewrite category logic
     @PostMapping
     public String add (
             @AuthenticationPrincipal User user,
@@ -72,6 +73,7 @@ public class GoalsController {
         goalRepository.save(goal);
         Iterable<Goal> goals = goalRepository.findAll();
         model.addAttribute("goals", goals);
+        model.addAttribute("categories", Category.values());
 
         return "goals";
     }
@@ -79,6 +81,7 @@ public class GoalsController {
     @GetMapping("/edit/{goal}")
     public String goalEditForm(@PathVariable Goal goal, Model model) {
         model.addAttribute("goal", goal);
+        model.addAttribute("categories", Category.values());
         return "goalEdit";
     }
 }

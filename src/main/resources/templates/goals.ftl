@@ -25,9 +25,9 @@
             <label class="input-group-text" for="category_input">Category</label>
         </div>
         <select class="custom-select" id="category_input" name="category">
-            <option selected value="Base">Base</option>
-            <option value="Comfort">Comfort</option>
-            <option value="Luxury">Luxury</option>
+            <#list categories as category>
+                <option value="${category.title}">${category.title}</option>
+            </#list>
         </select>
     </div>
 

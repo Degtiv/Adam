@@ -1,49 +1,35 @@
 package space.deg.adam.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.ArrayList;
 
-import javax.persistence.*;
+public enum Category {
+    BASE ("Base"),
+    COMFORT ("Comfort"),
+    LUXURY ("Luxury"),
+    PRESIGE ("Prestige");
 
-@Entity
-@Table(name = "t_categories")
-public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
-    private Long id;
+    private String title;
 
-    @Getter
-    @Setter
-    private String name;
-
-    @Column(length = 1000)
-    @Getter
-    @Setter
-    private String description;
-
-    @Getter
-    @Setter
-    private String color = "122FAA";
-
-    //TODO: add 'ON DELETE SET NULL'
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "c_sectionID")
-    @Getter
-    @Setter
-    private Section section;
-
-    public Category(String name,
-                    String description,
-                    String color,
-                    Section section) {
-        this.name = name;
-        this.description = description;
-        this.color = color;
-        this.section = section;
+    Category(String title) {
+        this.title = title;
     }
 
-    public Category() {
+    public String getTitle() {
+        return title;
+    }
+
+    public static String[] titles() {
+        ArrayList<String> values = new ArrayList<>();
+        for (Category category : Category.values()) {
+            values.add(category.getTitle());
+        }
+        return (String[]) values.toArray();
+    }
+
+    @Override
+    public String toString() {
+        return "Categories{" +
+                "title='" + title + '\'' +
+                '}';
     }
 }
