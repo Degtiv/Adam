@@ -15,9 +15,9 @@
                 <a class="nav-link" href="/goals">Goals</a>
             </li>
             <#if isAdmin>
-            <li class="nav-item">
-                <a class="nav-link" href="/user">User</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user">User</a>
+                </li>
             </#if>
         </ul>
 

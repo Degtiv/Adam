@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import space.deg.adam.domain.Transaction;
 import space.deg.adam.domain.User;
-import space.deg.adam.repository.CategoryRepository;
 import space.deg.adam.repository.TransactionRepository;
 
 import java.math.BigDecimal;
@@ -21,8 +20,6 @@ import java.util.Date;
 public class TransactionsController {
     @Autowired
     private TransactionRepository transactionRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     @GetMapping("/transactions")
     public String debug (Model model) {

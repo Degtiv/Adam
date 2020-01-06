@@ -30,8 +30,9 @@ public class GoalsController {
     private String uploadPath;
 
     @GetMapping
-    public String goals (Model model) {
-        Iterable<Goal> goals = goalRepository.findAll();
+    public String goals (@AuthenticationPrincipal User user,
+                         Model model) {
+        Iterable<Goal> goals = goalRepository.findByUser(user);
         model.addAttribute("goals", goals);
         model.addAttribute("categories", Category.values());
 
@@ -49,14 +50,8 @@ public class GoalsController {
             @RequestParam String url,
             @RequestParam String category,
             @RequestParam MultipartFile image,
-            Model model) throws IOException {
-
-        Date date = null;
-        try {
-            date =  new SimpleDateFormat ("yyyy-MM-dd").parse(dateText);
-        }catch (ParseException e) {
-            System.out.println("Ошибка при получении даты");
-        }
+            Model model) throws IOException, ParseException {
+        Date date =  new SimpleDateFormat ("yyyy-MM-dd").parse(dateText);
 
         Goal goal = new Goal(user, title, description, date, amount, "RUR", status, url, category);
 
@@ -71,7 +66,7 @@ public class GoalsController {
         }
 
         goalRepository.save(goal);
-        Iterable<Goal> goals = goalRepository.findAll();
+        Iterable<Goal> goals = goalRepository.findByUser(user);
         model.addAttribute("goals", goals);
         model.addAttribute("categories", Category.values());
 
@@ -83,5 +78,32 @@ public class GoalsController {
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         return "goalEdit";
+    }
+
+    @PostMapping("/edit/{goal}")
+    public String goalEditFormSave(@PathVariable Goal goal,
+                                   @AuthenticationPrincipal User user,
+                                   @RequestParam String title,
+                                   @RequestParam String dateText,
+                                   @RequestParam BigDecimal amount,
+                                   @RequestParam String description,
+                                   @RequestParam String status,
+                                   @RequestParam String url,
+                                   @RequestParam String category,
+                                   Model model) throws IOException, ParseException {
+        Date date = new SimpleDateFormat ("yyyy-MM-dd").parse(dateText);
+
+        goal.setTitle(title);
+        goal.setDate(date);
+        goal.setAmount(amount);
+        goal.setDescription(description);
+        goal.setStatus(status);
+        goal.setUrl(url);
+        goal.setCategory(category);
+
+        goalRepository.save(goal);
+        model.addAttribute("goal", goal);
+        model.addAttribute("categories", Category.values());
+        return "redirect:/goals";
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -42,6 +43,7 @@ public class Goal {
     private String status;
     private String image;
     private String url;
+
     @NonNull
     private String category;
 
@@ -74,5 +76,9 @@ public class Goal {
 
     public String getDateField() {
         return new SimpleDateFormat("yyyy-MM-dd").format(date);
+    }
+
+    public String getAmountString() {
+        return amount.setScale(2, RoundingMode.HALF_UP).toString().replaceAll(" ", "");
     }
 }

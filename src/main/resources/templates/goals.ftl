@@ -18,7 +18,7 @@
         <div class="input-group-prepend ml-1">
             <span class="input-group-text" id="amount_input">Amount</span>
         </div>
-        <input type="text" class="form-control" placeholder="0.00" aria-label="amount"
+        <input type="number" class="form-control" placeholder="0.00" aria-label="amount"
                aria-describedby="amount_input" name="amount" required>
 
         <div class="input-group-prepend ml-1">
@@ -76,7 +76,7 @@
             </div>
             <div class="float-right">
                 <a href="/goals/edit/${goal.uuid}">
-                    <i class="material-icons btn-outline-dark" style="border-radius:20px; font-size: 15px; padding:3px;">create</i>
+                    <i class="material-icons btn-outline-dark" style="border-radius:20px; font-size: 15px; padding:3px;">edit</i>
                 </a>
             </div>
         </div>

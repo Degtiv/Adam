@@ -21,6 +21,7 @@ public class Transaction {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
     @Column(precision = 16, scale = 2)
     private BigDecimal amount;
     private String currency;

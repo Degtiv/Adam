@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
 
-<form method="post" action="/goals">
+<form method="post" action="/goals/edit/${goal.uuid}">
     <div class="input-group mb-2 justify-content-center">
         <h2 class="display-4">${goal.title}</h2>
     </div>
@@ -28,22 +28,11 @@
             <div class="input-group-prepend ml-1">
                 <span class="input-group-text" id="amount_input">Amount</span>
             </div>
-            <input type="text" class="form-control" value="${goal.amount}" aria-label="amount"
+            <input type="number" step="0.01" class="form-control" value="${goal.amountString}" aria-label="amount"
                    aria-describedby="amount_input" name="amount" required>
             <div class="input-group-prepend">
                 <span class="input-group-text" id="currency_label">${goal.currency}</span>
             </div>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="status_input">Status</label>
-            </div>
-            <select class="custom-select" id="status_input" name="status">
-                <option value="Planned">Planned</option>
-                <option value="In progress">In progress</option>
-                <option value="Come true">Come true</option>
-            </select>
         </div>
 
         <div class="input-group mb-3">
@@ -54,6 +43,17 @@
                 <#list categories as category>
                     <option value="${category.title}" <#if goal.category == category.title> selected</#if>>${category.title}</option>
                 </#list>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="status_input">Status</label>
+            </div>
+            <select class="custom-select" id="status_input" name="status">
+                <option value="Planned">Planned</option>
+                <option value="In progress">In progress</option>
+                <option value="Come true">Come true</option>
             </select>
         </div>
 
