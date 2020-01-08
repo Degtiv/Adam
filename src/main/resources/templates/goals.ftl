@@ -43,9 +43,9 @@
             <label class="input-group-text" for="status_input">Status</label>
         </div>
         <select class="custom-select" id="status_input" name="status">
-            <option selected value="Planned">Planned</option>
-            <option value="In progress">In progress</option>
-            <option value="Come true">Come true</option>
+            <#list statuses as status>
+            <option value="${status.title}">${status.title}</option>
+        </#list>
         </select>
 
         <div class="input-group-prepend ml-1">

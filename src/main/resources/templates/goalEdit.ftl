@@ -51,10 +51,10 @@
                 <label class="input-group-text" for="status_input">Status</label>
             </div>
             <select class="custom-select" id="status_input" name="status">
-                <option value="Planned">Planned</option>
-                <option value="In progress">In progress</option>
-                <option value="Come true">Come true</option>
-            </select>
+                <#list statuses as status>
+                <option value="${status.title}" <#if goal.status == status.title> selected</#if>>${status.title}</option>
+        </#list>
+    </select>
         </div>
 
         <div class="input-group mb-3">
@@ -73,29 +73,43 @@
                       aria-describedby="description_input"
                       name="description">${goal.description}</textarea>
         </div>
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+</form>
 
+<div style="padding: 40px; width:100%; border: 1px solid #0069d9; border-radius: 70px;">
+    <form method="post" style="display:inline-block" enctype="multipart/form-data" action="/goals/addImage/${goal.uuid}" id="add_image_form">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="image_input">Image</span>
+                <span class="input-group-text">Image</span>
             </div>
-            <#if goal.image??>
-                <div class="input-group-prepend ml-1">
-                    <button class="btn btn-primary rounded-right" type="submit" id="change_button">Change</button>
-                </div>
-                <div class="input-group-prepend ml-1">
-                    <button class="btn btn-primary rounded-right" type="submit" id="remove_button">Delete</button>
-                </div>
-                <a href="${goal.url}">
-                    <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
-                </a>
-            <#else>
-                <div class="input-group-prepend ml-1">
-                    <button class="btn btn-primary rounded-right" type="submit" id="Add_button">Add</button>
-                </div>
-            </#if>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image_input" aria-describedby="image" name="image"
+                       required>
+                <label class="custom-file-label input-group-prepend" for="image_input">Image</label>
+            </div>
+            <div class="input-group-prepend">
+                <button class="btn btn-primary rounded ml-2" type="submit" id="Add_button">Upload</button>
+            </div>
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         </div>
+    </form>
 
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-</form>
+    <#if goal.image??>
+    <form method="post" style="display: inline-block" action="/goals/deleteImage/${goal.uuid}" id="delete_image_form">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-primary rounded" type="submit" id="remove_button" formaction="/goals/deleteImage/${goal.uuid}">Delete</button>
+            </div>
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        </div>
+    </form>
+
+    <div class="input-group mb-3">
+        <a href="${goal.url}">
+            <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
+        </a>
+    </div>
+    </#if>
+</div>
 
 </@c.page>

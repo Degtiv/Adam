@@ -28,7 +28,7 @@
         <div class="form-inline my-2 my-lg-0">
             <form action="/logout" method="post">
                 <input type="submit" value="Sign Out"/>
-                <input type="hidden" name="_csrf" value="${_csrf.token}"></input>
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             </form>
         </div>
     </div>
