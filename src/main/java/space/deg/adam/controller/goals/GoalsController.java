@@ -70,7 +70,7 @@ public class GoalsController {
 
     @GetMapping("/edit/{goal}")
     public String goalEditForm(@AuthenticationPrincipal User user, @PathVariable Goal goal, Model model) {
-        if (!goal.getUser().is(user)) return redirectPage(getErrorPage("notPermited"));
+        if (!goal.getUser().is(user)) return redirectPage("notPermited");
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
@@ -109,7 +109,7 @@ public class GoalsController {
     public String goalDeleteImage(@PathVariable Goal goal,
                                   @AuthenticationPrincipal User user,
                                   Model model) throws IOException, ParseException {
-        if (!goal.getUser().is(user)) return redirectPage(getErrorPage("notPermited"));
+        if (!goal.getUser().is(user)) return redirectPage("notPermited");
         goal.setImage(null);
 
         goalRepository.save(goal);
@@ -124,7 +124,7 @@ public class GoalsController {
                                @AuthenticationPrincipal User user,
                                @RequestParam MultipartFile image,
                                   Model model) throws IOException, ParseException {
-        if (!goal.getUser().is(user)) return redirectPage(getErrorPage("notPermited"));
+        if (!goal.getUser().is(user)) return redirectPage("notPermited");
         saveImage(image, goal);
 
         goalRepository.save(goal);
@@ -138,12 +138,12 @@ public class GoalsController {
     public String goalDelete(@PathVariable Goal goal,
                              @AuthenticationPrincipal User user,
                              Model model) {
-        if (!goal.getUser().is(user)) return redirectPage(getErrorPage("notPermited"));
+        if (!goal.getUser().is(user)) return redirectPage("notPermited");
         goalRepository.delete(goal);
 
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return redirectPage(getGoalPage("goals"));
+        return redirectPage("goals");
     }
 
 

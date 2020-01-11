@@ -30,6 +30,6 @@ public class AdminController {
             userRepository.save(user);
         }
 
-        return redirectPage(getAdminPage("login"));
+        return redirectPage("login");
     }
 }

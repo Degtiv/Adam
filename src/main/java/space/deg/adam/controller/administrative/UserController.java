@@ -45,9 +45,9 @@ public class UserController {
         return getAdminPage("userEditForm");
     }
 
-    @PostMapping("/delete/{deletedUser}")
+    @PostMapping("/delete/{userToDelete}")
     public String deleteUser(@PathVariable User userToDelete, @AuthenticationPrincipal User loginedUser) {
-        if (!loginedUser.isAdmin()) return redirectPage(getErrorPage("notPermited"));
+        if (!loginedUser.isAdmin()) return redirectPage("notPermited");
         deleteUser(userToDelete);
         return redirectPage("user");
     }
