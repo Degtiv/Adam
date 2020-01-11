@@ -1,8 +1,9 @@
-package space.deg.adam.domain;
+package space.deg.adam.domain.goals;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
+import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -26,7 +27,6 @@ public class Goal {
 
     @NonNull
     private String title;
-
     private String description;
 
     @Temporal(TemporalType.TIMESTAMP)

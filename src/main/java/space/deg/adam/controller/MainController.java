@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import space.deg.adam.domain.Transaction;
+import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.repository.TransactionRepository;
 
 @Controller

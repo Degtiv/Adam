@@ -1,4 +1,4 @@
-<#import "parts/common.ftl" as c>
+<#import "/parts/common.ftl" as c>
 <@c.page>
     <table>
         <thead>
@@ -14,6 +14,12 @@
                     <td>${user.username}</td>
                     <td><#list user.roles as role>${role}<#sep>, </#list></td>
                     <td><a href="/user/${user.id}">edit</a></td>
+                    <td>
+                        <form method="post" style="display: inline-block" id="delete_user_form">
+                            <button class="btn btn-primary rounded ml-2" type="submit" id="delete_button" formaction="/user/delete/${user.id}">Delete</button>
+                            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                        </form>
+                    </td>
                 </tr>
             </#list>
         </tbody>

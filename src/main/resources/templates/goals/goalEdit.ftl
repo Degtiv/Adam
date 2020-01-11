@@ -1,4 +1,4 @@
-<#import "parts/common.ftl" as c>
+<#import "/parts/common.ftl" as c>
 <@c.page>
 
 <form method="post" action="/goals/edit/${goal.uuid}">
@@ -7,7 +7,8 @@
     </div>
 
     <div class="input-group-append mb-2">
-        <button class="btn btn-primary rounded-right" type="submit" id="submit_button">Save</button>
+        <button class="btn btn-primary rounded" type="submit" id="submit_button">Save</button>
+        <button class="btn btn-primary rounded ml-2" type="submit" id="delete_button" formaction="/goals/delete/${goal.uuid}">Delete</button>
     </div>
 
     <div class="input-group mb-2">

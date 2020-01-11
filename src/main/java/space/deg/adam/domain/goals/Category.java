@@ -1,4 +1,4 @@
-package space.deg.adam.domain;
+package space.deg.adam.domain.goals;
 
 import java.util.ArrayList;
 

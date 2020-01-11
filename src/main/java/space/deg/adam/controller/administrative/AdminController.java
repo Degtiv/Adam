@@ -1,13 +1,16 @@
-package space.deg.adam.controller;
+package space.deg.adam.controller.administrative;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import space.deg.adam.domain.Role;
-import space.deg.adam.domain.User;
+import space.deg.adam.domain.user.Role;
+import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.UserRepository;
 
 import java.util.Collections;
+
+import static space.deg.adam.utils.RequestsUtils.getAdminPage;
+import static space.deg.adam.utils.RequestsUtils.redirectPage;
 
 @Controller
 public class AdminController {
@@ -27,6 +30,6 @@ public class AdminController {
             userRepository.save(user);
         }
 
-        return "redirect:/login";
+        return redirectPage(getAdminPage("login"));
     }
 }

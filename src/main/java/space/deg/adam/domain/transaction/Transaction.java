@@ -1,7 +1,9 @@
-package space.deg.adam.domain;
+package space.deg.adam.domain.transaction;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
+import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -22,15 +24,23 @@ public class Transaction {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(precision = 16, scale = 2)
-    private BigDecimal amount;
-    private String currency;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    @NonNull
     private String title;
     private String description;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @NonNull
+    private Date date;
+
+    @Column(precision = 16, scale = 2)
+    @NonNull
+    private BigDecimal amount;
+    @NonNull
+    private String currency;
+
+    @NonNull
     private String status;
+    @NonNull
     private String category;
 
     public Transaction(User user, BigDecimal amount, String currency, Date date, String title, String description, String status, String category) {

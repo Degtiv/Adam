@@ -1,9 +1,7 @@
-package space.deg.adam.domain;
+package space.deg.adam.domain.user;
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -28,6 +26,9 @@ public class User implements UserDetails {
     @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "user_id"))
     private Set<Role> roles;
 
+    public boolean isAdmin() {
+        return getAuthorities().contains(Role.ADMIN);
+    }
 
     @Override
     public boolean isAccountNonExpired() {

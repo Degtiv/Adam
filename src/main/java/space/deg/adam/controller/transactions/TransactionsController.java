@@ -1,4 +1,4 @@
-package space.deg.adam.controller;
+package space.deg.adam.controller.transactions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -7,14 +7,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import space.deg.adam.domain.Transaction;
-import space.deg.adam.domain.User;
+import space.deg.adam.domain.transaction.Transaction;
+import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static space.deg.adam.utils.RequestsUtils.getTransactionPage;
 
 @Controller
 public class TransactionsController {
@@ -26,7 +28,7 @@ public class TransactionsController {
         Iterable<Transaction> transactions = transactionRepository.findAll();
         model.addAttribute("transactions", transactions);
 
-        return "transactions";
+        return getTransactionPage("transactions");
     }
 
     //TODO: rewrite milestone logic, rewrite category logic
@@ -54,6 +56,6 @@ public class TransactionsController {
         Iterable<Transaction> transactions = transactionRepository.findAll();
         model.addAttribute("transactions", transactions);
 
-        return "transactions";
+        return getTransactionPage("transactions");
     }
 }

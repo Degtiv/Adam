@@ -1,6 +1,6 @@
-<#import "parts/common.ftl" as c>
+<#import "/parts/common.ftl" as c>
 <@c.page>
-<a href="/users" xmlns="http://www.w3.org/1999/html">All users</a>
+<a href="/user">All users</a>
     <form method="post" action="/user">
 
         <input type="text" value="${user.username}" name="username">
@@ -16,4 +16,6 @@
         <button type="submit" value="Save">Save</button>
 
     </form>
+
+
 </@c.page>

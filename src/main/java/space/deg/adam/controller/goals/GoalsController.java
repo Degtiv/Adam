@@ -1,4 +1,4 @@
-package space.deg.adam.controller;
+package space.deg.adam.controller.goals;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import space.deg.adam.domain.Category;
-import space.deg.adam.domain.Goal;
-import space.deg.adam.domain.Status;
-import space.deg.adam.domain.User;
+import space.deg.adam.domain.goals.Category;
+import space.deg.adam.domain.goals.Goal;
+import space.deg.adam.domain.goals.Status;
+import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.GoalRepository;
 
 import java.io.File;
@@ -20,6 +20,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+
+import static space.deg.adam.utils.RequestsUtils.*;
 
 @Controller
 @RequestMapping("/goals")
@@ -37,7 +39,7 @@ public class GoalsController {
         model.addAttribute("goals", goals);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return "goals";
+        return getGoalPage("goals");
     }
 
     @PostMapping
@@ -63,16 +65,16 @@ public class GoalsController {
         model.addAttribute("goals", goals);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return "goals";
+        return getGoalPage("goals");
     }
 
     @GetMapping("/edit/{goal}")
     public String goalEditForm(@AuthenticationPrincipal User user, @PathVariable Goal goal, Model model) {
-        if (!goal.getUser().is(user)) return "notPermited";
+        if (!goal.getUser().is(user)) return redirectPage(getErrorPage("notPermited"));
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return "goalEdit";
+        return getGoalPage("goalEdit");
     }
 
     @PostMapping("/edit/{goal}")
@@ -100,21 +102,21 @@ public class GoalsController {
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return "goalEdit";
+        return getGoalPage("goalEdit");
     }
 
     @PostMapping("/deleteImage/{goal}")
     public String goalDeleteImage(@PathVariable Goal goal,
                                   @AuthenticationPrincipal User user,
                                   Model model) throws IOException, ParseException {
-        if (!goal.getUser().is(user)) return "notPermited";
+        if (!goal.getUser().is(user)) return redirectPage(getErrorPage("notPermited"));
         goal.setImage(null);
 
         goalRepository.save(goal);
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return "goalEdit";
+        return getGoalPage("goalEdit");
     }
 
     @PostMapping("/addImage/{goal}")
@@ -122,15 +124,29 @@ public class GoalsController {
                                @AuthenticationPrincipal User user,
                                @RequestParam MultipartFile image,
                                   Model model) throws IOException, ParseException {
-        if (!goal.getUser().is(user)) return "notPermited";
+        if (!goal.getUser().is(user)) return redirectPage(getErrorPage("notPermited"));
         saveImage(image, goal);
 
         goalRepository.save(goal);
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return "goalEdit";
+        return getGoalPage("goalEdit");
     }
+
+    @PostMapping("/delete/{goal}")
+    public String goalDelete(@PathVariable Goal goal,
+                             @AuthenticationPrincipal User user,
+                             Model model) {
+        if (!goal.getUser().is(user)) return redirectPage(getErrorPage("notPermited"));
+        goalRepository.delete(goal);
+
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("statuses", Status.values());
+        return redirectPage(getGoalPage("goals"));
+    }
+
+
 
     private void saveImage(MultipartFile image, Goal goal) throws IOException {
         if (image != null && !image.isEmpty()) {
