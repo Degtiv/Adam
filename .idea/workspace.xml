@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,23 +25,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/Application.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state>
+              <caret column="69" selection-start-column="69" selection-end-column="69" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="765">
+              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -185,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/login.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/registration.ftl" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/parts/navbar.ftl" />
@@ -207,6 +205,7 @@
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/AdminController.java" />
         <option value="$PROJECT_DIR$/Dockerfile" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
@@ -229,10 +228,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1316" />
-    <option name="y" value="306" />
-    <option name="width" value="974" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="310" />
+    <option name="y" value="-14" />
+    <option name="width" value="1359" />
     <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
@@ -400,23 +399,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1316" y="306" width="974" height="1057" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.42997813" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21268657" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.7920686" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.55117273" weight="0.25723472" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.55117273" visible="true" weight="0.25723472" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3290461" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3290461" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4989059" visible="true" weight="0.14069264" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989059" weight="0.13933548" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.4488273" side_tool="true" weight="0.25723472" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3290461" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -555,13 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -775,6 +767,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -841,17 +847,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" selection-start-column="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state>
+          <caret column="69" selection-start-column="69" selection-end-column="69" />
         </state>
       </provider>
     </entry>
