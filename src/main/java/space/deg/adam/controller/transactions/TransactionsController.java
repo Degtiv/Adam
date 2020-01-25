@@ -1,12 +1,13 @@
 package space.deg.adam.controller.transactions;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import space.deg.adam.domain.goals.Category;
+import space.deg.adam.domain.goals.Status;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
@@ -16,46 +17,89 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static space.deg.adam.utils.RequestsUtils.getTransactionPage;
+import static space.deg.adam.utils.RequestsUtils.*;
 
 @Controller
+@RequestMapping("/transactions")
 public class TransactionsController {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    @GetMapping("/transactions")
-    public String debug (Model model) {
-        Iterable<Transaction> transactions = transactionRepository.findAll();
+    @GetMapping
+    public String transactions (
+            @AuthenticationPrincipal User user,
+            Model model) {
+        Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         model.addAttribute("transactions", transactions);
 
+        model.addAttribute("transactions", transactions);
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("statuses", Status.values());
         return getTransactionPage("transactions");
     }
 
-    //TODO: rewrite milestone logic, rewrite category logic
-    @PostMapping("/transactions")
-    public String add (
+    @PostMapping
+    public String addTransaction(
             @AuthenticationPrincipal User user,
             @RequestParam String title,
             @RequestParam String dateText,
             @RequestParam BigDecimal amount,
             @RequestParam String description,
             @RequestParam String status,
-            @RequestParam String categoryName,
-            Model model){
+            @RequestParam String category,
+            Model model) throws ParseException {
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
 
-        Date date = null;
-        try {
-            date =  new SimpleDateFormat ("yyyy-MM-dd").parse(dateText);
-        }catch (ParseException e) {
-            System.out.println("Ошибка при получении даты");
-        }
-
-        Transaction transaction = new Transaction(user, amount, "RUR", date, title, description, status, categoryName);
+        Transaction transaction = new Transaction(user, amount, "RUR", date, title, description , status, category);
 
         transactionRepository.save(transaction);
-        Iterable<Transaction> transactions = transactionRepository.findAll();
+        Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         model.addAttribute("transactions", transactions);
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("statuses", Status.values());
+        return getTransactionPage("transactions");
+    }
 
+    @PostMapping("/save/{transaction}")
+    public String transactionFormSave(@PathVariable Transaction transaction,
+                                      @AuthenticationPrincipal User user,
+                                      @RequestParam String title,
+                                      @RequestParam String dateText,
+                                      @RequestParam BigDecimal amount,
+                                      @RequestParam String description,
+                                      @RequestParam String status,
+                                      @RequestParam String category,
+                                      Model model) throws ParseException {
+        if (!transaction.getUser().is(user)) return redirectPage("notPermited");
+
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
+
+        transaction.setTitle(title);
+        transaction.setDate(date);
+        transaction.setAmount(amount);
+        transaction.setDescription(description);
+        transaction.setStatus(status);
+        transaction.setCategory(category);
+
+        transactionRepository.save(transaction);
+        Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
+        model.addAttribute("transactions", transactions);
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("statuses", Status.values());
+        return getTransactionPage("transactions");
+    }
+
+    @PostMapping("/delete/{transaction}")
+    public String transactionFormDelete(@PathVariable Transaction transaction,
+                                      @AuthenticationPrincipal User user,
+                                      Model model) {
+        if (!transaction.getUser().is(user)) return redirectPage("notPermited");
+
+        transactionRepository.delete(transaction);
+        Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
+        model.addAttribute("transactions", transactions);
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("statuses", Status.values());
         return getTransactionPage("transactions");
     }
 }

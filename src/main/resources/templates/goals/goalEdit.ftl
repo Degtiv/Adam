@@ -8,7 +8,7 @@
 
     <div class="input-group-append mb-2">
         <button class="btn btn-primary rounded" type="submit" id="submit_button">Save</button>
-        <button class="btn btn-primary rounded ml-2" type="submit" id="delete_button" formaction="/goals/delete/${goal.uuid}">Delete</button>
+        <button class="btn btn-danger rounded ml-2" type="submit" id="delete_button" formaction="/goals/delete/${goal.uuid}">Delete</button>
     </div>
 
     <div class="input-group mb-2">
@@ -53,9 +53,9 @@
             </div>
             <select class="custom-select" id="status_input" name="status">
                 <#list statuses as status>
-                <option value="${status.title}" <#if goal.status == status.title> selected</#if>>${status.title}</option>
-        </#list>
-    </select>
+                    <option value="${status.title}" <#if goal.status == status.title> selected</#if>>${status.title}</option>
+                </#list>
+            </select>
         </div>
 
         <div class="input-group mb-3">
@@ -99,7 +99,7 @@
     <form method="post" style="display: inline-block" action="/goals/deleteImage/${goal.uuid}" id="delete_image_form">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <button class="btn btn-primary rounded" type="submit" id="remove_button" formaction="/goals/deleteImage/${goal.uuid}">Delete</button>
+                <button class="btn btn-danger rounded" type="submit" id="remove_button" formaction="/goals/deleteImage/${goal.uuid}">Delete</button>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         </div>

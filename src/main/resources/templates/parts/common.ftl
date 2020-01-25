@@ -11,6 +11,12 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <style>
+        .page-title {
+            margin: 0px 0px 30px 0px;
+            text-align: center;
+        }
+    </style>
     <title>Adam - finconsult</title>
 </head>
 <body>

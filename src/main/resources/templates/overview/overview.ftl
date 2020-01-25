@@ -1,6 +1,5 @@
 <#import "/parts/common.ftl" as c>
 <@c.page>
-<div>
-    <p>Overview here</p>
-</div>
+<#import "/parts/pageTitle.ftl" as pt>
+<@pt.pageTitle "Overview"/>
 </@c.page>

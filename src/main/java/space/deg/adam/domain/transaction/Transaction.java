@@ -7,6 +7,7 @@ import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -57,5 +58,13 @@ public class Transaction {
 
     public String getDateString() {
         return new SimpleDateFormat("dd.MM.yyyy").format(date);
+    }
+
+    public String getDateField() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(date);
+    }
+
+    public String getAmountString() {
+        return amount.setScale(2, RoundingMode.HALF_UP).toString().replaceAll(" ", "");
     }
 }

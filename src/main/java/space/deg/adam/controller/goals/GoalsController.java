@@ -21,7 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import static space.deg.adam.utils.RequestsUtils.*;
+import static space.deg.adam.utils.RequestsUtils.getGoalPage;
+import static space.deg.adam.utils.RequestsUtils.redirectPage;
 
 @Controller
 @RequestMapping("/goals")
@@ -87,7 +88,8 @@ public class GoalsController {
                                    @RequestParam String status,
                                    @RequestParam String url,
                                    @RequestParam String category,
-                                   Model model) throws IOException, ParseException {
+                                   Model model) throws ParseException {
+        if (!goal.getUser().is(user)) return redirectPage("notPermited");
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
 
         goal.setTitle(title);
@@ -108,7 +110,7 @@ public class GoalsController {
     @PostMapping("/deleteImage/{goal}")
     public String goalDeleteImage(@PathVariable Goal goal,
                                   @AuthenticationPrincipal User user,
-                                  Model model) throws IOException, ParseException {
+                                  Model model) {
         if (!goal.getUser().is(user)) return redirectPage("notPermited");
         goal.setImage(null);
 
@@ -123,7 +125,7 @@ public class GoalsController {
     public String goalAddImage(@PathVariable Goal goal,
                                @AuthenticationPrincipal User user,
                                @RequestParam MultipartFile image,
-                                  Model model) throws IOException, ParseException {
+                                  Model model) throws IOException {
         if (!goal.getUser().is(user)) return redirectPage("notPermited");
         saveImage(image, goal);
 

@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/parts/pageTitle.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrative/user.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrative/user.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/parts/common.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/parts/common.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -17,37 +26,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
+        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="25" selection-start-column="25" selection-end-column="25" />
+            <state relative-caret-position="130">
+              <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="69" selection-start-column="69" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            <state relative-caret-position="317">
+              <caret line="100" column="56" selection-start-line="100" selection-start-column="56" selection-end-line="100" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,45 +50,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/GoalRepository.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="41" />
+            <state relative-caret-position="215">
+              <caret line="90" column="157" selection-start-line="90" selection-start-column="157" selection-end-line="90" selection-end-column="157" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/UserRepository.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            <state relative-caret-position="170">
+              <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/user.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="86" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="86" />
-              <folding>
-                <element signature="n#style#0;n#form#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#1;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,22 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2108">
-              <caret line="145" column="35" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1751">
-              <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="70" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1513">
+              <caret line="39" column="43" lean-forward="true" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -144,6 +102,7 @@
       <find>freem</find>
       <find>return</find>
       <find>redirectPage</find>
+      <find>delet</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\degti\IdeaProjects\adam</dir>
@@ -156,8 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/LandingController.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/config/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/parts/login.ftl" />
@@ -174,39 +131,41 @@
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/Amount.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/Status.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/User.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/parts/common.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/goals.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/GoalsController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/goalEdit.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/Goal.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/Transaction.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/goal/Goal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/login.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/registration.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/parts/navbar.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/landing.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/main.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/notPermited.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/config/MvcConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/utils/RequestsUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/overview/OverviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/RegistrationController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/userEditForm.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/User.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/user.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/AdminController.java" />
         <option value="$PROJECT_DIR$/Dockerfile" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/css/style.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/parts/common.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/parts/pageTitle.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/user.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" />
       </list>
     </option>
   </component>
@@ -228,9 +187,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="310" />
-    <option name="y" value="-14" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="598" />
+    <option name="y" value="-12" />
     <option name="width" value="1359" />
     <option name="height" value="1057" />
   </component>
@@ -240,6 +199,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -278,7 +238,118 @@
               <item name="adam" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="goals" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="transactions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="goals" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="transaction" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="administrative" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="goals" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="overview" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="parts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="transactions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="adam" type="b2602c69:ProjectViewProjectNode" />
@@ -289,24 +360,24 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/overview" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/parts" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\errors" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\transactions" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\administrative" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\goals" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\parts" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\overview" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\icons" />
+      <recent name="D:\work\projects\Adam\src\main\resources\templates" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="space.deg.adam.controller.overview" />
@@ -314,11 +385,11 @@
       <recent name="space.deg.adam.controller" />
       <recent name="space.deg.adam.repository" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\overview" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\icons" />
-      <recent name="D:\work\projects\Adam\src\main\resources\templates" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\errors" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\transactions" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\administrative" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\goals" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -402,21 +473,21 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21268657" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21588486" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.7920686" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.55117273" visible="true" weight="0.25723472" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.82569295" visible="true" weight="0.42336547" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3290461" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989059" weight="0.13933548" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.4488273" side_tool="true" weight="0.25723472" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.52665246" weight="0.3290461" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49733475" weight="0.13933548" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.17430703" side_tool="true" weight="0.42336547" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3290461" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -425,6 +496,30 @@
       <window_info anchor="right" id="Maven" order="4" weight="0.5929978" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21588486" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.7920686" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.82569295" visible="true" weight="0.42336547" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3290461" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.52665246" weight="0.3290461" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49733475" weight="0.13933548" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.17430703" side_tool="true" visible="true" weight="0.42336547" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3290461" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.5929978" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -482,14 +577,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="upgrade UI" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/MilestoneRepository.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.5.RELEASE/spring-security-config-5.1.5.RELEASE.jar!/org/springframework/security/config/annotation/web/AbstractRequestMatcherRegistry.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/transactions.ftl" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/icons/clear-24px.svg" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.1.6.RELEASE/spring-core-5.1.6.RELEASE.jar!/org/springframework/lang/NonNull.class">
@@ -540,16 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/Role.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -557,52 +634,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/goals/Goal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/common.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/security.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/landing.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="11" selection-start-column="11" selection-end-column="11" />
@@ -623,16 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="948">
-          <caret line="58" column="49" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -666,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/utils/RequestsUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -695,13 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/login.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/registration.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -709,13 +717,6 @@
           <folding>
             <element signature="n#style#0;n#p#1;n#div#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/login.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -750,13 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="49" column="71" selection-start-line="49" selection-start-column="71" selection-end-line="49" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -778,16 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -818,27 +802,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="69" selection-start-column="69" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/goals/Goal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="82" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/common.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/security.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/login.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/login.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/pageTitle.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="81" column="20" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="129" />
+          <folding>
+            <element signature="n#form#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/user.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="86" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="86" />
+        <state relative-caret-position="374">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="86" />
           <folding>
             <element signature="n#style#0;n#form#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="145" column="35" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="35" />
+        <state relative-caret-position="51">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="78" column="45" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1751">
-          <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="70" />
+        <state relative-caret-position="170">
+          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
@@ -847,10 +924,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="69" selection-start-column="69" selection-end-column="69" />
+        <state relative-caret-position="215">
+          <caret line="90" column="157" selection-start-line="90" selection-start-column="157" selection-end-line="90" selection-end-column="157" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1513">
+          <caret line="39" column="43" lean-forward="true" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="100" column="56" selection-start-line="100" selection-start-column="56" selection-end-line="100" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

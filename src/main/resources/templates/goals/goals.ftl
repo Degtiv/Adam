@@ -1,6 +1,9 @@
 <#import "/parts/common.ftl" as c>
 <@c.page>
 
+<#import "/parts/pageTitle.ftl" as pt>
+<@pt.pageTitle "Goals"/>
+
 <form method="post" enctype="multipart/form-data">
     <div class="input-group mb-2">
         <div class="input-group-prepend">
@@ -66,6 +69,8 @@
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     </div>
 </form>
+
+<hr>
 
 <div class="card-columns my-5">
     <#list goals as goal>
