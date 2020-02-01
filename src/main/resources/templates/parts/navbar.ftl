@@ -1,5 +1,6 @@
 <#include "security.ftl">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<#import "/parts/login.ftl" as l>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <b><a class="navbar-brand" href="/">Adam</a></b>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +30,11 @@
         </div>
 
         <div class="form-inline my-2 my-lg-0">
-            <form action="/logout" method="post">
-                <input type="submit" value="Sign Out"/>
-                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            </form>
+            <#if isLogin>
+                <@l.enterForm "/login" "Sign out"/>
+            <#else>
+                <@l.enterForm "/logout" "Sign in"/>
+            </#if>
         </div>
     </div>
 </nav>

@@ -1,10 +1,9 @@
 <#import "/parts/common.ftl" as c>
+<#import "/parts/pageTitle.ftl" as pt>
 <@c.page>
 
 <form method="post" action="/goals/edit/${goal.uuid}">
-    <div class="input-group mb-2 justify-content-center">
-        <h2 class="display-4">${goal.title}</h2>
-    </div>
+    <@pt.pageTitle "${goal.title}"/>
 
     <div class="input-group-append mb-2">
         <button class="btn btn-primary rounded" type="submit" id="submit_button">Save</button>
