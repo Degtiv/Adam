@@ -13,7 +13,7 @@ public class MainController {
     private TransactionRepository transactionRepository;
 
     @GetMapping("/main")
-    public String main (Model model) {
+    public String main(Model model) {
         Iterable<Transaction> transactions = transactionRepository.findAll();
         model.addAttribute("transactions", transactions);
 

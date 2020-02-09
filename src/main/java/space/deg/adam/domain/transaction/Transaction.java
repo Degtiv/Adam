@@ -130,7 +130,7 @@ public class Transaction {
             return this;
         }
 
-        public Transaction build(){
+        public Transaction build() {
             Transaction transaction = new Transaction();
             transaction.setUser(user);
             transaction.setDescription(description);

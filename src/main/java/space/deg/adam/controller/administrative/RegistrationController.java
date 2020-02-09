@@ -12,7 +12,7 @@ import space.deg.adam.repository.UserRepository;
 import java.util.Collections;
 import java.util.Map;
 
-import static space.deg.adam.utils.RequestsUtils.*;
+import static space.deg.adam.utils.RequestsUtils.getAdminPage;
 
 @Controller
 public class RegistrationController {

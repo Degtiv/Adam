@@ -61,12 +61,12 @@ public class UserController {
     ) {
         user.setUsername(username);
 
-        final Set<String> roles= Arrays.stream(Role.values())
+        final Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name).collect(Collectors.toSet());
 
         user.getRoles().clear();
 
-        for(String role : form.keySet()) {
+        for (String role : form.keySet()) {
             if (roles.contains(role))
                 user.getRoles().add(Role.valueOf(role));
         }
@@ -77,9 +77,9 @@ public class UserController {
     }
 
     private void deleteUser(User user) {
-            transactionRepository.findByUser(user).forEach(transaction -> transactionRepository.delete(transaction));
-            goalRepository.findByUser(user).forEach(goal -> goalRepository.delete(goal));
+        transactionRepository.findByUser(user).forEach(transaction -> transactionRepository.delete(transaction));
+        goalRepository.findByUser(user).forEach(goal -> goalRepository.delete(goal));
 
-            userRepository.delete(user);
+        userRepository.delete(user);
     }
 }

@@ -14,13 +14,9 @@ import space.deg.adam.domain.goals.Status;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.GoalRepository;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
 
 import static space.deg.adam.utils.RequestsUtils.getGoalPage;
 import static space.deg.adam.utils.RequestsUtils.redirectPage;
@@ -134,7 +130,7 @@ public class GoalsController {
     public String goalAddImage(@PathVariable Goal goal,
                                @AuthenticationPrincipal User user,
                                @RequestParam MultipartFile image,
-                                  Model model) throws IOException {
+                               Model model) throws IOException {
         if (!goal.getUser().is(user)) return redirectPage("notPermited");
         GoalUtils.saveImage(uploadPath, image, goal);
 

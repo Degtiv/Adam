@@ -9,7 +9,6 @@ import space.deg.adam.repository.UserRepository;
 
 import java.util.Collections;
 
-import static space.deg.adam.utils.RequestsUtils.getAdminPage;
 import static space.deg.adam.utils.RequestsUtils.redirectPage;
 
 @Controller

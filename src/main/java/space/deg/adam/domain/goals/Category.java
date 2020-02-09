@@ -3,10 +3,10 @@ package space.deg.adam.domain.goals;
 import java.util.ArrayList;
 
 public enum Category {
-    BASE ("Base"),
-    COMFORT ("Comfort"),
-    LUXURY ("Luxury"),
-    PRESIGE ("Prestige");
+    BASE("Base"),
+    COMFORT("Comfort"),
+    LUXURY("Luxury"),
+    PRESIGE("Prestige");
 
     private String title;
 

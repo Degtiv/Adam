@@ -29,8 +29,8 @@
         </div>
         <select class="custom-select" id="category_input" name="category">
             <#list categories as category>
-                <option value="${category.title}">${category.title}</option>
-            </#list>
+            <option value="${category.title}">${category.title}</option>
+        </#list>
         </select>
     </div>
 
@@ -81,36 +81,38 @@
             </div>
             <div class="float-right">
                 <a href="/goals/edit/${goal.uuid}">
-                    <i class="material-icons btn-outline-dark" style="border-radius:20px; font-size: 15px; padding:3px;">edit</i>
+                    <i class="material-icons btn-outline-dark"
+                       style="border-radius:20px; font-size: 15px; padding:3px;">edit</i>
                 </a>
             </div>
         </div>
         <div class="card-body">
-                <a href="${goal.url}">
-                    <h5 class="card-title">${goal.title}</h5>
-                </a>
-                <p class="card-text small">${goal.category}</p>
+            <a href="${goal.url}">
+                <h5 class="card-title">${goal.title}</h5>
+            </a>
+            <p class="card-text small">${goal.category}</p>
             <#if goal.image??>
-                <a href="${goal.url}">
-                    <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
-                </a>
-            </#if>
-            <p class="card-text my-2">${goal.description}</p>
-        </div>
+            <a href="${goal.url}">
+                <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
+            </a>
+        </
+        #if>
+        <p class="card-text my-2">${goal.description}</p>
+    </div>
 
-        <div class="card-footer text-muted">
-            <div class="row">
-                <div class="col-sm-8 text-left">
-                    <em>${goal.amount} ${goal.currency}</em>
-                </div>
-                <div class="col-sm-4 text-right">
-                    ${goal.dateString}
-                </div>
+    <div class="card-footer text-muted">
+        <div class="row">
+            <div class="col-sm-8 text-left">
+                <em>${goal.amount} ${goal.currency}</em>
+            </div>
+            <div class="col-sm-4 text-right">
+                ${goal.dateString}
             </div>
         </div>
     </div>
-    <#else>
-    No goals
+</div>
+<#else>
+No goals
 </#list>
 </div>
 </@c.page>

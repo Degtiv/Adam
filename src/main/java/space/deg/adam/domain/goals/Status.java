@@ -3,9 +3,9 @@ package space.deg.adam.domain.goals;
 import java.util.ArrayList;
 
 public enum Status {
-    BASE ("Planned"),
-    COMFORT ("In progress"),
-    LUXURY ("Come true");
+    BASE("Planned"),
+    COMFORT("In progress"),
+    LUXURY("Come true");
 
     private String title;
 

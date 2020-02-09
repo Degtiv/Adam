@@ -1,7 +1,6 @@
 package space.deg.adam.domain.goals;
 
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.user.User;
 
@@ -143,7 +142,7 @@ public class Goal {
             return this;
         }
 
-        public Goal build(){
+        public Goal build() {
             Goal goal = new Goal();
             goal.setUser(user);
             goal.setDescription(description);

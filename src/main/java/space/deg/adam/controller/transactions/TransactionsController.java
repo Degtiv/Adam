@@ -24,7 +24,7 @@ public class TransactionsController {
     private TransactionRepository transactionRepository;
 
     @GetMapping
-    public String transactions (
+    public String transactions(
             @AuthenticationPrincipal User user,
             Model model) {
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
@@ -95,8 +95,8 @@ public class TransactionsController {
 
     @PostMapping("/delete/{transaction}")
     public String transactionFormDelete(@PathVariable Transaction transaction,
-                                      @AuthenticationPrincipal User user,
-                                      Model model) {
+                                        @AuthenticationPrincipal User user,
+                                        Model model) {
         if (!transaction.getUser().is(user)) return redirectPage("notPermited");
 
         transactionRepository.delete(transaction);
