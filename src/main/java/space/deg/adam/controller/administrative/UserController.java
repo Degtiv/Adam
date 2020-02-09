@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.user.Role;
 import space.deg.adam.domain.user.User;
+import space.deg.adam.repository.BalanceRepository;
 import space.deg.adam.repository.GoalRepository;
 import space.deg.adam.repository.TransactionRepository;
 import space.deg.adam.repository.UserRepository;
@@ -29,6 +30,9 @@ public class UserController {
 
     @Autowired
     private GoalRepository goalRepository;
+
+    @Autowired
+    private BalanceRepository balanceRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -79,6 +83,7 @@ public class UserController {
     private void deleteUser(User user) {
         transactionRepository.findByUser(user).forEach(transaction -> transactionRepository.delete(transaction));
         goalRepository.findByUser(user).forEach(goal -> goalRepository.delete(goal));
+        balanceRepository.findByUser(user).forEach(balance -> balanceRepository.delete(balance));
 
         userRepository.delete(user);
     }

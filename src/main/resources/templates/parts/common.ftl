@@ -16,7 +16,6 @@
             margin: 0px 0px 30px 0px;
             text-align: center;
         }
-
     </style>
     <title>Adam - finconsult</title>
 </head>

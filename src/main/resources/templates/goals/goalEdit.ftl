@@ -7,9 +7,7 @@
 
     <div class="input-group-append mb-2">
         <button class="btn btn-primary rounded" type="submit" id="submit_button">Save</button>
-        <button class="btn btn-danger rounded ml-2" type="submit" id="delete_button"
-                formaction="/goals/delete/${goal.uuid}">Delete
-        </button>
+        <button class="btn btn-danger rounded ml-2" type="submit" id="delete_button" formaction="/goals/delete/${goal.uuid}">Delete</button>
     </div>
 
     <div class="input-group mb-2">
@@ -43,48 +41,43 @@
             </div>
             <select class="custom-select" id="category_input" name="category">
                 <#list categories as category>
-                <option value="${category.title}"
-                <#if goal.category == category.title> selected</#if>>${category.title}</option>
-        </
-        #list>
-        </select>
-    </div>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="status_input">Status</label>
+                    <option value="${category.title}" <#if goal.category == category.title> selected</#if>>${category.title}</option>
+                </#list>
+            </select>
         </div>
-        <select class="custom-select" id="status_input" name="status">
-            <#list statuses as status>
-            <option value="${status.title}"
-            <#if goal.status == status.title> selected</#if>>${status.title}</option>
-    </
-    #list>
-    </select>
-    </div>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="url_input">URL</span>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="status_input">Status</label>
+            </div>
+            <select class="custom-select" id="status_input" name="status">
+                <#list statuses as status>
+                    <option value="${status.title}" <#if goal.status == status.title> selected</#if>>${status.title}</option>
+                </#list>
+            </select>
         </div>
-        <input type="text" class="form-control" value="${goal.url}" aria-label="url"
-               aria-describedby="url_input" name="url">
-    </div>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="description_input">Description</span>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="url_input">URL</span>
+            </div>
+            <input type="text" class="form-control" value="${goal.url}" aria-label="url"
+                   aria-describedby="url_input" name="url">
         </div>
-        <textarea class="form-control" placeholder="Description" aria-label="description"
-                  aria-describedby="description_input"
-                  name="description">${goal.description}</textarea>
-    </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="description_input">Description</span>
+            </div>
+            <textarea class="form-control" placeholder="Description" aria-label="description"
+                      aria-describedby="description_input"
+                      name="description">${goal.description}</textarea>
+        </div>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
 </form>
 
 <div style="padding: 40px; width:100%; border: 1px solid #0069d9; border-radius: 70px;">
-    <form method="post" style="display:inline-block" enctype="multipart/form-data" action="/goals/addImage/${goal.uuid}"
-          id="add_image_form">
+    <form method="post" style="display:inline-block" enctype="multipart/form-data" action="/goals/addImage/${goal.uuid}" id="add_image_form">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">Image</span>
@@ -105,9 +98,7 @@
     <form method="post" style="display: inline-block" action="/goals/deleteImage/${goal.uuid}" id="delete_image_form">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <button class="btn btn-danger rounded" type="submit" id="remove_button"
-                        formaction="/goals/deleteImage/${goal.uuid}">Delete
-                </button>
+                <button class="btn btn-danger rounded" type="submit" id="remove_button" formaction="/goals/deleteImage/${goal.uuid}">Delete</button>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         </div>
@@ -118,7 +109,7 @@
             <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
         </a>
     </div>
-</#if>
+    </#if>
 </div>
 
 </@c.page>

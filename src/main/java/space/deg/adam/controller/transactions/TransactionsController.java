@@ -28,7 +28,6 @@ public class TransactionsController {
             @AuthenticationPrincipal User user,
             Model model) {
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
-        model.addAttribute("transactions", transactions);
 
         model.addAttribute("transactions", transactions);
         model.addAttribute("categories", Category.values());

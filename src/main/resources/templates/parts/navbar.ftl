@@ -19,11 +19,10 @@
                 <a class="nav-link" href="/goals">Goals</a>
             </li>
             <#if isAdmin>
-            <li class="nav-item">
-                <a class="nav-link" href="/user">User</a>
-            </li>
-        </
-        #if>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user">User</a>
+                </li>
+            </#if>
         </ul>
 
         <div class="navbar-text mr-2">
@@ -32,11 +31,10 @@
 
         <div class="form-inline my-2 my-lg-0">
             <#if isLogin>
-            <@l.enterForm "/login" "Sign out"/>
+                <@l.enterForm "/login" "Sign out"/>
             <#else>
-            <@l.enterForm "/logout" "Sign in"/>
-        </
-        #if>
-    </div>
+                <@l.enterForm "/logout" "Sign in"/>
+            </#if>
+        </div>
     </div>
 </nav>
