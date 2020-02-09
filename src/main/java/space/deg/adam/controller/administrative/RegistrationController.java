@@ -10,9 +10,10 @@ import space.deg.adam.domain.user.Role;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.BalanceRepository;
 import space.deg.adam.repository.UserRepository;
+import space.deg.adam.utils.FirstSecondOfMonth;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.Map;
 
@@ -53,7 +54,14 @@ public class RegistrationController {
     }
 
     private void generateBalanceList(User user) {
-        Balance balance = Balance.newBuilder().user(user).date(LocalDateTime.now()).build();
-        balanceRepository.save(balance);
+        LocalDateTime now = LocalDateTime.now().with(FirstSecondOfMonth.adjust());
+        LocalDateTime firstMonth = now.minusMonths(12);
+        LocalDateTime lastMonth = now.plusMonths(24);
+        long monthsBetween = ChronoUnit.MONTHS.between(firstMonth, lastMonth);
+        for (long month = 0; month < monthsBetween; month++) {
+            LocalDateTime dateTime = firstMonth.plusMonths(month);
+            Balance balance = Balance.newBuilder().user(user).date(dateTime).build();
+            balanceRepository.save(balance);
+        }
     }
 }

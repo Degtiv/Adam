@@ -33,7 +33,7 @@ public class Balance {
     @NonNull
     private String currency;
 
-    public Balance(){
+    public Balance() {
         this.uuid = UUID.randomUUID().toString();
     }
 

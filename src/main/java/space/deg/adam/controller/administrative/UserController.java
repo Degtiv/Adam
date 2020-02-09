@@ -8,9 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.user.Role;
 import space.deg.adam.domain.user.User;
-import space.deg.adam.repository.BalanceRepository;
-import space.deg.adam.repository.GoalRepository;
-import space.deg.adam.repository.TransactionRepository;
+import space.deg.adam.domain.user.UserService;
 import space.deg.adam.repository.UserRepository;
 
 import java.util.Arrays;
@@ -26,13 +24,7 @@ import static space.deg.adam.utils.RequestsUtils.redirectPage;
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
     @Autowired
-    private TransactionRepository transactionRepository;
-
-    @Autowired
-    private GoalRepository goalRepository;
-
-    @Autowired
-    private BalanceRepository balanceRepository;
+    private UserService userService;
 
     @Autowired
     private UserRepository userRepository;
@@ -81,10 +73,6 @@ public class UserController {
     }
 
     private void deleteUser(User user) {
-        transactionRepository.findByUser(user).forEach(transaction -> transactionRepository.delete(transaction));
-        goalRepository.findByUser(user).forEach(goal -> goalRepository.delete(goal));
-        balanceRepository.findByUser(user).forEach(balance -> balanceRepository.delete(balance));
-
-        userRepository.delete(user);
+        userService.deleteUser(user);
     }
 }
