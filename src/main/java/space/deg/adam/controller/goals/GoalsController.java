@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import space.deg.adam.domain.goals.Category;
 import space.deg.adam.domain.goals.Goal;
+import space.deg.adam.domain.goals.GoalUtils;
 import space.deg.adam.domain.goals.Status;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.GoalRepository;
@@ -54,12 +55,21 @@ public class GoalsController {
             @RequestParam String url,
             @RequestParam String category,
             @RequestParam MultipartFile image,
-            Model model) throws IOException, ParseException {
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
+            Model model) throws IOException {
 
-        Goal goal = new Goal(user, title, description, date, amount, "RUR", status, url, category);
+        Goal goal = Goal.newBuilder()
+                .user(user)
+                .title(title)
+                .description(description)
+                .date(dateText)
+                .amount(amount)
+                .currency("RUR")
+                .status(status)
+                .url(url)
+                .category(category)
+                .build();
 
-        saveImage(image, goal);
+        GoalUtils.saveImage(uploadPath, image, goal);
 
         goalRepository.save(goal);
         Iterable<Goal> goals = goalRepository.findByUser(user);
@@ -90,10 +100,9 @@ public class GoalsController {
                                    @RequestParam String category,
                                    Model model) throws ParseException {
         if (!goal.getUser().is(user)) return redirectPage("notPermited");
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
 
         goal.setTitle(title);
-        goal.setDate(date);
+        goal.setDate(dateText);
         goal.setAmount(amount);
         goal.setDescription(description);
         goal.setStatus(status);
@@ -127,7 +136,7 @@ public class GoalsController {
                                @RequestParam MultipartFile image,
                                   Model model) throws IOException {
         if (!goal.getUser().is(user)) return redirectPage("notPermited");
-        saveImage(image, goal);
+        GoalUtils.saveImage(uploadPath, image, goal);
 
         goalRepository.save(goal);
         model.addAttribute("goal", goal);
@@ -146,19 +155,5 @@ public class GoalsController {
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
         return redirectPage("goals");
-    }
-
-
-
-    private void saveImage(MultipartFile image, Goal goal) throws IOException {
-        if (image != null && !image.isEmpty()) {
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-            String imageName = UUID.randomUUID().toString() + "." + image.getOriginalFilename();
-            image.transferTo(new File(uploadPath + "/" + imageName));
-            goal.setImage(imageName);
-        }
     }
 }

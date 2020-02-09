@@ -17,20 +17,21 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static space.deg.adam.utils.RequestsUtils.*;
+import static space.deg.adam.utils.RequestsUtils.getAdminPage;
+import static space.deg.adam.utils.RequestsUtils.redirectPage;
 
 @Controller
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
     @Autowired
-    TransactionRepository transactionRepository;
+    private TransactionRepository transactionRepository;
 
     @Autowired
-    GoalRepository goalRepository;
+    private GoalRepository goalRepository;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @GetMapping
     public String users(Model model) {
@@ -72,13 +73,13 @@ public class UserController {
 
         userRepository.save(user);
 
-        return getAdminPage("user");
+        return redirectPage("user");
     }
 
     private void deleteUser(User user) {
-        transactionRepository.findByUser(user).forEach(transaction -> transactionRepository.delete(transaction));
-        goalRepository.findByUser(user).forEach(goal -> goalRepository.delete(goal));
+            transactionRepository.findByUser(user).forEach(transaction -> transactionRepository.delete(transaction));
+            goalRepository.findByUser(user).forEach(goal -> goalRepository.delete(goal));
 
-        userRepository.delete(user);
+            userRepository.delete(user);
     }
 }

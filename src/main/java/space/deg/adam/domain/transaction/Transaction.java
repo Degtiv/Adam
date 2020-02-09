@@ -1,21 +1,22 @@
 package space.deg.adam.domain.transaction;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
+import space.deg.adam.domain.goals.Category;
+import space.deg.adam.domain.goals.Status;
 import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
 @Table(name = "transactions")
 @Data
-@NoArgsConstructor
 public class Transaction {
     @Id
     @Column(length = 100)
@@ -29,42 +30,117 @@ public class Transaction {
     private String title;
     private String description;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date", columnDefinition = "TIMESTAMP")
     @NonNull
-    private Date date;
+    private LocalDateTime date;
 
     @Column(precision = 16, scale = 2)
     @NonNull
     private BigDecimal amount;
+
     @NonNull
     private String currency;
 
     @NonNull
     private String status;
+
     @NonNull
     private String category;
 
-    public Transaction(User user, BigDecimal amount, String currency, Date date, String title, String description, String status, String category) {
+    public Transaction() {
         this.uuid = UUID.randomUUID().toString();
-        this.user = user;
-        this.amount = amount;
-        this.currency = currency;
+    }
+
+    public void setDate(String dateText) {
+        date = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+    }
+
+    public void setDate(LocalDateTime date) {
         this.date = date;
-        this.title = title;
-        this.description = description;
-        this.status = status;
-        this.category = category;
     }
 
     public String getDateString() {
-        return new SimpleDateFormat("dd.MM.yyyy").format(date);
+        return date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
     public String getDateField() {
-        return new SimpleDateFormat("yyyy-MM-dd").format(date);
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     public String getAmountString() {
         return amount.setScale(2, RoundingMode.HALF_UP).toString().replaceAll(" ", "");
+    }
+
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private User user;
+        private String title = "No title";
+        private String description;
+        private LocalDateTime date;
+        private BigDecimal amount = BigDecimal.ZERO;
+        private String currency = "RUR";
+        private String status = Status.BASE.getTitle();
+        private String category = Category.BASE.getTitle();
+
+        public Builder user(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder date(LocalDateTime date) {
+            this.date = date;
+            return this;
+        }
+
+        public Builder date(String dateText) {
+            date = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+            return this;
+        }
+
+        public Builder amount(BigDecimal amount) {
+            this.amount = amount;
+            return this;
+        }
+
+        public Builder currency(String currency) {
+            this.currency = currency;
+            return this;
+        }
+
+        public Builder status(String status) {
+            this.status = status;
+            return this;
+        }
+
+        public Builder category(String category) {
+            this.category = category;
+            return this;
+        }
+
+        public Transaction build(){
+            Transaction transaction = new Transaction();
+            transaction.setUser(user);
+            transaction.setDescription(description);
+            transaction.setTitle(title);
+            transaction.setDate(date);
+            transaction.setAmount(amount);
+            transaction.setCurrency(currency);
+            transaction.setStatus(status);
+            transaction.setCategory(category);
+            return transaction;
+        }
     }
 }

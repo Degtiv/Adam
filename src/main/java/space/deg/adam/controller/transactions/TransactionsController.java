@@ -13,11 +13,9 @@ import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import static space.deg.adam.utils.RequestsUtils.*;
+import static space.deg.adam.utils.RequestsUtils.getTransactionPage;
+import static space.deg.adam.utils.RequestsUtils.redirectPage;
 
 @Controller
 @RequestMapping("/transactions")
@@ -47,10 +45,18 @@ public class TransactionsController {
             @RequestParam String description,
             @RequestParam String status,
             @RequestParam String category,
-            Model model) throws ParseException {
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
+            Model model) {
 
-        Transaction transaction = new Transaction(user, amount, "RUR", date, title, description , status, category);
+        Transaction transaction = Transaction.newBuilder()
+                .user(user)
+                .title(title)
+                .date(dateText)
+                .amount(amount)
+                .description(description)
+                .status(status)
+                .category(category)
+                .currency("RUR")
+                .build();
 
         transactionRepository.save(transaction);
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
@@ -69,13 +75,11 @@ public class TransactionsController {
                                       @RequestParam String description,
                                       @RequestParam String status,
                                       @RequestParam String category,
-                                      Model model) throws ParseException {
+                                      Model model) {
         if (!transaction.getUser().is(user)) return redirectPage("notPermited");
 
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
-
         transaction.setTitle(title);
-        transaction.setDate(date);
+        transaction.setDate(dateText);
         transaction.setAmount(amount);
         transaction.setDescription(description);
         transaction.setStatus(status);
