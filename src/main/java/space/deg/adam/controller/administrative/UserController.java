@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.user.Role;
 import space.deg.adam.domain.user.User;
-import space.deg.adam.domain.user.UserService;
 import space.deg.adam.repository.UserRepository;
+import space.deg.adam.service.UserService;
 
 import java.util.Arrays;
 import java.util.Map;
