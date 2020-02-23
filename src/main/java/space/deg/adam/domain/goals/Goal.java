@@ -2,6 +2,8 @@ package space.deg.adam.domain.goals;
 
 import lombok.Data;
 import org.springframework.lang.NonNull;
+import space.deg.adam.domain.common.Category;
+import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
@@ -82,7 +84,7 @@ public class Goal {
         private LocalDateTime date;
         private BigDecimal amount = BigDecimal.ZERO;
         private String currency = "RUR";
-        private String status = Status.BASE.getTitle();
+        private String status = Status.PLANNED.getTitle();
         private String image;
         private String url;
         private String category = Category.BASE.getTitle();

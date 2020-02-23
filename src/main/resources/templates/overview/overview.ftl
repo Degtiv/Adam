@@ -28,7 +28,7 @@
     });
 </script>
 
-<button>Search</button>
+<button style="display:none;">Debug button</button>
 
 <#list balances as balance>
 <div class="clearfix input-group-sm">

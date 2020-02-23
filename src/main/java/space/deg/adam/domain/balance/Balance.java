@@ -37,6 +37,10 @@ public class Balance {
         this.uuid = UUID.randomUUID().toString();
     }
 
+    public void increaseAmount(BigDecimal amount) {
+        this.amount = this.amount.add(amount);
+    }
+
     public void setDate(LocalDateTime date) {
         this.date = date;
     }

@@ -2,8 +2,8 @@ package space.deg.adam.domain.transaction;
 
 import lombok.Data;
 import org.springframework.lang.NonNull;
-import space.deg.adam.domain.goals.Category;
-import space.deg.adam.domain.goals.Status;
+import space.deg.adam.domain.common.Category;
+import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
@@ -42,10 +42,10 @@ public class Transaction {
     private String currency;
 
     @NonNull
-    private String status;
+    private Status status;
 
     @NonNull
-    private String category;
+    private Category category;
 
     public Transaction() {
         this.uuid = UUID.randomUUID().toString();
@@ -71,61 +71,61 @@ public class Transaction {
         return amount.setScale(2, RoundingMode.HALF_UP).toString().replaceAll(" ", "");
     }
 
-    public static Builder newBuilder() {
-        return new Builder();
+    public static TransactionBuilder builder() {
+        return new TransactionBuilder();
     }
 
-    public static class Builder {
+    public static class TransactionBuilder {
         private User user;
         private String title = "No title";
         private String description;
         private LocalDateTime date;
         private BigDecimal amount = BigDecimal.ZERO;
         private String currency = "RUR";
-        private String status = Status.BASE.getTitle();
-        private String category = Category.BASE.getTitle();
+        private Status status = Status.PLANNED;
+        private Category category = Category.BASE;
 
-        public Builder user(User user) {
+        public TransactionBuilder user(User user) {
             this.user = user;
             return this;
         }
 
-        public Builder title(String title) {
+        public TransactionBuilder title(String title) {
             this.title = title;
             return this;
         }
 
-        public Builder description(String description) {
+        public TransactionBuilder description(String description) {
             this.description = description;
             return this;
         }
 
-        public Builder date(LocalDateTime date) {
+        public TransactionBuilder date(LocalDateTime date) {
             this.date = date;
             return this;
         }
 
-        public Builder date(String dateText) {
+        public TransactionBuilder date(String dateText) {
             date = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
             return this;
         }
 
-        public Builder amount(BigDecimal amount) {
+        public TransactionBuilder amount(BigDecimal amount) {
             this.amount = amount;
             return this;
         }
 
-        public Builder currency(String currency) {
+        public TransactionBuilder currency(String currency) {
             this.currency = currency;
             return this;
         }
 
-        public Builder status(String status) {
+        public TransactionBuilder status(Status status) {
             this.status = status;
             return this;
         }
 
-        public Builder category(String category) {
+        public TransactionBuilder category(Category category) {
             this.category = category;
             return this;
         }

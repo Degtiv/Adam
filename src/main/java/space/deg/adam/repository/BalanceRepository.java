@@ -5,8 +5,11 @@ import org.springframework.data.repository.CrudRepository;
 import space.deg.adam.domain.balance.Balance;
 import space.deg.adam.domain.user.User;
 
+import java.time.LocalDateTime;
+
 public interface BalanceRepository extends CrudRepository<Balance, String> {
     Iterable<Balance> findByUser(User user);
+    Iterable<Balance> findByUserAndDateAfter(User user, LocalDateTime date);
 
     Iterable<Balance> findByUser(User user, Sort sort);
 }

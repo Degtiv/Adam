@@ -9,13 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
+import space.deg.adam.service.DetailBalanceService;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @RestController
 public class ApiController {
     @Autowired
     private TransactionRepository transactionRepository;
+
+    @Autowired
+    private DetailBalanceService detailBalanceService;
 
     @PostMapping(path="status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, Object> status(
@@ -24,6 +29,8 @@ public class ApiController {
         System.out.println(body);
 
         Transaction transaction = transactionRepository.findByUser(user).iterator().next();
+
+        detailBalanceService.getDetailBalance(user, LocalDateTime.now().minusYears(1), LocalDateTime.now().plusYears(2));
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("a", transaction.getAmount());

@@ -6,13 +6,17 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import space.deg.adam.domain.goals.Category;
-import space.deg.adam.domain.goals.Status;
+import space.deg.adam.domain.common.Category;
+import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
+import space.deg.adam.service.BalanceService;
+import space.deg.adam.service.TransactionService;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static space.deg.adam.utils.RequestsUtils.getTransactionPage;
 import static space.deg.adam.utils.RequestsUtils.redirectPage;
@@ -20,6 +24,12 @@ import static space.deg.adam.utils.RequestsUtils.redirectPage;
 @Controller
 @RequestMapping("/transactions")
 public class TransactionsController {
+    @Autowired
+    TransactionService transactionService;
+
+    @Autowired
+    BalanceService balanceService;
+
     @Autowired
     private TransactionRepository transactionRepository;
 
@@ -46,18 +56,20 @@ public class TransactionsController {
             @RequestParam String category,
             Model model) {
 
-        Transaction transaction = Transaction.newBuilder()
+        Transaction transaction = Transaction.builder()
                 .user(user)
                 .title(title)
-                .date(dateText)
+                .date(LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay())
                 .amount(amount)
                 .description(description)
-                .status(status)
-                .category(category)
+                .status(Status.byTitle(status))
+                .category(Category.byTitle(category))
                 .currency("RUR")
                 .build();
 
-        transactionRepository.save(transaction);
+        transactionService.addTransaction(transaction);
+
+
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         model.addAttribute("transactions", transactions);
         model.addAttribute("categories", Category.values());
@@ -77,14 +89,18 @@ public class TransactionsController {
                                       Model model) {
         if (!transaction.getUser().is(user)) return redirectPage("notPermited");
 
+        transactionService.deleteTransaction(transaction);
+
         transaction.setTitle(title);
-        transaction.setDate(dateText);
+        transaction.setDate(LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay());
         transaction.setAmount(amount);
         transaction.setDescription(description);
-        transaction.setStatus(status);
-        transaction.setCategory(category);
+        transaction.setStatus(Status.byTitle(status));
+        transaction.setCategory(Category.byTitle(category));
 
         transactionRepository.save(transaction);
+        transactionService.addTransaction(transaction);
+
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         model.addAttribute("transactions", transactions);
         model.addAttribute("categories", Category.values());
@@ -97,6 +113,8 @@ public class TransactionsController {
                                         @AuthenticationPrincipal User user,
                                         Model model) {
         if (!transaction.getUser().is(user)) return redirectPage("notPermited");
+
+        transactionService.deleteTransaction(transaction);
 
         transactionRepository.delete(transaction);
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));

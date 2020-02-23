@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import space.deg.adam.domain.goals.Category;
+import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.goals.Goal;
 import space.deg.adam.domain.goals.GoalUtils;
-import space.deg.adam.domain.goals.Status;
+import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.GoalRepository;
 

@@ -1,4 +1,4 @@
-package space.deg.adam.domain.goals;
+package space.deg.adam.domain.common;
 
 import java.util.ArrayList;
 
@@ -24,6 +24,15 @@ public enum Category {
             values.add(category.getTitle());
         }
         return (String[]) values.toArray();
+    }
+
+    public static Category byTitle(String title) {
+        for (Category category : values()) {
+            if (category.title.equals(title)) {
+                return category;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 
     @Override
