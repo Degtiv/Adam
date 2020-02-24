@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 
+    <link rel="icon" type="image/png" href="public/adam.png">
     <style>
         .page-title {
             margin: 0px 0px 30px 0px;
