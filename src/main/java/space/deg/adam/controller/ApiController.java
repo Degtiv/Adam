@@ -26,11 +26,9 @@ public class ApiController {
     public HashMap<String, Object> status(
             @AuthenticationPrincipal User user,
             @RequestBody String body) {
-        System.out.println(body);
-
         Transaction transaction = transactionRepository.findByUser(user).iterator().next();
-
-        detailBalanceService.getDetailBalance(user, LocalDateTime.now().minusYears(1), LocalDateTime.now().plusYears(2));
+        System.out.println("enter apicontroller");
+        System.out.println(detailBalanceService.getDetailBalance(user, LocalDateTime.now().minusWeeks(1), LocalDateTime.now().plusWeeks(1)));
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("a", transaction.getAmount());

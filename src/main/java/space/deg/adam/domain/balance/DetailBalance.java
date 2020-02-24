@@ -1,12 +1,13 @@
 package space.deg.adam.domain.balance;
 
-import com.sun.tools.javac.util.List;
 import lombok.Data;
 import space.deg.adam.domain.goals.Goal;
 import space.deg.adam.domain.transaction.Transaction;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class DetailBalance {
@@ -15,13 +16,17 @@ public class DetailBalance {
     private LocalDateTime now;
     private BigDecimal minAmount;
     private BigDecimal maxAmount;
-    private List<DayReport> operations;
+    private List<DayReport> dayReports = new ArrayList();
+
+    public void addDayReport(DayReport dayReport) {
+        dayReports.add(dayReport);
+    }
 
     @Data
-    private class DayReport {
-        LocalDateTime dateTime;
-        BigDecimal dayBalance;
-        List<Transaction> transactions;
-        List<Goal> goals;
+    public static class DayReport {
+        private LocalDateTime dateTime;
+        private BigDecimal dayBalance;
+        private List<Transaction> transactions;
+        private List<Goal> goals;
     }
 }

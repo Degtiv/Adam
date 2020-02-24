@@ -95,6 +95,7 @@
         <button type="submit" class="btn btn-outline-danger btn-sm rounded" formaction="/transactions/delete/${transaction.uuid}">Delete</button>
     </div>
 </form>
+<hr style="margin:0px; padding:0px;">
 <#else>
 Add your first transaction
 </#list>

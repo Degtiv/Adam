@@ -1,6 +1,7 @@
 package space.deg.adam.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.BalanceRepository;
@@ -18,5 +19,13 @@ public class BalanceService {
             balance.increaseAmount(amount);
             balanceRepository.save(balance);
         });
+    }
+
+    public BigDecimal getLastBalanceToDate(User user, LocalDateTime dateTime) {
+        return balanceRepository
+                .findByUserAndDateBefore(user, dateTime, Sort.by(Sort.Direction.DESC, "date"))
+                .iterator()
+                .next()
+                .getAmount();
     }
 }

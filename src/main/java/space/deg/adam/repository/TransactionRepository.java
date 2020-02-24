@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public interface TransactionRepository extends CrudRepository<Transaction, String> {
     Iterable<Transaction> findByUser(User user, Sort sort);
     Iterable<Transaction> findByUserAndDateAfterAndDateBefore(User user, LocalDateTime startDate, LocalDateTime endDate, Sort sort);
+    Iterable<Transaction> findByUserAndDate(User user, LocalDateTime date, Sort sort);
 
     Iterable<Transaction> findByUser(User user);
 }
