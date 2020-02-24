@@ -1,5 +1,6 @@
 package space.deg.adam.domain.transaction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
@@ -24,6 +25,7 @@ public class Transaction {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @NonNull
@@ -59,10 +61,12 @@ public class Transaction {
         this.date = date;
     }
 
+    @JsonIgnore
     public String getDateString() {
         return date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
+    @JsonIgnore
     public String getDateField() {
         return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }

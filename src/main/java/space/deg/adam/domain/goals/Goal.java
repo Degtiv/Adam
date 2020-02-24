@@ -1,5 +1,6 @@
 package space.deg.adam.domain.goals;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
@@ -24,6 +25,7 @@ public class Goal {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @NonNull

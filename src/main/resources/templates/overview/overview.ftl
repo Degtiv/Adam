@@ -23,9 +23,28 @@
                 dataType: 'json'
             }).done(function(data) {
                 console.log(data);
+                download(data, 'Detail_Balance.json', "text/plain");
             })
         });
     });
+
+    function download(data, filename, type) {
+    var file = new Blob([JSON.stringify(data, null, 2)], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }, 0);
+    }
+}
 </script>
 
 <button style="display:none;">Debug button</button>
