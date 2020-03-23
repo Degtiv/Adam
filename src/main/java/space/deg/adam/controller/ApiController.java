@@ -30,7 +30,7 @@ public class ApiController {
         Transaction transaction = transactionRepository.findByUser(user).iterator().next();
 
         System.out.println("enter apicontroller");
-        DetailBalance detailBalance = detailBalanceService.getDetailBalance(user, LocalDateTime.now().minusWeeks(1), LocalDateTime.now().plusWeeks(1));
+        DetailBalance detailBalance = detailBalanceService.getDetailBalance(user, LocalDateTime.now().minusWeeks(1).withNano(0), LocalDateTime.now().plusWeeks(1).withNano(0));
 
         return detailBalance;
     }

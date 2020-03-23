@@ -3,51 +3,14 @@
 <#import "/parts/pageTitle.ftl" as pt>
 <@pt.pageTitle "Overview"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("button").click(function(){
-            const data = {
-              foo: {
-                bar: [1, 2, 3]
-              }
-            };
 
-            $.ajax({
-                type: 'POST',
-                url: "status",
-                data: JSON.stringify(data),
-                headers: {
-                    "x-csrf-token": "${_csrf.token}",
-                    "Content-Type": "application/json"
-                },
-                dataType: 'json'
-            }).done(function(data) {
-                console.log(data);
-                download(data, 'Detail_Balance.json', "text/plain");
-            })
-        });
-    });
+<script src="public/scripts/overview-diagram-data.js" type="text/javascript"></script>
+<script src="public/scripts/overviewDiagram.js" type="text/javascript"></script>
 
-    function download(data, filename, type) {
-    var file = new Blob([JSON.stringify(data, null, 2)], {type: type});
-    if (window.navigator.msSaveOrOpenBlob) // IE10+
-        window.navigator.msSaveOrOpenBlob(file, filename);
-    else { // Others
-        var a = document.createElement("a"),
-                url = URL.createObjectURL(file);
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }, 0);
-    }
-}
-</script>
+<div id="overview-diagram">
+</div>
 
-<button style="display:none;">Debug button</button>
+<button id="debug-button" csrf="${_csrf.token}">Debug button</button>
 
 <#list balances as balance>
 <div class="clearfix input-group-sm">
@@ -59,4 +22,5 @@
     </p>
 </div>
 </#list>
+
 </@c.page>

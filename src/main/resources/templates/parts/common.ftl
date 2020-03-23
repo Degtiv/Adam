@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <script src="http://d3js.org/d3.v3.min.js"> </script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,6 +19,22 @@
         .page-title {
             margin: 0px 0px 30px 0px;
             text-align: center;
+        }
+
+        .axis path, .axis line {
+            fill: none;
+            stroke: #333;
+        }
+        .axis .grid-line {
+            stroke: #000;
+            stroke-opacity: 0.2;
+        }
+        .axis text {
+            font: 10px Verdana;
+        }
+        .dot {
+            stroke: steelblue;
+            fill: lightblue;
         }
     </style>
     <title>Adam - finconsult</title>
