@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    $("#debug-button").click(function () {
-        getOverviewDiagramData();
-    });
+    getOverviewDiagramData();
 });
 
 function getOverviewDiagramData() {
