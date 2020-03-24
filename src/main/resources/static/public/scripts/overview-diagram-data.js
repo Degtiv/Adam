@@ -24,7 +24,7 @@ function getOverviewDiagramData() {
         dataType: 'json'
     }).done(function (data) {
         console.log(data);
-        drawDiagram(data, "2020-03-16T14:04:01", "2020-03-30T14:04:01", 0, 100);
+        drawDiagram(data);
     })
 }
 

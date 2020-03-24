@@ -12,15 +12,4 @@
 
 <button id="debug-button" csrf="${_csrf.token}">Debug button</button>
 
-<#list balances as balance>
-<div class="clearfix input-group-sm">
-
-    <p>
-        <u>${balance.dateString}</u>
-        <b>${balance.amount}</b>
-        ${balance.currency}
-    </p>
-</div>
-</#list>
-
 </@c.page>

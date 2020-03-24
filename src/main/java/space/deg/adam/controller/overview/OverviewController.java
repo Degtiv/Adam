@@ -20,10 +20,7 @@ public class OverviewController {
     private BalanceRepository balanceRepository;
 
     @GetMapping
-    public String goals(@AuthenticationPrincipal User user,
-                        Model model) {
-        Iterable<Balance> balances = balanceRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
-        model.addAttribute("balances", balances);
+    public String goals(@AuthenticationPrincipal User user) {
         return getOverviewPage("overview");
     }
 }
