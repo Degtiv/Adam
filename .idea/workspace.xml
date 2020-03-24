@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/overview/OverviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/overview/OverviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/DetailBalance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/DetailBalance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overview-diagram-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overview-diagram-data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="84" selection-start-line="7" selection-start-column="84" selection-end-line="7" selection-end-column="84" />
+            <state relative-caret-position="136">
+              <caret line="8" column="84" selection-start-line="8" selection-start-column="84" selection-end-line="8" selection-end-column="84" />
             </state>
           </provider>
         </entry>
@@ -73,8 +69,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="49" column="86" selection-end-line="96" />
+            <state relative-caret-position="-247">
+              <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -419,11 +415,6 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="transactions" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -552,14 +543,14 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.7920686" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8160981" visible="true" weight="0.33547696" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.81556505" visible="true" weight="0.33547696" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978564" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3290461" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.74147123" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7318763" weight="0.16291533" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.18390192" side_tool="true" visible="true" weight="0.33547696" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.73134327" weight="0.16291533" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.18443497" side_tool="true" visible="true" weight="0.33547696" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3290461" />
       <window_info anchor="bottom" id="Log Analyzer" order="11" />
       <window_info anchor="bottom" id="SOQL Query" order="12" />
@@ -988,8 +979,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="84" selection-start-line="7" selection-start-column="84" selection-end-line="7" selection-end-column="84" />
+        <state relative-caret-position="136">
+          <caret line="8" column="84" selection-start-line="8" selection-start-column="84" selection-end-line="8" selection-end-column="84" />
         </state>
       </provider>
     </entry>
@@ -1052,8 +1043,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="49" column="86" selection-end-line="96" />
+        <state relative-caret-position="-247">
+          <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
