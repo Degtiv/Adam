@@ -1,15 +1,19 @@
 $(document).ready(function () {
-    getOverviewDiagramData();
+    $("#refresh-button").click(function () {
+        getOverviewDiagramData();
+    });
 });
 
 function getOverviewDiagramData() {
+    var startDate = $('#overview_diagram_date_from').val(),
+        endDate = $('#overview_diagram_date_to').val();
+
     const data = {
-        foo: {
-            bar: [1, 2, 3]
-        }
+        start: startDate,
+        end: endDate
     };
 
-    var csrfToken = $("#debug-button").attr("csrf");
+    var csrfToken = $("#refresh-button").attr("csrf");
 
     $.ajax({
         type: 'POST',

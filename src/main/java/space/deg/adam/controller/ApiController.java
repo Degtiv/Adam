@@ -1,6 +1,7 @@
 package space.deg.adam.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +14,7 @@ import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
 import space.deg.adam.service.DetailBalanceService;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RestController
@@ -26,12 +28,27 @@ public class ApiController {
     @PostMapping(path="status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public DetailBalance status(
             @AuthenticationPrincipal User user,
-            @RequestBody String body) throws JsonProcessingException {
+            @RequestBody OverviewDates dates) throws JsonProcessingException {
         Transaction transaction = transactionRepository.findByUser(user).iterator().next();
+        return detailBalanceService.getDetailBalance(user, dates.getStart(), dates.getEnd());
+    }
 
-        System.out.println("enter apicontroller");
-        DetailBalance detailBalance = detailBalanceService.getDetailBalance(user, LocalDateTime.now().minusWeeks(1).withNano(0), LocalDateTime.now().plusWeeks(1).withNano(0));
+    @NoArgsConstructor
+    public static class OverviewDates {
+        String start;
+        String end;
 
-        return detailBalance;
+        public LocalDateTime getStart() {
+            return LocalDate.parse(start).atStartOfDay();
+        }
+
+        public LocalDateTime getEnd() {
+            return LocalDate.parse(end).atStartOfDay();
+        }
+
+        @Override
+        public String toString() {
+            return "start: " + start + "\n" + "end: " + end;
+        }
     }
 }
