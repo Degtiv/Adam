@@ -1,7 +1,29 @@
 $(document).ready(function () {
-    $("#refresh-button").click(function () {
-        getOverviewDiagramData();
-    });
+    var today = new Date(),
+        weekAgoDate = new Date(),
+        weekAfterDate =  new Date();
+
+    weekAgoDate.setDate(today.getDate() - 7);
+    weekAfterDate.setDate(today.getDate() + 7);
+
+    var weekAgo = weekAgoDate.toISOString().split('T')[0];
+    var weekAfter = weekAfterDate.toISOString().split('T')[0];
+    $('#overview_diagram_date_from').val(weekAgo);
+    $('#overview_diagram_date_to').val(weekAfter);
+
+    getOverviewDiagramData();
+});
+
+$(document).ready(function () {
+    $('#overview_diagram_date_to').on('input', function () {
+            getOverviewDiagramData();
+        });
+});
+
+    $(document).ready(function () {
+        $('#overview_diagram_date_from').on('input', function () {
+            getOverviewDiagramData();
+     });
 });
 
 function getOverviewDiagramData() {
@@ -13,7 +35,7 @@ function getOverviewDiagramData() {
         end: endDate
     };
 
-    var csrfToken = $("#refresh-button").attr("csrf");
+    var csrfToken = $("#refresh-input").attr("csrf");
 
     $.ajax({
         type: 'POST',
@@ -25,7 +47,6 @@ function getOverviewDiagramData() {
         },
         dataType: 'json'
     }).done(function (data) {
-        console.log(data);
         drawDiagram(data);
     })
 }

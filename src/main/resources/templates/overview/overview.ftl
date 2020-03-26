@@ -9,13 +9,14 @@
 
 <div class="input-group mb-3">
     <div class="input-group-prepend">
-        <label class="sr-only" for="overview_diagram_date_from">From</label>
-        <input type="date" class="form-control my-1 mr-sm-2" id="overview_diagram_date_from" required>
 
-        <label class="sr-only" for="overview_diagram_date_to">To</label>
-        <input type="date" class="form-control my-1 mr-sm-2" id="overview_diagram_date_to" required>
+        <input type="date" class="form-control my-1 mr-sm-2" aria-label="From" aria-describedby="from-label"
+               id="overview_diagram_date_from" value="2020-03-01" required>
 
-        <button class="btn btn-outline-primary btn-sm rounded" id="refresh-button" csrf="${_csrf.token}">Refresh</button>
+        <input type="date" class="form-control my-1 mr-sm-2" aria-label="To" aria-describedby="to-label"
+               id="overview_diagram_date_to" value="2020-03-02" required>
+
+        <input type="hidden" id="refresh-input" csrf="${_csrf.token}"/>
     </div>
 </div>
 
