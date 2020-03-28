@@ -8,9 +8,9 @@ function drawDiagram(rawData) {
         min = d3.min(rawData.dayReports, function (d) { return d.dayBalance; }),
         max = d3.max(rawData.dayReports, function (d) { return d.dayBalance; }) * 1.2,
         xOffset = 0.3 * (max - min),
-        startD = d3.time.format("%Y-%m-%d").parse(rawData.start),
-        todayD = d3.time.format("%Y-%m-%d").parse(rawData.now),
-        endD = d3.time.format("%Y-%m-%d").parse(rawData.end);
+        startD = parseDate(rawData.start),
+        todayD = parseDate(rawData.now),
+        endD = parseDate(rawData.end);
 
     $('#overview-diagram').empty();
 
@@ -35,7 +35,7 @@ function drawDiagram(rawData) {
         .range([0, yAxisLength]);
 
     for (i = 0; i < rawData.dayReports.length; i++) {
-        var dayDate = d3.time.format("%Y-%m-%d").parse(rawData.dayReports[i].dateTime),
+        var dayDate = parseDate(rawData.dayReports[i].dateTime),
             dayBalance = rawData.dayReports[i].dayBalance;
 
         if (!(todayD > dayDate) && !(todayD < dayDate)) {
@@ -110,9 +110,18 @@ function drawDiagram(rawData) {
             .attr("r", 3.5)
             .attr("cx", function (d) { return scaleX(d.date) + margin; })
             .attr("cy", function (d) { return scaleY(d.balance) + margin; })
+            .attr("id", function (d) { return "dot-" + formatDate(d.date); })
             .on("mouseover", function (d) {
                 $('#overview-info h3').text("Date: " + formatDate(d.date));
                 $('#overview-info h4').text("Balance: " + d.balance);
+                svg.select('#dot-' + formatDate(d.date))
+                    .attr("r", 7)
+                    .style("fill", "ff4d8e");
+            })
+            .on("mouseout", function (d) {
+                svg.select('#dot-' + formatDate(d.date))
+                    .attr("r", 3.5)
+                    .style("fill", colorStroke);
             });
     };
 }
@@ -120,6 +129,10 @@ function drawDiagram(rawData) {
 function formatDate(d) {
     var formatD = d3.time.format("%Y-%m-%d");
     return formatD(d);
+}
+
+function parseDate(d) {
+    return d3.time.format("%Y-%m-%d").parse(d);
 }
 
 $(document).ready(function () {

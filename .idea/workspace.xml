@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overview-diagram-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overview-diagram-data.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="402">
+              <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -52,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="538">
-              <caret line="122" column="1" lean-forward="true" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
+              <caret line="135" column="1" lean-forward="true" selection-start-line="135" selection-start-column="1" selection-end-line="135" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -484,7 +482,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2595949" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -493,14 +490,14 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.7920686" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.80916846" visible="true" weight="0.14576635" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8086354" weight="0.14576635" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.39978564" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3290461" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.7409382" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7265459" weight="0.16291533" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.19083156" side_tool="true" visible="true" weight="0.14576635" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.7254797" visible="true" weight="0.4051447" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.27452025" side_tool="true" visible="true" weight="0.4051447" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3290461" />
       <window_info anchor="bottom" id="Log Analyzer" order="11" />
       <window_info anchor="bottom" id="SOQL Query" order="12" />
@@ -994,14 +991,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="538">
-          <caret line="122" column="1" lean-forward="true" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
+          <caret line="135" column="1" lean-forward="true" selection-start-line="135" selection-start-column="1" selection-end-line="135" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="402">
+          <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
         </state>
       </provider>
     </entry>
