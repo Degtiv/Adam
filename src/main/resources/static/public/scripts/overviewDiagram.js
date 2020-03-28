@@ -109,32 +109,21 @@ function drawDiagram(rawData) {
             .attr("class", "dot " + label)
             .attr("r", 3.5)
             .attr("cx", function (d) { return scaleX(d.date) + margin; })
-            .attr("cy", function (d) { return scaleY(d.balance) + margin; });
-
-        svg.selectAll(".dot " + label).data(data).enter().append('div');
-        svg.selectAll(".dot " + label).data(data)
-            .on("mouseover", function(d) {
-                div.transition()
-                   .duration(500)
-                   .style("opacity", .9);
-                div.html('')
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 30) + "px")
-            })
-            .on("mouseout", function() {
-                div.transition()
-                   .duration(500)
-                   .style("opacity", 0)
-                   .on('end', function() {
-                       div.html('');
-                   });
+            .attr("cy", function (d) { return scaleY(d.balance) + margin; })
+            .on("mouseover", function (d) {
+                $('#overview-info h3').text("Date: " + formatDate(d.date));
+                $('#overview-info h4').text("Balance: " + d.balance);
             });
-        svg.selectAll(".dot " + label).data(data).exit().remove();
     };
+}
+
+function formatDate(d) {
+    var formatD = d3.time.format("%Y-%m-%d");
+    return formatD(d);
 }
 
 $(document).ready(function () {
     $('#overview_diagram_date_to').on('input', function () {
-            getOverviewDiagramData();
-        });
+        getOverviewDiagramData();
+    });
 });

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var today = new Date(),
         weekAgoDate = new Date(),
-        weekAfterDate =  new Date();
+        weekAfterDate = new Date();
 
     weekAgoDate.setDate(today.getDate() - 7);
     weekAfterDate.setDate(today.getDate() + 7);
@@ -16,14 +16,14 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#overview_diagram_date_to').on('input', function () {
-            getOverviewDiagramData();
-        });
+        getOverviewDiagramData();
+    });
 });
 
-    $(document).ready(function () {
-        $('#overview_diagram_date_from').on('input', function () {
-            getOverviewDiagramData();
-     });
+$(document).ready(function () {
+    $('#overview_diagram_date_from').on('input', function () {
+        getOverviewDiagramData();
+    });
 });
 
 function getOverviewDiagramData() {

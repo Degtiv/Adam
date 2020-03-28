@@ -20,6 +20,11 @@
     </div>
 </div>
 
+<div id="overview-info">
+    <h3>Date</h3>
+    <h4>Balance</h4>
+</div>
+
 <div id="overview-diagram">
 </div>
 
