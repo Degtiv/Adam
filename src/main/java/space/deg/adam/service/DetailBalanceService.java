@@ -32,42 +32,30 @@ public class DetailBalanceService {
 
     public DetailBalance getDetailBalance(User user, LocalDateTime start, LocalDateTime end) {
         DetailBalance detailBalance = new DetailBalance();
-        detailBalance.setStart(start);
-        detailBalance.setEnd(end);
-        detailBalance.setNow(LocalDateTime.now());
+        detailBalance.setStart(start.toLocalDate());
+        detailBalance.setEnd(end.toLocalDate());
+        detailBalance.setNow(LocalDateTime.now().toLocalDate());
 
         BigDecimal endOfDayBalance = balanceService.getLastBalanceToDate(user, start);
         LocalDateTime iteratorDateTime = start.with(FirstSecondOfMonth.adjust());
-        BigDecimal minAmount = BigDecimal.ZERO;
-        BigDecimal maxAmount = BigDecimal.ZERO;
-        while (iteratorDateTime.isBefore(end)) {
-            DetailBalance.DayReport dayReport = new DetailBalance.DayReport();
+        while (!iteratorDateTime.isAfter(end)) {
 
             List<Transaction> transactions = getTransactions(user, iteratorDateTime);
             endOfDayBalance = operateTransactions(endOfDayBalance, transactions);
-            for (Transaction transaction : transactions) {
-                if (transaction.getAmount().compareTo(minAmount) < 0)
-                    minAmount = transaction.getAmount();
-                if (transaction.getAmount().compareTo(maxAmount) > 0)
-                    maxAmount = transaction.getAmount();
-            }
 
             List<Goal> goals = getGoals(user, iteratorDateTime);
             endOfDayBalance = operateGoals(endOfDayBalance, goals);
-            for (Goal goal : goals) {
-                if (goal.getAmount().compareTo(minAmount) < 0)
-                    minAmount = goal.getAmount();
-                if (goal.getAmount().compareTo(maxAmount) > 0)
-                    maxAmount = goal.getAmount();
+
+            if (iteratorDateTime.isEqual(start) || iteratorDateTime.isEqual(end) ||
+                    iteratorDateTime.isAfter(start) && iteratorDateTime.isBefore(end)) {
+                DetailBalance.DayReport dayReport = new DetailBalance.DayReport();
+                dayReport.setTransactions(transactions);
+                dayReport.setGoals(goals);
+                dayReport.setDateTime(iteratorDateTime.toLocalDate());
+                dayReport.setDayBalance(endOfDayBalance);
+                detailBalance.addDayReport(dayReport);
             }
 
-            dayReport.setTransactions(transactions);
-            dayReport.setGoals(goals);
-            dayReport.setDateTime(iteratorDateTime);
-            dayReport.setDayBalance(endOfDayBalance);
-            detailBalance.addDayReport(dayReport);
-            detailBalance.setMinAmount(minAmount);
-            detailBalance.setMaxAmount(maxAmount);
             iteratorDateTime = iteratorDateTime.plusDays(1);
         }
 
