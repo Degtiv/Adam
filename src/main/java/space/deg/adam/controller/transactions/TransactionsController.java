@@ -116,7 +116,6 @@ public class TransactionsController {
 
         transactionService.deleteTransaction(transaction);
 
-        transactionRepository.delete(transaction);
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         model.addAttribute("transactions", transactions);
         model.addAttribute("categories", Category.values());

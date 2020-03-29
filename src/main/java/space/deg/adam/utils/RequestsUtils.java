@@ -17,6 +17,10 @@ public class RequestsUtils {
         return "transactions/" + page;
     }
 
+    public static String getOperationPage(String page) {
+        return "operations/" + page;
+    }
+
     public static String getErrorPage(String page) {
         return "errors/" + page;
     }

@@ -91,11 +91,10 @@
         <input type="text" class="form-control my-1 mr-sm-2" id="description_input_${transaction.uuid}" value="${transaction.description}" name="description">
 
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit" class="btn btn-outline-primary btn-sm rounded">Save</button>
+        <button type="submit" class="btn btn-outline-success btn-sm rounded">Save</button>
         <button type="submit" class="btn btn-outline-danger btn-sm rounded" formaction="/transactions/delete/${transaction.uuid}">Delete</button>
     </div>
 </form>
-<hr style="margin:0px; padding:0px;">
 <#else>
 Add your first transaction
 </#list>

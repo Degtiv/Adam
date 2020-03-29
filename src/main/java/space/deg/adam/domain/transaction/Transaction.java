@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.common.Status;
+import space.deg.adam.domain.operation.Operation;
 import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
@@ -48,6 +49,9 @@ public class Transaction {
 
     @NonNull
     private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Operation operation;
 
     public Transaction() {
         this.uuid = UUID.randomUUID().toString();

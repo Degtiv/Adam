@@ -20,5 +20,6 @@ public class TransactionService {
 
     public void deleteTransaction(Transaction transaction) {
         balanceService.updateBalance(transaction.getUser(), transaction.getDate(), transaction.getAmount().negate());
+        transactionRepository.delete(transaction);
     }
 }

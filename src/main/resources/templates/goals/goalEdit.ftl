@@ -6,8 +6,8 @@
     <@pt.pageTitle "${goal.title}"/>
 
     <div class="input-group-append mb-2">
-        <button class="btn btn-primary rounded" type="submit" id="submit_button">Save</button>
-        <button class="btn btn-danger rounded ml-2" type="submit" id="delete_button" formaction="/goals/delete/${goal.uuid}">Delete</button>
+        <button class="btn btn-outline-success rounded" type="submit" id="submit_button">Save</button>
+        <button class="btn btn-outline-danger rounded ml-2" type="submit" id="delete_button" formaction="/goals/delete/${goal.uuid}">Delete</button>
     </div>
 
     <div class="input-group mb-2">
@@ -88,7 +88,7 @@
                 <label class="custom-file-label input-group-prepend" for="image_input">Image</label>
             </div>
             <div class="input-group-prepend">
-                <button class="btn btn-primary rounded ml-2" type="submit" id="Add_button">Upload</button>
+                <button class="btn btn-outline-success rounded ml-2" type="submit" id="Add_button">Upload</button>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         </div>
@@ -98,7 +98,7 @@
     <form method="post" style="display: inline-block" action="/goals/deleteImage/${goal.uuid}" id="delete_image_form">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <button class="btn btn-danger rounded" type="submit" id="remove_button" formaction="/goals/deleteImage/${goal.uuid}">Delete</button>
+                <button class="btn btn-outline-danger rounded" type="submit" id="remove_button" formaction="/goals/deleteImage/${goal.uuid}">Delete</button>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         </div>
