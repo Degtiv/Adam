@@ -51,6 +51,7 @@ public class Transaction {
     private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "operation_id")
     private Operation operation;
 
     public Transaction() {

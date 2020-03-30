@@ -39,9 +39,7 @@ public class TransactionsController {
             Model model) {
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
 
-        model.addAttribute("transactions", transactions);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+        fillModel(model, transactions);
         return getTransactionPage("transactions");
     }
 
@@ -71,9 +69,7 @@ public class TransactionsController {
 
 
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
-        model.addAttribute("transactions", transactions);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+        fillModel(model, transactions);
         return getTransactionPage("transactions");
     }
 
@@ -102,9 +98,7 @@ public class TransactionsController {
         transactionService.addTransaction(transaction);
 
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
-        model.addAttribute("transactions", transactions);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+        fillModel(model, transactions);
         return getTransactionPage("transactions");
     }
 
@@ -117,9 +111,24 @@ public class TransactionsController {
         transactionService.deleteTransaction(transaction);
 
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
+        fillModel(model, transactions);
+        return getTransactionPage("transactions");
+    }
+
+    private void fillModel(Model model, Iterable<Transaction> transactions) {
         model.addAttribute("transactions", transactions);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
+    }
+
+    @GetMapping("/deleteAll")
+    public String deleteAll(@AuthenticationPrincipal User user,
+                                        Model model) {
+        Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
+        transactions.forEach(transaction -> transactionService.deleteTransaction(transaction));
+
+        transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
+        fillModel(model, transactions);
         return getTransactionPage("transactions");
     }
 }

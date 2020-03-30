@@ -2,8 +2,11 @@ package space.deg.adam.domain.operation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
+import space.deg.adam.domain.operation.operationrule.OperationRule;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.user.User;
 
@@ -20,6 +23,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "operations")
 @Data
+@EqualsAndHashCode(exclude = { "transactions"})
+@ToString(exclude = { "transactions"})
 public class Operation {
     @Id
     @Column(length = 100)
@@ -56,7 +61,8 @@ public class Operation {
     private OperationRule rule;
     private String ruleParameter;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "operation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Transaction> transactions = new HashSet<>();
 
     public Operation() {

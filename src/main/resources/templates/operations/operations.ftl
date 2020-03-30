@@ -111,7 +111,7 @@
 
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button type="submit" class="btn btn-outline-primary btn-sm rounded" formaction="/operations/transactions/${operation.uuid}">Transactions</button>
-        <button type="submit" class="btn btn-outline-success btn-sm rounded">Save</button>
+        <button type="submit" class="btn btn-outline-success btn-sm rounded" formaction="/operations/save/${operation.uuid}">Save</button>
         <button type="submit" class="btn btn-outline-danger btn-sm rounded" formaction="/operations/delete/${operation.uuid}">Delete</button>
     </div>
 </form>

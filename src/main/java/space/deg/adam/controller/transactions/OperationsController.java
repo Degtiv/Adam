@@ -5,25 +5,21 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.common.Category;
-import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.operation.Operation;
-import space.deg.adam.domain.operation.OperationRule;
-import space.deg.adam.domain.transaction.Transaction;
+import space.deg.adam.domain.operation.operationrule.OperationRule;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.OperationRepository;
 import space.deg.adam.service.OperationService;
 
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import static space.deg.adam.utils.RequestsUtils.getOperationPage;
-import static space.deg.adam.utils.RequestsUtils.getTransactionPage;
+import static space.deg.adam.utils.RequestsUtils.redirectPage;
 
 @Controller
 @RequestMapping("/operations")
@@ -38,20 +34,14 @@ public class OperationsController {
     public String deleteAll(@AuthenticationPrincipal User user, Model model) {
         Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
         operations.forEach(x -> operationRepository.delete(x));
-        model.addAttribute("operations", operations);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("rules", OperationRule.values());
+        fillModel(model, operations);
         return getOperationPage("operations");
     }
 
     @GetMapping
     public String operations(@AuthenticationPrincipal User user, Model model) {
         Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
-        operations.forEach(x -> System.out.println(x.toString()));
-
-        model.addAttribute("operations", operations);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("rules", OperationRule.values());
+        fillModel(model, operations);
         return getOperationPage("operations");
     }
 
@@ -66,16 +56,7 @@ public class OperationsController {
             @RequestParam String rule,
             @RequestParam String ruleParameter,
             @RequestParam String category,
-            Model model) {
-        System.out.println(title + "\n" +
-                startDateText + "\n" +
-                endDateText + "\n" +
-                amount + "\n" +
-                description + "\n" +
-                rule + "\n" +
-                ruleParameter + "\n" +
-                category + "\n"
-                );
+            Model model) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 
         Operation operation = Operation.builder()
                 .user(user)
@@ -92,10 +73,58 @@ public class OperationsController {
 
         operationService.addOperation(operation);
 
+        System.out.println(operation);
         Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
+        fillModel(model, operations);
+        return getOperationPage("operations");
+    }
+
+    @PostMapping("/save/{operation}")
+    public String transactionFormSave(@PathVariable Operation operation,
+                                      @AuthenticationPrincipal User user,
+                                      @RequestParam String title,
+                                      @RequestParam String startDateText,
+                                      @RequestParam String endDateText,
+                                      @RequestParam BigDecimal amount,
+                                      @RequestParam String description,
+                                      @RequestParam String rule,
+                                      @RequestParam String ruleParameter,
+                                      @RequestParam String category,
+                                      Model model) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        if (!operation.getUser().is(user)) return redirectPage("notPermited");
+
+        operation.setTitle(title);
+        operation.setStartDate(LocalDate.parse(startDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay());
+        operation.setEndDate(LocalDate.parse(endDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay());
+        operation.setAmount(amount);
+        operation.setDescription(description);
+        operation.setRule(OperationRule.byTitle(rule));
+        operation.setRuleParameter(ruleParameter);
+        operation.setCategory(Category.byTitle(category));
+
+        operationService.saveOperation(operation);
+
+        Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
+        fillModel(model, operations);
+        return getOperationPage("operations");
+    }
+
+    @PostMapping("/delete/{operation}")
+    public String transactionFormDelete(@PathVariable Operation operation,
+                                        @AuthenticationPrincipal User user,
+                                        Model model) {
+        if (!operation.getUser().is(user)) return redirectPage("notPermited");
+
+        operationService.deleteOperation(operation);
+
+        Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
+        fillModel(model, operations);
+        return getOperationPage("operations");
+    }
+
+    private void fillModel(Model model, Iterable<Operation> operations) {
         model.addAttribute("operations", operations);
         model.addAttribute("categories", Category.values());
         model.addAttribute("rules", OperationRule.values());
-        return getOperationPage("operations");
     }
 }
