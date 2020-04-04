@@ -2,30 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/OperationRuleStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/AbstractStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryDayStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryMonthStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryNDaysStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryWeekStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryYearStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/FirstWorkingDayAfterStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/LastWorkingDayBeforeStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/SomeDaysOfTheMonthStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/SomeDaysOfTheWeekStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/ApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/OperationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/OperationsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/Operation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/OperationRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/OperationRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/OperationUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/OperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/operations/operations.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/operations/operations.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryMonthStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryMonthStrategy.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -97,18 +75,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/OperationsController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="75" column="36" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/OperationRuleStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -135,8 +101,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryMonthStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+            <state relative-caret-position="113">
+              <caret line="23" column="54" lean-forward="true" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#383#384#0" expanded="true" />
@@ -285,9 +251,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="987" />
-    <option name="y" value="250" />
-    <option name="width" value="976" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
     <option name="height" value="1066" />
   </component>
   <component name="ProjectView">
@@ -701,14 +667,14 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.7920686" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8054371" visible="true" weight="0.33226153" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.80490404" weight="0.33226153" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.39978564" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3290461" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.74040514" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7249467" weight="0.4051447" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.1945629" side_tool="true" visible="true" weight="0.33226153" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.72441363" weight="0.4051447" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.19509594" side_tool="true" visible="true" weight="0.33226153" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3290461" />
       <window_info anchor="bottom" id="Log Analyzer" order="11" />
       <window_info anchor="bottom" id="SOQL Query" order="12" />
@@ -794,16 +760,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/config/FaviconConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/config/MvcConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1199,10 +1155,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.2/lib/src.zip!/java.base/java/time/LocalDateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="1021" column="25" selection-start-line="1021" selection-start-column="25" selection-end-line="1021" selection-end-column="25" />
+          <folding>
+            <element signature="e#45352#45353#0" expanded="true" />
+            <element signature="e#45418#45419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryMonthStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+        <state relative-caret-position="113">
+          <caret line="23" column="54" lean-forward="true" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#383#384#0" expanded="true" />

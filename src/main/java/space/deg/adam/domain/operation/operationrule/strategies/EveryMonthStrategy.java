@@ -16,6 +16,12 @@ public class EveryMonthStrategy extends AbstractStrategy{
     public void generateTransactions(Operation operation) {
         LocalDateTime iteratorDateTime = operation.getStartDate();
         LocalDateTime end = operation.getEndDate();
+        int parameterDay = Integer.valueOf(operation.getRuleParameter());
+
+        if (iteratorDateTime.getDayOfMonth() > parameterDay)
+            iteratorDateTime = iteratorDateTime.plusMonths(1);
+
+        iteratorDateTime = iteratorDateTime.withDayOfMonth(parameterDay);
 
         while (!iteratorDateTime.isAfter(end)) {
             Transaction transaction = Transaction.builder()
