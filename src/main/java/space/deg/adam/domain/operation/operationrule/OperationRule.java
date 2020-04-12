@@ -12,8 +12,6 @@ public enum OperationRule {
     EVERY_MONTH("Every month", EveryMonthStrategy.class),
     EVERY_YEAR("Every year", EveryYearStrategy.class),
     EVERY_N_DAYS("Every n days", EveryNDaysStrategy.class),
-    SOME_DAYS_OF_THE_WEEK("Some days of the week", SomeDaysOfTheWeekStrategy.class),
-    SOME_DAYS_OF_THE_MONTH("Some days of the month", SomeDaysOfTheMonthStrategy.class),
     FIRST_WORKING_DAY_AFTER("First working day after", FirstWorkingDayAfterStrategy.class),
     LAST_WORKING_DAY_BEFORE("Last working day before", LastWorkingDayBeforeStrategy.class);
 

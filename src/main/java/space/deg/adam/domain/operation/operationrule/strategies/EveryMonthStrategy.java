@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public class EveryMonthStrategy extends AbstractStrategy{
     public EveryMonthStrategy() {
-        super.operationRule = OperationRule.EVERY_DAY;
+        super.operationRule = OperationRule.EVERY_MONTH;
     }
 
     @Override
