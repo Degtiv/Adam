@@ -1,6 +1,5 @@
 package space.deg.adam.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import space.deg.adam.domain.balance.DetailBalance;
-import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
 import space.deg.adam.service.DetailBalanceService;
@@ -28,8 +26,7 @@ public class ApiController {
     @PostMapping(path="status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public DetailBalance status(
             @AuthenticationPrincipal User user,
-            @RequestBody OverviewDates dates) throws JsonProcessingException {
-        Transaction transaction = transactionRepository.findByUser(user).iterator().next();
+            @RequestBody OverviewDates dates) {
         return detailBalanceService.getDetailBalance(user, dates.getStart(), dates.getEnd());
     }
 

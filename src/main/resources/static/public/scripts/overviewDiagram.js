@@ -3,15 +3,19 @@ function drawDiagram(rawData) {
         width = 1000,
         margin = 50,
         yOffset = 10,
-        dataPast = [],
-        dataFuture = [],
+        pastLine = [],
+        futureLine = [],
+        events = [],
         min = d3.min(rawData.dayReports, function (d) { return d.dayBalance; }),
-        max = d3.max(rawData.dayReports, function (d) { return d.dayBalance; }) * 1.2,
+        max = d3.max(rawData.dayReports, function (d) { return d.dayBalance; }),
         xOffset = 0.3 * (max - min),
         startD = parseDate(rawData.start),
         todayD = parseDate(rawData.now),
-        endD = parseDate(rawData.end);
-
+        endD = parseDate(rawData.end),
+        pastDotColor = "#10de9f",
+        nowDotColor = "#fe1010",
+        futureDotColor = "#dddddd";
+    console.log(rawData);
     $('#overview-diagram').empty();
 
     var svg = d3.select("#overview-diagram").append("svg")
@@ -35,18 +39,41 @@ function drawDiagram(rawData) {
         .range([0, yAxisLength]);
 
     for (i = 0; i < rawData.dayReports.length; i++) {
-        var dayDate = parseDate(rawData.dayReports[i].dateTime),
-            dayBalance = rawData.dayReports[i].dayBalance;
+        var dayDate = parseDate(rawData.dayReports[i].dateTime);
+        var dayBalance = rawData.dayReports[i].dayBalance;
+        var transactions = rawData.dayReports[i].transactions;
+        var goals = rawData.dayReports[i].goals;
+        var tense = "";
+        var dotColor = "";
 
+        //Следующие три ифа - индусский код, не знаю как переписать по-нормальному
         if (!(todayD > dayDate) && !(todayD < dayDate)) {
-            dataPast.push({ date: dayDate, balance: dayBalance });
-            dataFuture.push({ date: dayDate, balance: dayBalance });
+            pastLine.push({ date: dayDate, balance: dayBalance });
+            futureLine.push({ date: dayDate, balance: dayBalance });
+            tense = "now";
+            dotColor = nowDotColor;
         }
 
-        if (todayD > dayDate)
-            dataPast.push({ date: dayDate, balance: dayBalance });
-        else
-            dataFuture.push({ date: dayDate, balance: dayBalance });
+        if (todayD > dayDate) {
+            pastLine.push({ date: dayDate, balance: dayBalance });
+            tense = "past";
+            dotColor = pastDotColor;
+        }
+
+        if (todayD < dayDate) {
+            futureLine.push({ date: dayDate, balance: dayBalance });
+            tense = "future";
+            dotColor = futureDotColor;
+        }
+
+        if (transactions.length > 0 || goals.length > 0)
+            events.push({ 
+                date: dayDate, 
+                balance: dayBalance, 
+                transactions: transactions, 
+                goals: goals, 
+                tense: tense, 
+                dotColor: dotColor});
     }
 
     // создаем ось X
@@ -74,9 +101,10 @@ function drawDiagram(rawData) {
         .call(yAxis);
 
     var g = svg.append("g");
-
-    createChart(dataPast, "#10de9f", "past", g);
-    createChart(dataFuture, "#dddddd", "future", g);
+    var overviewInfo = d3.select("#overview-info");
+    createChart(pastLine, pastDotColor, g);
+    createChart(futureLine, futureDotColor, g);
+    createDots(events)
 
     g.append("line")
         .attr("x1", scaleX(todayD) + margin)
@@ -87,7 +115,7 @@ function drawDiagram(rawData) {
         .style("stroke-width", 2);
 
     // общая функция для создания графиков
-    function createChart(data, colorStroke, label, g) {
+    function createChart(data, colorStroke, g) {
         // функция, создающая по массиву точек линии
         var line = d3.svg.line()
             .interpolate("monotone")
@@ -98,32 +126,72 @@ function drawDiagram(rawData) {
             .attr("d", line(data))
             .style("stroke", colorStroke)
             .style("stroke-width", 2);
+    };
 
+    function createDots(data) {
         // добавляем отметки к точкам
-        svg.selectAll(".dot " + label)
+        svg.selectAll(".dot")
             .data(data)
             .enter().append("circle")
             .style("stroke", "000")
             .style("stroke-width", 1)
-            .style("fill", colorStroke)
-            .attr("class", "dot " + label)
+            .style("fill", function (d) { return d.dotColor; })
+            .attr("class", "dot " + function (d) { return d.tense; })
             .attr("r", 3.5)
             .attr("cx", function (d) { return scaleX(d.date) + margin; })
             .attr("cy", function (d) { return scaleY(d.balance) + margin; })
             .attr("id", function (d) { return "dot-" + formatDate(d.date); })
             .on("mouseover", function (d) {
-                $('#overview-info h3').text("Date: " + formatDate(d.date));
-                $('#overview-info h4').text("Balance: " + d.balance);
+                printEvents("#transactions-info", d.transactions);
+                printEvents("#goals-info", d.goals);
+
+                $('#balance-info h5').text("Balance: " + d.balance + " RUR");
+                $('#date-info h6').text("Date: " + formatDate(d.date));
                 svg.select('#dot-' + formatDate(d.date))
                     .attr("r", 7)
                     .style("fill", "ff4d8e");
+                overviewInfo
+                    .transition()
+                    .duration(500)	
+                    .style("opacity", .9);	
+                overviewInfo	 
+                    .style("left", (d3.event.pageX + 50) + "px")			 
+                    .style("top", (d3.event.pageY - 100) + "px");
             })
             .on("mouseout", function (d) {
                 svg.select('#dot-' + formatDate(d.date))
                     .attr("r", 3.5)
-                    .style("fill", colorStroke);
+                    .style("fill", d.dotColor);
+                overviewInfo
+                    .style("opacity", 0);
+                overviewInfo
+                    .style("left", -100 + "%")			 
+                    .style("top", -100 + "%");
             });
-    };
+
+        function printEvents(eventId, events) {
+            //Enter
+            d3.select(eventId)
+                .selectAll("p")
+                .data(events)
+                .enter()
+                .append("p")
+                .attr('class', 'card-text');
+
+            //Update
+            d3.select(eventId)
+                .selectAll("p")
+                .data(events)
+                .text(function (d) { return d.title + " " + d.amount + d.currency; })
+
+            //Exit
+            d3.select(eventId)
+                .selectAll("p")
+                .data(events)
+                .exit()
+                .remove();
+        }
+    }
 }
 
 function formatDate(d) {

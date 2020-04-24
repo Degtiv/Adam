@@ -36,6 +36,22 @@
             stroke: steelblue;
             fill: lightblue;
         }
+
+        .overview-info {
+            opacity: 0;
+            background: white;
+            position: absolute;
+            width: 300px;
+            padding: 2px;
+            border: 1px #000 solid;
+            border-radius: 12px;*/
+         /*  pointer-events: none;	This line needs to be removed */
+
+        }
+
+        #goals-info, #transactions-info {
+            padding-top: 5px;
+        }
     </style>
     <title>Adam - finconsult</title>
 </head>

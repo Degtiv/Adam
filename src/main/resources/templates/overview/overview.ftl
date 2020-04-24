@@ -20,12 +20,30 @@
     </div>
 </div>
 
-<div id="overview-info">
-    <h3>Date</h3>
-    <h4>Balance</h4>
-</div>
-
 <div id="overview-diagram">
 </div>
 
+<div  class="">
+
+</div>
+
+<div id="overview-info" class="card overview-info" style="width: 18rem;">
+    <div class="card-body">
+        <div id="balance-info">
+            <h5 class="card-title"></h5>
+        </div>
+        <div id="date-info">
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+        </div>
+        <div id="goals-info">
+            <h7><b>Goals:</b></h7>
+            <p class=""></p>
+        </div>
+
+        <div id="transactions-info">
+            <h7><b>Transactions:</b></h7>
+            <p class=""></p>
+        </div>
+    </div>
+</div>
 </@c.page>
