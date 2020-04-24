@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
-import space.deg.adam.domain.operation.operationrule.OperationRule;
+import space.deg.adam.domain.operation.operation_rule.OperationRule;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.user.User;
 

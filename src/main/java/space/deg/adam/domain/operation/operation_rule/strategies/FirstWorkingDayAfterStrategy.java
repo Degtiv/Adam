@@ -1,17 +1,17 @@
-package space.deg.adam.domain.operation.operationrule.strategies;
+package space.deg.adam.domain.operation.operation_rule.strategies;
 
 import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.operation.Operation;
-import space.deg.adam.domain.operation.operationrule.OperationRule;
+import space.deg.adam.domain.operation.operation_rule.OperationRule;
 import space.deg.adam.domain.transaction.Transaction;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 
-public class LastWorkingDayBeforeStrategy extends AbstractStrategy{
-    public LastWorkingDayBeforeStrategy() {
-        super.operationRule = OperationRule.LAST_WORKING_DAY_BEFORE;
+public class FirstWorkingDayAfterStrategy extends AbstractStrategy{
+    public FirstWorkingDayAfterStrategy() {
+        super.operationRule = OperationRule.FIRST_WORKING_DAY_AFTER;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class LastWorkingDayBeforeStrategy extends AbstractStrategy{
         while (!iteratorDateTime.isAfter(end)) {
             if (iteratorDateTime.getDayOfWeek() == DayOfWeek.SATURDAY ||
                     iteratorDateTime.getDayOfWeek() == DayOfWeek.SUNDAY)
-                iteratorDateTime.with(TemporalAdjusters.previous(DayOfWeek.FRIDAY));
+                iteratorDateTime.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
 
             Transaction transaction = Transaction.builder()
                     .user(operation.getUser())

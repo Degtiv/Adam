@@ -1,4 +1,4 @@
-package space.deg.adam.domain.operation.operationrule;
+package space.deg.adam.domain.operation.operation_rule;
 
 import space.deg.adam.domain.operation.Operation;
 import space.deg.adam.service.TransactionService;

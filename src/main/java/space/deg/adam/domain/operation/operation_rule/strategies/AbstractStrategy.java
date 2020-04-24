@@ -1,8 +1,8 @@
-package space.deg.adam.domain.operation.operationrule.strategies;
+package space.deg.adam.domain.operation.operation_rule.strategies;
 
 import space.deg.adam.domain.operation.Operation;
-import space.deg.adam.domain.operation.operationrule.OperationRule;
-import space.deg.adam.domain.operation.operationrule.OperationRuleStrategy;
+import space.deg.adam.domain.operation.operation_rule.OperationRule;
+import space.deg.adam.domain.operation.operation_rule.OperationRuleStrategy;
 import space.deg.adam.service.TransactionService;
 
 public class AbstractStrategy implements OperationRuleStrategy {

@@ -2,18 +2,13 @@ package space.deg.adam.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import space.deg.adam.domain.balance.DetailBalance;
-import space.deg.adam.domain.goals.Goal;
 import space.deg.adam.domain.operation.Operation;
-import space.deg.adam.domain.operation.operationrule.OperationRuleStrategy;
+import space.deg.adam.domain.operation.operation_rule.OperationRuleStrategy;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.repository.OperationRepository;
 import space.deg.adam.repository.TransactionRepository;
-import space.deg.adam.utils.FirstSecondOfMonth;
 
 import java.lang.reflect.InvocationTargetException;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class OperationService {

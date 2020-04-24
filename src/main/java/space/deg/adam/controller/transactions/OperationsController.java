@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.operation.Operation;
-import space.deg.adam.domain.operation.operationrule.OperationRule;
+import space.deg.adam.domain.operation.operation_rule.OperationRule;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.OperationRepository;
 import space.deg.adam.service.OperationService;

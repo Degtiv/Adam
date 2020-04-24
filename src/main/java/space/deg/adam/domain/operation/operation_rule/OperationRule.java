@@ -1,6 +1,6 @@
-package space.deg.adam.domain.operation.operationrule;
+package space.deg.adam.domain.operation.operation_rule;
 
-import space.deg.adam.domain.operation.operationrule.strategies.*;
+import space.deg.adam.domain.operation.operation_rule.strategies.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

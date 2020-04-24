@@ -1,15 +1,15 @@
-package space.deg.adam.domain.operation.operationrule.strategies;
+package space.deg.adam.domain.operation.operation_rule.strategies;
 
 import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.operation.Operation;
-import space.deg.adam.domain.operation.operationrule.OperationRule;
+import space.deg.adam.domain.operation.operation_rule.OperationRule;
 import space.deg.adam.domain.transaction.Transaction;
 
 import java.time.LocalDateTime;
 
-public class EveryNDaysStrategy extends AbstractStrategy{
-    public EveryNDaysStrategy() {
-        super.operationRule = OperationRule.EVERY_N_DAYS;
+public class EveryMonthStrategy extends AbstractStrategy{
+    public EveryMonthStrategy() {
+        super.operationRule = OperationRule.EVERY_MONTH;
     }
 
     @Override
