@@ -16,6 +16,36 @@
 
     <link rel="icon" type="image/png" href="public/adam.png">
     <style>
+        .form-control {
+            border-radius:100px;
+        }
+        .btn {
+            border-radius:100px;
+        }
+        .first-enter-hidden-div {
+            font-size: 1rem;
+            display: none;
+        }
+
+        .first-enter-primary-div {
+            font-size: 24px;
+            display: block;
+        }
+
+        .first-enter-secondary-div {
+            font-size: 1rem;
+            display: block;
+        }
+
+        .first-enter-modal-hidden-div {
+            display: none;
+        }
+
+        .first-enter-modal-showed-div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
         .page-title {
             margin: 0px 0px 30px 0px;
             text-align: center;

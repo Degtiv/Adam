@@ -17,4 +17,9 @@ public class LandingController {
         return "redirect:/landing";
     }
 
+    @GetMapping("/firstEnter")
+    public String firstEnter5() {
+        return "firstEnter";
+    }
+
 }
