@@ -86,16 +86,19 @@
             </div>
         </div>
         <div class="card-body">
-                <a href="${goal.url}">
-                    <h5 class="card-title">${goal.title}</h5>
-                </a>
-                <p class="card-text small">${goal.category}</p>
+
+            <h5 class="card-title">${goal.title}</h5>
+
+            <p class="card-text small">${goal.category}</p>
             <#if goal.image??>
+                <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
+            </#if>
+            <p class="card-text my-2">${goal.description?ifExists}</p>
+            <#if goal.url??>
                 <a href="${goal.url}">
-                    <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
+                    Link
                 </a>
             </#if>
-            <p class="card-text my-2">${goal.description}</p>
         </div>
 
         <div class="card-footer text-muted">

@@ -72,7 +72,7 @@ public class GoalsController {
         model.addAttribute("goals", goals);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return getGoalPage("goals");
+        return redirectPage("goals");
     }
 
     @GetMapping("/edit/{goal}")
@@ -109,10 +109,10 @@ public class GoalsController {
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return getGoalPage("goalEdit");
+        return redirectToEditGoalPage(goal);
     }
 
-    @PostMapping("/deleteImage/{goal}")
+    @PostMapping("/edit/deleteImage/{goal}")
     public String goalDeleteImage(@PathVariable Goal goal,
                                   @AuthenticationPrincipal User user,
                                   Model model) {
@@ -123,10 +123,10 @@ public class GoalsController {
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return getGoalPage("goalEdit");
+        return redirectToEditGoalPage(goal);
     }
 
-    @PostMapping("/addImage/{goal}")
+    @PostMapping("/edit/addImage/{goal}")
     public String goalAddImage(@PathVariable Goal goal,
                                @AuthenticationPrincipal User user,
                                @RequestParam MultipartFile image,
@@ -138,7 +138,7 @@ public class GoalsController {
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
-        return getGoalPage("goalEdit");
+        return redirectToEditGoalPage(goal);
     }
 
     @PostMapping("/delete/{goal}")
@@ -151,5 +151,9 @@ public class GoalsController {
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
         return redirectPage("goals");
+    }
+
+    public String redirectToEditGoalPage(Goal goal) {
+        return redirectPage("goals/edit/" + goal.getUuid());
     }
 }
