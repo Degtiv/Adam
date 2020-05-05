@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import space.deg.adam.domain.balance.Balance;
 import space.deg.adam.domain.user.Role;
 import space.deg.adam.domain.user.User;
+import space.deg.adam.domain.user.events.FirstEnterUserEvent;
 import space.deg.adam.repository.BalanceRepository;
 import space.deg.adam.repository.UserRepository;
 import space.deg.adam.utils.FirstSecondOfMonth;
@@ -46,10 +47,12 @@ public class RegistrationController {
 
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
+        FirstEnterUserEvent firstEnterUserEvent = new FirstEnterUserEvent();
+        firstEnterUserEvent.isActive = true;
+        user.addUserEvent(new FirstEnterUserEvent());
         userRepository.save(user);
 
         generateBalanceList(user);
-
         return getAdminPage("login");
     }
 

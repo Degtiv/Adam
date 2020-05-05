@@ -9,5 +9,5 @@
             ${message?ifExists}
         </p>
     </div>
-<@l.login "/registration" "Registration"/>
+<@l.login "/registration" "Register"/>
 </@c.page>

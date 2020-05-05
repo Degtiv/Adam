@@ -76,7 +76,7 @@ public class OperationsController {
         System.out.println(operation);
         Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
         fillModel(model, operations);
-        return getOperationPage("operations");
+        return redirectPage("operations");
     }
 
     @PostMapping("/save/{operation}")
@@ -106,7 +106,7 @@ public class OperationsController {
 
         Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
         fillModel(model, operations);
-        return getOperationPage("operations");
+        return redirectPage("operations");
     }
 
     @PostMapping("/delete/{operation}")
@@ -119,7 +119,7 @@ public class OperationsController {
 
         Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
         fillModel(model, operations);
-        return getOperationPage("operations");
+        return redirectPage("operations");
     }
 
     private void fillModel(Model model, Iterable<Operation> operations) {
