@@ -105,10 +105,10 @@
 
     /* https://stackoverflow.com/a/27829144 */
     $(document).ready(function() {
-        $('form input').keyup(function() {
+        $('#finish-first-enter input').keyup(function() {
             var empty = false;
 
-            $("input[required]").each(function() {
+            $("#finish-first-enter input[required]").each(function() {
                 if ($(this).val() == '') {
                     empty = true;
                 }
