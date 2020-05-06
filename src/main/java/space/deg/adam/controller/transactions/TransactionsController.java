@@ -70,7 +70,7 @@ public class TransactionsController {
 
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         fillModel(model, transactions);
-        return getTransactionPage("transactions");
+        return redirectPage("transactions");
     }
 
     @PostMapping("/save/{transaction}")
@@ -99,7 +99,7 @@ public class TransactionsController {
 
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         fillModel(model, transactions);
-        return getTransactionPage("transactions");
+        return redirectPage("transactions");
     }
 
     @PostMapping("/delete/{transaction}")
@@ -112,7 +112,7 @@ public class TransactionsController {
 
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         fillModel(model, transactions);
-        return getTransactionPage("transactions");
+        return redirectPage("transactions");
     }
 
     private void fillModel(Model model, Iterable<Transaction> transactions) {
@@ -129,6 +129,6 @@ public class TransactionsController {
 
         transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         fillModel(model, transactions);
-        return getTransactionPage("transactions");
+        return redirectPage("transactions");
     }
 }

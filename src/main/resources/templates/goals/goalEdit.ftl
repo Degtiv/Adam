@@ -61,7 +61,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="url_input">URL</span>
             </div>
-            <input type="text" class="form-control" value="${goal.url}" aria-label="url"
+            <input type="text" class="form-control" value="${goal.url?ifExists}" aria-label="url"
                    aria-describedby="url_input" name="url">
         </div>
 
@@ -71,13 +71,13 @@
             </div>
             <textarea class="form-control" placeholder="Description" aria-label="description"
                       aria-describedby="description_input"
-                      name="description">${goal.description}</textarea>
+                      name="description">${goal.description?ifExists}</textarea>
         </div>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
 </form>
 
 <div style="padding: 40px; width:100%; border: 1px solid #0069d9; border-radius: 70px;">
-    <form method="post" style="display:inline-block" enctype="multipart/form-data" action="/goals/addImage/${goal.uuid}" id="add_image_form">
+    <form method="post" style="display:inline-block" enctype="multipart/form-data" action="/goals/edit/addImage/${goal.uuid}" id="add_image_form">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">Image</span>
@@ -95,19 +95,17 @@
     </form>
 
     <#if goal.image??>
-    <form method="post" style="display: inline-block" action="/goals/deleteImage/${goal.uuid}" id="delete_image_form">
+    <form method="post" style="display: inline-block" id="delete_image_form">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <button class="btn btn-outline-danger rounded" type="submit" id="remove_button" formaction="/goals/deleteImage/${goal.uuid}">Delete</button>
+                <button class="btn btn-outline-danger rounded" type="submit" id="remove_button" formaction="/goals/edit/deleteImage/${goal.uuid}">Delete</button>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         </div>
     </form>
 
     <div class="input-group mb-3">
-        <a href="${goal.url}">
-            <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
-        </a>
+        <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
     </div>
     </#if>
 </div>

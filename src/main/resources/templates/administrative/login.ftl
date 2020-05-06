@@ -5,5 +5,5 @@
 <@pt.pageTitle "Login page"/>
     <@l.login "/login" "Sign in"/>
     <hr>
-    <a class="btn btn-outline-primary" href="/registration" role="button">Register</a>
+    <a class="btn btn-outline-primary" href="/registration" role="button">Registration</a>
 </@c.page>
