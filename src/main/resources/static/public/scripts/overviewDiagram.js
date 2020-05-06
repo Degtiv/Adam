@@ -5,13 +5,14 @@ function drawDiagram(rawData) {
         yOffset = 10,
         pastLine = [],
         futureLine = [],
-        events = [],
+        baseTransactions = [],
+        goalsTotal = [],
         min = d3.min(rawData.dayReports, function (d) { return d.dayBalance; }),
         max = d3.max(rawData.dayReports, function (d) { return d.dayBalance; }),
         xOffset = 0.3 * (max - min),
-        startD = parseDate(rawData.start),
-        todayD = parseDate(rawData.now),
-        endD = parseDate(rawData.end),
+        startD = parseDate(rawData.start, "%Y-%m-%d"),
+        todayD = parseDate(rawData.now, "%Y-%m-%d"),
+        endD = parseDate(rawData.end, "%Y-%m-%d"),
         pastDotColor = "#10de9f",
         nowDotColor = "#fe1010",
         futureDotColor = "#dddddd";
@@ -39,7 +40,7 @@ function drawDiagram(rawData) {
         .range([0, yAxisLength]);
 
     for (i = 0; i < rawData.dayReports.length; i++) {
-        var dayDate = parseDate(rawData.dayReports[i].dateTime);
+        var dayDate = parseDate(rawData.dayReports[i].dateTime, "%Y-%m-%d");
         var dayBalance = rawData.dayReports[i].dayBalance;
         var transactions = rawData.dayReports[i].transactions;
         var goals = rawData.dayReports[i].goals;
@@ -66,16 +67,22 @@ function drawDiagram(rawData) {
             dotColor = futureDotColor;
         }
 
-        if (transactions.length > 0 || goals.length > 0)
-            events.push({ 
+        if (transactions.length > 0 || goals.length > 0) {
+            baseTransactions.push({ 
                 date: dayDate, 
                 balance: dayBalance, 
                 transactions: transactions, 
                 goals: goals, 
                 tense: tense, 
                 dotColor: dotColor});
+        }
+
+        if (typeof goals !== 'undefined' && goals.length > 0) {
+            goalsTotal = [].concat(goalsTotal, goals);
+        }
     }
 
+    console.log(goalsTotal)
     // создаем ось X
     var xAxis = d3.svg.axis()
         .scale(scaleX)
@@ -104,7 +111,7 @@ function drawDiagram(rawData) {
     var overviewInfo = d3.select("#overview-info");
     createChart(pastLine, pastDotColor, g);
     createChart(futureLine, futureDotColor, g);
-    createDots(events)
+    createDots(baseTransactions);
 
     g.append("line")
         .attr("x1", scaleX(todayD) + margin)
@@ -140,16 +147,16 @@ function drawDiagram(rawData) {
             .attr("r", 3.5)
             .attr("cx", function (d) { return scaleX(d.date) + margin; })
             .attr("cy", function (d) { return scaleY(d.balance) + margin; })
-            .attr("id", function (d) { return "dot-" + formatDate(d.date); })
+            .attr("id", function (d) { return "dot-" + formatDate(d.date, "%Y-%m-%d"); })
             .on("mouseover", function (d) {
-                printEvents("#transactions-info", d.transactions);
-                printEvents("#goals-info", d.goals);
+                printBaseTransactions("#transactions-info", d.transactions);
+                printBaseTransactions("#goals-info", d.goals);
 
                 $('#balance-info h5').text("Balance: " + d.balance + " RUR");
-                $('#date-info h6').text("Date: " + formatDate(d.date));
-                svg.select('#dot-' + formatDate(d.date))
+                $('#date-info h6').text("Date: " + formatDate(d.date, "%Y-%m-%d"));
+                svg.select('#dot-' + formatDate(d.date, "%Y-%m-%d"))
                     .attr("r", 7)
-                    .style("fill", "ff4d8e");
+                    .style("fill", "#ff4d8e");
                 overviewInfo
                     .transition()
                     .duration(500)	
@@ -159,48 +166,95 @@ function drawDiagram(rawData) {
                     .style("top", (d3.event.pageY - 100) + "px");
             })
             .on("mouseout", function (d) {
-                svg.select('#dot-' + formatDate(d.date))
+                svg.select('#dot-' + formatDate(d.date, "%Y-%m-%d"))
                     .attr("r", 3.5)
                     .style("fill", d.dotColor);
                 overviewInfo
                     .style("opacity", 0);
                 overviewInfo
-                    .style("left", -100 + "%")			 
-                    .style("top", -100 + "%");
+                    .style("left", - 100 + "%")
+                    .style("top", - 100 + "%");
             });
 
-        function printEvents(eventId, events) {
+        console.log(goalsTotal);
+
+        svg.selectAll(".goal-dot")
+            .data(goalsTotal)
+            .enter().append("polygon")
+            .style("stroke", "#DDDDDD")
+            .style("stroke-width", "2")
+            .attr("points", function (d) {
+                    var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
+                    var cy = scaleY(d.amount) + margin;
+
+                    var triangleCoordinates = getTriangleCoordinates(cx, cy, 4);
+                    return triangleCoordinates;
+                })
+            .style("stroke", "000")
+            .style("stroke-width", 1)
+            .style("fill", "#A0EEA0")
+            .attr("class", "goal-dot")
+            .attr("id", function (d) { return "goal-dot-" + d.uuid; })
+            .on("mouseover", function (d) {
+                svg.select("#goal-dot-" + d.uuid)
+                    .attr("points", function (d) {
+                        var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
+                        var cy = scaleY(d.amount) + margin;
+
+                        var triangleCoordinates = getTriangleCoordinates(cx, cy, 8);
+                        return triangleCoordinates;
+                    })
+                    .style("fill", "#ff4d8e");
+            })
+            .on("mouseout", function (d) {
+                svg.select("#goal-dot-" + d.uuid)
+                    .attr("points", function (d) {
+                        var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
+                        var cy = scaleY(d.amount) + margin;
+
+                        var triangleCoordinates = getTriangleCoordinates(cx, cy, 4);
+                        return triangleCoordinates;
+                    })
+                    .style("fill", "#A0EEA0");
+            });;
+        
+
+        function printBaseTransactions(baseTransactionId, baseTransactions) {
             //Enter
-            d3.select(eventId)
+            d3.select(baseTransactionId)
                 .selectAll("p")
-                .data(events)
+                .data(baseTransactions)
                 .enter()
                 .append("p")
                 .attr('class', 'card-text');
 
             //Update
-            d3.select(eventId)
+            d3.select(baseTransactionId)
                 .selectAll("p")
-                .data(events)
+                .data(baseTransactions)
                 .text(function (d) { return d.title + " " + d.amount + d.currency; })
 
             //Exit
-            d3.select(eventId)
+            d3.select(baseTransactionId)
                 .selectAll("p")
-                .data(events)
+                .data(baseTransactions)
                 .exit()
                 .remove();
         }
     }
+
+    function getTriangleCoordinates(cx, cy, size) {
+        return (cx - size) + ',' + (cy + 2 * size) + ' ' + cx + ',' + cy + ' ' + (cx + size) + ',' + (cy + 2 * size);
+    }
 }
 
-function formatDate(d) {
-    var formatD = d3.time.format("%Y-%m-%d");
+function formatDate(d, dateFormat) {
+    var formatD = d3.time.format(dateFormat);
     return formatD(d);
 }
 
-function parseDate(d) {
-    return d3.time.format("%Y-%m-%d").parse(d);
+function parseDate(d, dateFormat) {
+    return d3.time.format(dateFormat).parse(d);
 }
 
 $(document).ready(function () {
