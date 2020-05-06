@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import space.deg.adam.domain.common.Category;
-import space.deg.adam.domain.goals.Goal;
-import space.deg.adam.domain.goals.GoalUtils;
+import space.deg.adam.domain.transaction.goals.Goal;
+import space.deg.adam.domain.transaction.goals.GoalUtils;
 import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.GoalRepository;
@@ -53,16 +53,16 @@ public class GoalsController {
             @RequestParam MultipartFile image,
             Model model) throws IOException {
 
-        Goal goal = Goal.newBuilder()
+        Goal goal = ((Goal.Builder) Goal.builder()
                 .user(user)
                 .title(title)
                 .description(description)
                 .date(dateText)
                 .amount(amount)
                 .currency("RUR")
-                .status(status)
+                .status(Status.byTitle(status)))
                 .url(url)
-                .category(category)
+                .category(Category.byTitle(category))
                 .build();
 
         GoalUtils.saveImage(uploadPath, image, goal);
@@ -101,9 +101,9 @@ public class GoalsController {
         goal.setDate(dateText);
         goal.setAmount(amount);
         goal.setDescription(description);
-        goal.setStatus(status);
+        goal.setStatus(Status.byTitle(status));
         goal.setUrl(url);
-        goal.setCategory(category);
+        goal.setCategory(Category.byTitle(category));
 
         goalRepository.save(goal);
         model.addAttribute("goal", goal);

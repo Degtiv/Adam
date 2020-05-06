@@ -3,11 +3,10 @@ package space.deg.adam.domain.user.events;
 import lombok.Data;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "user_events_first_enter")
 @Data
 public class FirstEnterUserEvent extends UserEvent {
     private static final String TITLE = "First Enter";

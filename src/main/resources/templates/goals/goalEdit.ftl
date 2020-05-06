@@ -41,7 +41,7 @@
             </div>
             <select class="custom-select" id="category_input" name="category">
                 <#list categories as category>
-                    <option value="${category.title}" <#if goal.category == category.title> selected</#if>>${category.title}</option>
+                    <option value="${category.title}" <#if goal.category == category> selected</#if>>${category.title}</option>
                 </#list>
             </select>
         </div>
@@ -52,7 +52,7 @@
             </div>
             <select class="custom-select" id="status_input" name="status">
                 <#list statuses as status>
-                    <option value="${status.title}" <#if goal.status == status.title> selected</#if>>${status.title}</option>
+                    <option value="${status.title}" <#if goal.status == status> selected</#if>>${status.title}</option>
                 </#list>
             </select>
         </div>

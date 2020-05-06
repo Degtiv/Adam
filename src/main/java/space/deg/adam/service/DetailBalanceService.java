@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import space.deg.adam.domain.balance.DetailBalance;
-import space.deg.adam.domain.goals.Goal;
+import space.deg.adam.domain.transaction.goals.Goal;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.BalanceRepository;

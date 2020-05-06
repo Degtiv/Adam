@@ -7,7 +7,7 @@ import space.deg.adam.domain.transaction.Transaction;
 
 import java.time.LocalDateTime;
 
-public class EveryMonthStrategy extends AbstractStrategy{
+public class EveryMonthStrategy extends AbstractStrategy {
     public EveryMonthStrategy() {
         super.operationRule = OperationRule.EVERY_MONTH;
     }
@@ -24,15 +24,15 @@ public class EveryMonthStrategy extends AbstractStrategy{
         iteratorDateTime = iteratorDateTime.withDayOfMonth(parameterDay);
 
         while (!iteratorDateTime.isAfter(end)) {
-            Transaction transaction = Transaction.builder()
+            Transaction transaction = ((Transaction.Builder) Transaction.builder()
                     .user(operation.getUser())
                     .title(operation.getTitle())
                     .date(iteratorDateTime)
                     .amount(operation.getAmount())
-                    .description(operation.getDescription())
-                    .status(Status.PLANNED)
-                    .category(operation.getCategory())
                     .currency("RUR")
+                    .description(operation.getDescription())
+                    .status(Status.PLANNED))
+                    .category(operation.getCategory())
                     .build();
 
             transaction.setOperation(operation);

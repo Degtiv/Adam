@@ -1,9 +1,8 @@
-package space.deg.adam.domain.goals;
+package space.deg.adam.domain.transaction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.lang.NonNull;
-import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.user.User;
 
@@ -16,44 +15,36 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
-@Table(name = "goals")
+@Table(name = "transactions")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
-public class Goal {
+public class BaseTransaction {
     @Id
     @Column(length = 100)
-    private String uuid;
+    protected String uuid;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @JsonIgnore
-    private User user;
+    protected User user;
 
     @NonNull
-    private String title;
-    private String description;
+    protected String title;
+    protected String description;
 
     @Column(name = "date", columnDefinition = "TIMESTAMP")
     @NonNull
-    private LocalDateTime date;
+    protected LocalDateTime date;
 
     @Column(precision = 16, scale = 2)
     @NonNull
-    private BigDecimal amount;
+    protected BigDecimal amount;
 
     @NonNull
-    private String currency;
+    protected String currency;
 
     @NonNull
-    private String status;
-    private String image;
-    private String url;
-
-    @NonNull
-    private String category;
-
-    public Goal() {
-        this.uuid = UUID.randomUUID().toString();
-    }
+    protected Status status;
 
     public void setDate(String dateText) {
         date = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
@@ -63,10 +54,12 @@ public class Goal {
         this.date = date;
     }
 
+    @JsonIgnore
     public String getDateString() {
         return date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
+    @JsonIgnore
     public String getDateField() {
         return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
@@ -75,21 +68,24 @@ public class Goal {
         return amount.setScale(2, RoundingMode.HALF_UP).toString().replaceAll(" ", "");
     }
 
-    public static Builder newBuilder() {
+
+    public BaseTransaction() {
+        this.uuid = UUID.randomUUID().toString();
+    }
+
+    public static Builder builder() {
         return new Builder();
     }
 
     public static class Builder {
-        private User user;
-        private String title = "No title";
-        private String description;
-        private LocalDateTime date;
-        private BigDecimal amount = BigDecimal.ZERO;
-        private String currency = "RUR";
-        private String status = Status.PLANNED.getTitle();
-        private String image;
-        private String url;
-        private String category = Category.BASE.getTitle();
+        BaseTransaction baseTransaction = new BaseTransaction();
+        protected User user;
+        protected String title = "No title";
+        protected String description;
+        protected LocalDateTime date;
+        protected BigDecimal amount = BigDecimal.ZERO;
+        protected String currency = "RUR";
+        protected Status status = Status.PLANNED;
 
         public Builder user(User user) {
             this.user = user;
@@ -126,39 +122,24 @@ public class Goal {
             return this;
         }
 
-        public Builder status(String status) {
+        public Builder status(Status status) {
             this.status = status;
             return this;
         }
 
-        public Builder url(String url) {
-            this.url = url;
-            return this;
+        protected void fillFields(BaseTransaction baseTransaction) {
+            baseTransaction.setUser(user);
+            baseTransaction.setDescription(description);
+            baseTransaction.setTitle(title);
+            baseTransaction.setDate(date);
+            baseTransaction.setAmount(amount);
+            baseTransaction.setCurrency(currency);
+            baseTransaction.setStatus(status);
         }
 
-        public Builder image(String image) {
-            this.image = image;
-            return this;
-        }
-
-        public Builder category(String category) {
-            this.category = category;
-            return this;
-        }
-
-        public Goal build() {
-            Goal goal = new Goal();
-            goal.setUser(user);
-            goal.setDescription(description);
-            goal.setTitle(title);
-            goal.setDate(date);
-            goal.setAmount(amount);
-            goal.setCurrency(currency);
-            goal.setStatus(status);
-            goal.setUrl(url);
-            goal.setImage(image);
-            goal.setCategory(category);
-            return goal;
+        public BaseTransaction build() {
+            fillFields(baseTransaction);
+            return baseTransaction;
         }
     }
 }

@@ -29,8 +29,8 @@
         </div>
         <select class="custom-select" id="category_input" name="category">
             <#list categories as category>
-            <option value="${category.title}">${category.title}</option>
-        </#list>
+                <option value="${category.title}">${category.title}</option>
+            </#list>
         </select>
     </div>
 
@@ -47,8 +47,8 @@
         </div>
         <select class="custom-select" id="status_input" name="status">
             <#list statuses as status>
-            <option value="${status.title}">${status.title}</option>
-        </#list>
+                <option value="${status.title}">${status.title}</option>
+            </#list>
         </select>
 
         <div class="input-group-append ml-1">
@@ -76,14 +76,14 @@
         <label class="sr-only" for="category_input_${transaction.uuid}">Category</label>
         <select class="custom-select my-1 mr-sm-2" id="category_input_${transaction.uuid}" name="category">
             <#list categories as category>
-                <option value="${category.title}" <#if transaction.category == category.title> selected</#if>>${category.title}</option>
+                <option value="${category.title}" <#if transaction.category == category> selected</#if>>${category.title}</option>
             </#list>
         </select>
 
         <label class="sr-only" for="status_input_${transaction.uuid}">Status</label>
         <select class="custom-select my-1 mr-sm-2" id="status_input_${transaction.uuid}" name="status">
             <#list statuses as status>
-                <option value="${status.title}" <#if transaction.status == status.title> selected</#if>>${status.title}</option>
+                <option value="${status.title}" <#if transaction.status == status> selected</#if>>${status.title}</option>
             </#list>
         </select>
 

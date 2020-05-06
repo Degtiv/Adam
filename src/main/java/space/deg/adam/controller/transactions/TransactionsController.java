@@ -54,15 +54,15 @@ public class TransactionsController {
             @RequestParam String category,
             Model model) {
 
-        Transaction transaction = Transaction.builder()
+        Transaction transaction = ((Transaction.Builder) Transaction.builder()
                 .user(user)
                 .title(title)
                 .date(LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay())
                 .amount(amount)
-                .description(description)
-                .status(Status.byTitle(status))
-                .category(Category.byTitle(category))
                 .currency("RUR")
+                .description(description)
+                .status(Status.byTitle(status)))
+                .category(Category.byTitle(category))
                 .build();
 
         transactionService.addTransaction(transaction);
