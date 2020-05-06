@@ -30,15 +30,15 @@ public class LastWorkingDayBeforeStrategy extends AbstractStrategy{
                     iteratorDateTime.getDayOfWeek() == DayOfWeek.SUNDAY)
                 iteratorDateTime.with(TemporalAdjusters.previous(DayOfWeek.FRIDAY));
 
-            Transaction transaction = Transaction.builder()
+            Transaction transaction = ((Transaction.Builder) Transaction.builder()
                     .user(operation.getUser())
                     .title(operation.getTitle())
                     .date(iteratorDateTime)
                     .amount(operation.getAmount())
-                    .description(operation.getDescription())
-                    .status(Status.PLANNED)
-                    .category(operation.getCategory())
                     .currency("RUR")
+                    .description(operation.getDescription())
+                    .status(Status.PLANNED))
+                    .category(operation.getCategory())
                     .build();
 
             transaction.setOperation(operation);

@@ -1,4 +1,4 @@
-package space.deg.adam.domain.goals;
+package space.deg.adam.domain.transaction.goals;
 
 import org.springframework.web.multipart.MultipartFile;
 

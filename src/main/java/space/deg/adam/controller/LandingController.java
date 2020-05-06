@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.common.Status;
-import space.deg.adam.domain.goals.Goal;
+import space.deg.adam.domain.transaction.goals.Goal;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.domain.user.events.FirstEnterUserEvent;
 import space.deg.adam.repository.GoalRepository;
@@ -42,14 +42,14 @@ public class LandingController {
             @RequestParam String dateText,
             @RequestParam BigDecimal amount
     ) {
-        Goal goal = Goal.newBuilder()
+        Goal goal = ((Goal.Builder) Goal.builder()
                 .user(user)
                 .title(title)
                 .date(dateText)
                 .amount(amount)
                 .currency("RUR")
-                .status(Status.PLANNED.getTitle())
-                .category(Category.BASE.getTitle())
+                .status(Status.PLANNED))
+                .category(Category.BASE)
                 .build();
 
 

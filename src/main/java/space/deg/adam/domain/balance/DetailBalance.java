@@ -1,7 +1,7 @@
 package space.deg.adam.domain.balance;
 
 import lombok.Data;
-import space.deg.adam.domain.goals.Goal;
+import space.deg.adam.domain.transaction.goals.Goal;
 import space.deg.adam.domain.transaction.Transaction;
 
 import java.math.BigDecimal;

@@ -77,7 +77,7 @@
     <div class="card">
         <div class="card-header h-auto clearfix">
             <div class="float-left">
-                ${goal.status}
+                ${goal.status.title}
             </div>
             <div class="float-right">
                 <a href="/goals/edit/${goal.uuid}">
@@ -89,7 +89,7 @@
 
             <h5 class="card-title">${goal.title}</h5>
 
-            <p class="card-text small">${goal.category}</p>
+            <p class="card-text small">${goal.category.title}</p>
             <#if goal.image??>
                 <img class="card-img-top" src="/img/${goal.image}" alt="Card image cap">
             </#if>
