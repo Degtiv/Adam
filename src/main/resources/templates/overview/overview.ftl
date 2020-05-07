@@ -46,4 +46,18 @@
         </div>
     </div>
 </div>
+
+<div id="goal-info" class="card overview-info" style="width: 18rem;">
+    <div class="card-body">
+        <div id="goal-title">
+            <h5 class="card-title"></h5>
+        </div>
+        <div id="goal-date">
+            <h6></h6>
+        </div>
+        <div id="goal-amount">
+            <h6></h6>
+        </div>
+    </div>
+</div>
 </@c.page>

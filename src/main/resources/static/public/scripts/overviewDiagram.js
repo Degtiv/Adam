@@ -15,7 +15,9 @@ function drawDiagram(rawData) {
         endD = parseDate(rawData.end, "%Y-%m-%d"),
         pastDotColor = "#10de9f",
         nowDotColor = "#fe1010",
-        futureDotColor = "#dddddd";
+        futureDotColor = "#dddddd",
+        activeDotColor = "#EA0037",
+        goalDotColor = "#6FF8AD";
     console.log(rawData);
     $('#overview-diagram').empty();
 
@@ -109,6 +111,7 @@ function drawDiagram(rawData) {
 
     var g = svg.append("g");
     var overviewInfo = d3.select("#overview-info");
+    var goalInfo = d3.select("#goal-info");
     createChart(pastLine, pastDotColor, g);
     createChart(futureLine, futureDotColor, g);
     createDots(baseTransactions);
@@ -156,7 +159,7 @@ function drawDiagram(rawData) {
                 $('#date-info h6').text("Date: " + formatDate(d.date, "%Y-%m-%d"));
                 svg.select('#dot-' + formatDate(d.date, "%Y-%m-%d"))
                     .attr("r", 7)
-                    .style("fill", "#ff4d8e");
+                    .style("fill", activeDotColor);
                 overviewInfo
                     .transition()
                     .duration(500)	
@@ -187,12 +190,12 @@ function drawDiagram(rawData) {
                     var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
                     var cy = scaleY(d.amount) + margin;
 
-                    var triangleCoordinates = getTriangleCoordinates(cx, cy, 4);
+                    var triangleCoordinates = getTriangleCoordinates(cx, cy, 6);
                     return triangleCoordinates;
                 })
             .style("stroke", "000")
             .style("stroke-width", 1)
-            .style("fill", "#A0EEA0")
+            .style("fill", goalDotColor)
             .attr("class", "goal-dot")
             .attr("id", function (d) { return "goal-dot-" + d.uuid; })
             .on("mouseover", function (d) {
@@ -201,10 +204,22 @@ function drawDiagram(rawData) {
                         var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
                         var cy = scaleY(d.amount) + margin;
 
-                        var triangleCoordinates = getTriangleCoordinates(cx, cy, 8);
+                        var triangleCoordinates = getTriangleCoordinates(cx, cy, 10);
                         return triangleCoordinates;
                     })
-                    .style("fill", "#ff4d8e");
+                    .style("fill", activeDotColor);
+
+                $('#goal-title h5').text("Goal: " + d.title);
+                $('#goal-date h6').text("Date: " + formatDate(parseDate(d.date, "%Y-%m-%dT%H:%M:%S"), "%Y-%m-%d"));
+                $('#goal-amount h6').text("Amount: " + d.amount + " RUR");
+
+                goalInfo
+                    .transition()
+                    .duration(500)	
+                    .style("opacity", .9);	
+                goalInfo	 
+                    .style("left", (d3.event.pageX + 50) + "px")			 
+                    .style("top", (d3.event.pageY - 100) + "px");
             })
             .on("mouseout", function (d) {
                 svg.select("#goal-dot-" + d.uuid)
@@ -212,10 +227,16 @@ function drawDiagram(rawData) {
                         var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
                         var cy = scaleY(d.amount) + margin;
 
-                        var triangleCoordinates = getTriangleCoordinates(cx, cy, 4);
+                        var triangleCoordinates = getTriangleCoordinates(cx, cy, 6);
                         return triangleCoordinates;
                     })
-                    .style("fill", "#A0EEA0");
+                    .style("fill", goalDotColor);
+
+                goalInfo
+                    .style("opacity", 0);
+                goalInfo
+                    .style("left", - 100 + "%")
+                    .style("top", - 100 + "%");
             });;
         
 
@@ -244,7 +265,12 @@ function drawDiagram(rawData) {
     }
 
     function getTriangleCoordinates(cx, cy, size) {
-        return (cx - size) + ',' + (cy + 2 * size) + ' ' + cx + ',' + cy + ' ' + (cx + size) + ',' + (cy + 2 * size);
+        return  (cx - size) + ',' + (cy + 2 * size) + ' ' + 
+                (cx - size * 0.5) + ',' + (cy + 1.2 * size) + ' ' +
+                cx + ',' + (cy) + ' ' + 
+                (cx + size * 0.5) + ',' + (cy + 1.2 * size) + ' ' +
+                (cx + size) + ',' + (cy + 2 * size) + ' ' +
+                cx + ',' + (cy + 1.5 * size);
     }
 }
 
