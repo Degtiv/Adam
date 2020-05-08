@@ -23,6 +23,9 @@
         </div>
         <input type="number" class="form-control" placeholder="0.00" aria-label="amount"
                aria-describedby="amount_input" name="amount" required>
+        <div class="input-group-append">
+            <span class="input-group-text" id="currency_label">RUR</span>
+        </div>
 
         <div class="input-group-prepend ml-1">
             <label class="input-group-text" for="category_input">Category</label>

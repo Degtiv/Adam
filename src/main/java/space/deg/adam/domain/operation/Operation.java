@@ -8,6 +8,7 @@ import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.operation.operation_rule.OperationRule;
 import space.deg.adam.domain.transaction.Transaction;
+import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
@@ -53,6 +54,9 @@ public class Operation {
 
     @NonNull
     private String currency;
+
+    @NonNull
+    private TransactionType transactionType;
 
     @NonNull
     private Category category;
@@ -130,6 +134,7 @@ public class Operation {
         private LocalDateTime endDate;
         private BigDecimal amount = BigDecimal.ZERO;
         private String currency = "RUR";
+        private TransactionType transactionType;
         private Category category = Category.BASE;
         private OperationRule rule;
         private String ruleParameter;
@@ -179,6 +184,11 @@ public class Operation {
             return this;
         }
 
+        public OperationBuilder transactionType(TransactionType transactionType) {
+            this.transactionType = transactionType;
+            return this;
+        }
+
         public OperationBuilder category(Category category) {
             this.category = category;
             return this;
@@ -203,6 +213,7 @@ public class Operation {
             operation.setEndDate(endDate);
             operation.setAmount(amount);
             operation.setCurrency(currency);
+            operation.setTransactionType(transactionType);
             operation.setCategory(category);
             operation.setRule(rule);
             operation.setRuleParameter(ruleParameter);

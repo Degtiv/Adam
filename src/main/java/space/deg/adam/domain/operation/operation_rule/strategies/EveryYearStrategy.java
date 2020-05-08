@@ -29,6 +29,7 @@ public class EveryYearStrategy extends AbstractStrategy{
                     .date(iteratorDateTime)
                     .amount(operation.getAmount())
                     .currency("RUR")
+                    .transactionType(operation.getTransactionType())
                     .description(operation.getDescription())
                     .status(Status.PLANNED))
                     .category(operation.getCategory())

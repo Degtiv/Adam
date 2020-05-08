@@ -44,6 +44,9 @@ public class BaseTransaction {
     protected String currency;
 
     @NonNull
+    protected TransactionType transactionType;
+
+    @NonNull
     protected Status status;
 
     public void setDate(String dateText) {
@@ -85,6 +88,7 @@ public class BaseTransaction {
         protected LocalDateTime date;
         protected BigDecimal amount = BigDecimal.ZERO;
         protected String currency = "RUR";
+        protected TransactionType transactionType = TransactionType.INCOME;
         protected Status status = Status.PLANNED;
 
         public Builder user(User user) {
@@ -122,6 +126,11 @@ public class BaseTransaction {
             return this;
         }
 
+        public Builder transactionType(TransactionType transactionType) {
+            this.transactionType = transactionType;
+            return this;
+        }
+
         public Builder status(Status status) {
             this.status = status;
             return this;
@@ -134,6 +143,7 @@ public class BaseTransaction {
             baseTransaction.setDate(date);
             baseTransaction.setAmount(amount);
             baseTransaction.setCurrency(currency);
+            baseTransaction.setTransactionType(transactionType);
             baseTransaction.setStatus(status);
         }
 

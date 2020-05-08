@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.transaction.BaseTransaction;
+import space.deg.adam.domain.transaction.TransactionType;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -49,6 +50,7 @@ public class Goal extends BaseTransaction {
 
         protected void fillFields(Goal goal) {
             super.fillFields(goal);
+            goal.setTransactionType(TransactionType.COST);
             goal.setUrl(url);
             goal.setImage(image);
             goal.setCategory(category);

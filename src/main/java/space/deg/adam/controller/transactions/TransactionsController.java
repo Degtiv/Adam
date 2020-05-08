@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.transaction.Transaction;
+import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
 import space.deg.adam.service.BalanceService;
@@ -49,6 +50,7 @@ public class TransactionsController {
             @RequestParam String title,
             @RequestParam String dateText,
             @RequestParam BigDecimal amount,
+            @RequestParam String transactionType,
             @RequestParam String description,
             @RequestParam String status,
             @RequestParam String category,
@@ -60,6 +62,7 @@ public class TransactionsController {
                 .date(LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay())
                 .amount(amount)
                 .currency("RUR")
+                .transactionType(TransactionType.byTitle(transactionType))
                 .description(description)
                 .status(Status.byTitle(status)))
                 .category(Category.byTitle(category))
@@ -79,6 +82,7 @@ public class TransactionsController {
                                       @RequestParam String title,
                                       @RequestParam String dateText,
                                       @RequestParam BigDecimal amount,
+                                      @RequestParam String transactionType,
                                       @RequestParam String description,
                                       @RequestParam String status,
                                       @RequestParam String category,
@@ -92,6 +96,7 @@ public class TransactionsController {
         transaction.setAmount(amount);
         transaction.setDescription(description);
         transaction.setStatus(Status.byTitle(status));
+        transaction.setTransactionType(TransactionType.byTitle(transactionType));
         transaction.setCategory(Category.byTitle(category));
 
         transactionRepository.save(transaction);
@@ -116,6 +121,7 @@ public class TransactionsController {
     }
 
     private void fillModel(Model model, Iterable<Transaction> transactions) {
+        model.addAttribute("transactionTypes", TransactionType.values());
         model.addAttribute("transactions", transactions);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
