@@ -12,7 +12,7 @@ import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
-import space.deg.adam.service.BalanceService;
+import space.deg.adam.service.MilestoneService;
 import space.deg.adam.service.TransactionService;
 
 import java.math.BigDecimal;
@@ -29,7 +29,7 @@ public class TransactionsController {
     TransactionService transactionService;
 
     @Autowired
-    BalanceService balanceService;
+    MilestoneService milestoneService;
 
     @Autowired
     private TransactionRepository transactionRepository;
@@ -91,12 +91,12 @@ public class TransactionsController {
 
         transactionService.deleteTransaction(transaction);
 
+        transaction.setTransactionType(TransactionType.byTitle(transactionType));
         transaction.setTitle(title);
         transaction.setDate(LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay());
         transaction.setAmount(amount);
         transaction.setDescription(description);
         transaction.setStatus(Status.byTitle(status));
-        transaction.setTransactionType(TransactionType.byTitle(transactionType));
         transaction.setCategory(Category.byTitle(category));
 
         transactionRepository.save(transaction);

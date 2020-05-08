@@ -5,11 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import space.deg.adam.domain.balance.Balance;
+import space.deg.adam.domain.balance.Milestone;
 import space.deg.adam.domain.user.Role;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.domain.user.events.FirstEnterUserEvent;
-import space.deg.adam.repository.BalanceRepository;
+import space.deg.adam.repository.MilestoneRepository;
 import space.deg.adam.repository.UserRepository;
 import space.deg.adam.utils.FirstSecondOfMonth;
 
@@ -26,7 +26,7 @@ public class RegistrationController {
     UserRepository userRepository;
 
     @Autowired
-    BalanceRepository balanceRepository;
+    MilestoneRepository milestoneRepository;
 
     @GetMapping("/registration")
     public String registration(Map<String, Object> model) {
@@ -63,8 +63,8 @@ public class RegistrationController {
         long monthsBetween = ChronoUnit.MONTHS.between(firstMonth, lastMonth);
         for (long month = 0; month < monthsBetween; month++) {
             LocalDateTime dateTime = firstMonth.plusMonths(month);
-            Balance balance = Balance.newBuilder().user(user).date(dateTime).build();
-            balanceRepository.save(balance);
+            Milestone milestone = Milestone.newBuilder().user(user).date(dateTime).build();
+            milestoneRepository.save(milestone);
         }
     }
 }

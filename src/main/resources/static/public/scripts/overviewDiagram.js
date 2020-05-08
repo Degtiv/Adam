@@ -6,8 +6,8 @@ function drawDiagram(rawData) {
         pastLine = [],
         futureLine = [],
         events = [],
-        min = d3.min(rawData.dayReports, function (d) { return d.dayBalance; }),
-        max = d3.max(rawData.dayReports, function (d) { return d.dayBalance; }),
+        min = d3.min(rawData.dayReports, function (d) { return d.endDayBalance; }),
+        max = d3.max(rawData.dayReports, function (d) { return d.endDayBalance; }),
         xOffset = 0.3 * (max - min),
         startD = parseDate(rawData.start),
         todayD = parseDate(rawData.now),
@@ -40,7 +40,7 @@ function drawDiagram(rawData) {
 
     for (i = 0; i < rawData.dayReports.length; i++) {
         var dayDate = parseDate(rawData.dayReports[i].dateTime);
-        var dayBalance = rawData.dayReports[i].dayBalance;
+        var startDayBalance = rawData.dayReports[i].startDayBalance;
         var transactions = rawData.dayReports[i].transactions;
         var goals = rawData.dayReports[i].goals;
         var tense = "";
@@ -48,20 +48,20 @@ function drawDiagram(rawData) {
 
         //Следующие три ифа - индусский код, не знаю как переписать по-нормальному
         if (!(todayD > dayDate) && !(todayD < dayDate)) {
-            pastLine.push({ date: dayDate, balance: dayBalance });
-            futureLine.push({ date: dayDate, balance: dayBalance });
+            pastLine.push({ date: dayDate, balance: startDayBalance });
+            futureLine.push({ date: dayDate, balance: startDayBalance });
             tense = "now";
             dotColor = nowDotColor;
         }
 
         if (todayD > dayDate) {
-            pastLine.push({ date: dayDate, balance: dayBalance });
+            pastLine.push({ date: dayDate, balance: startDayBalance });
             tense = "past";
             dotColor = pastDotColor;
         }
 
         if (todayD < dayDate) {
-            futureLine.push({ date: dayDate, balance: dayBalance });
+            futureLine.push({ date: dayDate, balance: startDayBalance });
             tense = "future";
             dotColor = futureDotColor;
         }
@@ -69,7 +69,7 @@ function drawDiagram(rawData) {
         if (transactions.length > 0 || goals.length > 0)
             events.push({ 
                 date: dayDate, 
-                balance: dayBalance, 
+                balance: startDayBalance, 
                 transactions: transactions, 
                 goals: goals, 
                 tense: tense, 
@@ -170,6 +170,8 @@ function drawDiagram(rawData) {
             });
 
         function printEvents(eventId, events) {
+            
+
             //Enter
             d3.select(eventId)
                 .selectAll("p")
@@ -177,12 +179,19 @@ function drawDiagram(rawData) {
                 .enter()
                 .append("p")
                 .attr('class', 'card-text');
-
+            
             //Update
             d3.select(eventId)
                 .selectAll("p")
                 .data(events)
-                .text(function (d) { return d.title + " " + d.amount + d.currency; })
+                .html(function (d) { 
+                    var transactionTypeIcon;
+                    console.log(d);
+                    if (d.transactionType == 'INCOME')
+                        transactionTypeIcon = '<i class="material-icons btn-outline-dark" style="border-radius:20px; font-size: 24px; padding:3px;">keyboard_arrow_up</i>';
+                    if (d.transactionType == 'COST')
+                        transactionTypeIcon = '<i class="material-icons btn-outline-dark" style="border-radius:20px; font-size: 24px; padding:3px;">keyboard_arrow_down</i>';
+                    return transactionTypeIcon + d.title + " " + d.amount + d.currency; })
 
             //Exit
             d3.select(eventId)

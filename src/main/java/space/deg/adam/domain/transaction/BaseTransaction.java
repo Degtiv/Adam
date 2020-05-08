@@ -49,6 +49,15 @@ public class BaseTransaction {
     @NonNull
     protected Status status;
 
+    public void setAmount (BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            transactionType = TransactionType.COST;
+            amount = amount.negate();
+        }
+
+        this.amount = amount;
+    }
+
     public void setDate(String dateText) {
         date = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
     }
@@ -137,13 +146,13 @@ public class BaseTransaction {
         }
 
         protected void fillFields(BaseTransaction baseTransaction) {
+            baseTransaction.setTransactionType(transactionType);
             baseTransaction.setUser(user);
             baseTransaction.setDescription(description);
             baseTransaction.setTitle(title);
             baseTransaction.setDate(date);
             baseTransaction.setAmount(amount);
             baseTransaction.setCurrency(currency);
-            baseTransaction.setTransactionType(transactionType);
             baseTransaction.setStatus(status);
         }
 
