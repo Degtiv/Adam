@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.operation.Operation;
 import space.deg.adam.domain.operation.operation_rule.OperationRule;
+import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.OperationRepository;
 import space.deg.adam.service.OperationService;
@@ -52,6 +53,7 @@ public class OperationsController {
             @RequestParam String startDateText,
             @RequestParam String endDateText,
             @RequestParam BigDecimal amount,
+            @RequestParam String transactionType,
             @RequestParam String description,
             @RequestParam String rule,
             @RequestParam String ruleParameter,
@@ -69,6 +71,7 @@ public class OperationsController {
                 .ruleParameter(ruleParameter)
                 .category(Category.byTitle(category))
                 .currency("RUR")
+                .transactionType(TransactionType.byTitle(transactionType))
                 .build();
 
         operationService.addOperation(operation);
@@ -86,6 +89,7 @@ public class OperationsController {
                                       @RequestParam String startDateText,
                                       @RequestParam String endDateText,
                                       @RequestParam BigDecimal amount,
+                                      @RequestParam String transactionType,
                                       @RequestParam String description,
                                       @RequestParam String rule,
                                       @RequestParam String ruleParameter,
@@ -101,6 +105,7 @@ public class OperationsController {
         operation.setRule(OperationRule.byTitle(rule));
         operation.setRuleParameter(ruleParameter);
         operation.setCategory(Category.byTitle(category));
+        operation.setTransactionType(TransactionType.byTitle(transactionType));
 
         operationService.saveOperation(operation);
 

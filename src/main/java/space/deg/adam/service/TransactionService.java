@@ -11,15 +11,15 @@ public class TransactionService {
     private TransactionRepository transactionRepository;
 
     @Autowired
-    private BalanceService balanceService;
+    private MilestoneService milestoneService;
 
     public void addTransaction(Transaction transaction) {
         transactionRepository.save(transaction);
-        balanceService.updateBalance(transaction.getUser(), transaction.getDate(),transaction.getAmount());
+        milestoneService.addTransactionToMilestones(transaction.getUser(), transaction);
     }
 
     public void deleteTransaction(Transaction transaction) {
-        balanceService.updateBalance(transaction.getUser(), transaction.getDate(), transaction.getAmount().negate());
+        milestoneService.removeTransactionFromMilestones(transaction.getUser(), transaction);
         transactionRepository.delete(transaction);
     }
 }

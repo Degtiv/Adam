@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="firstEnterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -31,10 +31,19 @@
 
                                 <div id="howMuchItCostDiv" class="form-group first-enter-hidden-div">
                                     <label for="howMuchItCostInput" id="howMuchItCostLabel">Сколько это стоит?</label>
-                                    <input type="number" step="0.01" class="form-control"
-                                           id="howMuchItCostInput"
-                                           placeholder="50000.00" name="amount" required>
+                                    <div class="input-group-prepend">
+                                        <input style="border-radius: 50px 0 0 50px;"
+                                                type="number" step="0.01" class="form-control"
+                                               id="howMuchItCostInput"
+                                               placeholder="50000.00" name="amount" required>
+                                        <div id="currencyDiv" class="input-group-append">
+                                            <span style="border-radius: 0 50px 50px 0;"
+                                                  class="input-group-text" id="currency_label">RUR</span>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                             </div>
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                         </div>
@@ -69,7 +78,7 @@
 
 <script>
     $(document).ready(function () {
-        $('#myModal').modal('show');
+        $('#firstEnterModal').modal('show');
         $('#over-btn').click(function() {
             $( "#over-first-enter" ).submit();
         });

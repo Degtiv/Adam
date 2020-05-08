@@ -12,9 +12,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
-@Table(name = "balances")
+@Table(name = "milestones")
 @Data
-public class Balance {
+public class Milestone {
     @Id
     @Column(length = 100)
     private String uuid;
@@ -33,12 +33,16 @@ public class Balance {
     @NonNull
     private String currency;
 
-    public Balance() {
+    public Milestone() {
         this.uuid = UUID.randomUUID().toString();
     }
 
     public void increaseAmount(BigDecimal amount) {
         this.amount = this.amount.add(amount);
+    }
+
+    public void decreaseAmount(BigDecimal amount) {
+        increaseAmount(amount.negate());
     }
 
     public void setDate(LocalDateTime date) {
@@ -92,13 +96,13 @@ public class Balance {
             return this;
         }
 
-        public Balance build() {
-            Balance balance = new Balance();
-            balance.setUser(user);
-            balance.setDate(date);
-            balance.setAmount(amount);
-            balance.setCurrency(currency);
-            return balance;
+        public Milestone build() {
+            Milestone milestone = new Milestone();
+            milestone.setUser(user);
+            milestone.setDate(date);
+            milestone.setAmount(amount);
+            milestone.setCurrency(currency);
+            return milestone;
         }
     }
 }

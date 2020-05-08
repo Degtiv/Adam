@@ -6,6 +6,16 @@
 
 <form method="post" enctype="multipart/form-data">
     <div class="input-group mb-2">
+
+        <div class="btn-group btn-group-toggle mr-1" data-toggle="buttons">
+            <label class="btn btn-outline-success active">
+                <input type="radio" name="transactionType" id="option1" autocomplete="off" checked value="Income"/>Income
+            </label>
+            <label class="btn btn-outline-warning">
+                <input type="radio" name="transactionType" id="option2" autocomplete="off" value="Cost"/>Cost
+            </label>
+        </div>
+
         <div class="input-group-prepend">
             <span class="input-group-text" id="title_input">Title</span>
         </div>
@@ -21,10 +31,15 @@
         <div class="input-group-prepend ml-1">
             <span class="input-group-text" id="amount_input">Amount</span>
         </div>
-        <input type="number" class="form-control" placeholder="0.00" aria-label="amount"
+        <input type="number" step="0.01" class="form-control" placeholder="0.00" aria-label="amount"
                aria-describedby="amount_input" name="amount" required>
+        <div class="input-group-append">
+            <span class="input-group-text" id="currency_label">RUR</span>
+        </div>
+    </div>
 
-        <div class="input-group-prepend ml-1">
+    <div class="input-group mb-2">
+        <div class="input-group-prepend">
             <label class="input-group-text" for="category_input">Category</label>
         </div>
         <select class="custom-select" id="category_input" name="category">
@@ -32,10 +47,8 @@
                 <option value="${category.title}">${category.title}</option>
             </#list>
         </select>
-    </div>
 
-    <div class="input-group mb-2">
-        <div class="input-group-prepend">
+        <div class="input-group-prepend ml-1">
             <span class="input-group-text" id="description_input">Description</span>
         </div>
         <input type="text" class="form-control" placeholder="Description" aria-label="description"
@@ -63,6 +76,21 @@
 <#list transactions as transaction>
 <form class="form-inline" method="post" action="/transactions/save/${transaction.uuid}" id="save_transaction_form">
     <div class="clearfix input-group-sm">
+        <div class="btn-group btn-group-toggle ml-1" data-toggle="buttons">
+            <label class="btn btn-outline-success <#if transaction.transactionType.title == "Income">active</#if>"
+                    style="padding: 1px; border-bottom-left-radius:0px;">
+                <input type="radio" name="transactionType" autocomplete="off"
+                       <#if transaction.transactionType.title == "Income">checked</#if>
+                       value="Income"/>+
+            </label>
+            <label class="btn btn-outline-warning <#if transaction.transactionType.title == "Cost">active</#if>"
+                   style="padding: 3px; border-top-right-radius:0px;">
+                <input type="radio" name="transactionType" autocomplete="off"
+                       <#if transaction.transactionType.title == "Cost">checked</#if>
+                       value="Cost"/>-
+            </label>
+        </div>
+
         <label class="sr-only" for="title_input_${transaction.uuid}">Title</label>
         <input type="text" class="form-control my-1 mr-sm-2" id="title_input_${transaction.uuid}" value="${transaction.title}" name="title" required>
 
