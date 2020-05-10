@@ -87,8 +87,18 @@
         }
 
         #goals-info, #transactions-info {
-            padding-top: 5px;
+            padding-top: 3px;
+
         }
+
+        #goals-info p, #transactions-info p {
+            margin-bottom: -2px;
+        }
+
+        #goals-info i, #transactions-info i {
+            vertical-align: middle;
+        }
+
     </style>
     <title>Adam - finconsult</title>
 </head>

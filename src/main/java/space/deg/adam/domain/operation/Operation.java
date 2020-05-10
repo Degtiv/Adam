@@ -69,6 +69,15 @@ public class Operation {
     @JsonIgnore
     private Set<Transaction> transactions = new HashSet<>();
 
+    public void setAmount (BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            transactionType = TransactionType.COST;
+            amount = amount.negate();
+        }
+
+        this.amount = amount;
+    }
+
     public Operation() {
         this.uuid = UUID.randomUUID().toString();
     }

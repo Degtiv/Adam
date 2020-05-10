@@ -22,6 +22,12 @@
 
 <div id="overview-diagram">
 </div>
+<div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="show-dots-checkbox" checked>
+        <label class="custom-control-label" for="show-dots-checkbox">Show dots</label>
+    </div>
+</div>
 
 <div  class="">
 

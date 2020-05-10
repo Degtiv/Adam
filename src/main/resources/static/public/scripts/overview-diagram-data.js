@@ -15,6 +15,13 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $('#show-dots-checkbox').change(function () {
+        var opacityValue = $('#show-dots-checkbox').prop('checked') ? 1 : 0;
+        $('.dot').attr('opacity', opacityValue);
+    });
+});
+
+$(document).ready(function () {
     $('#overview_diagram_date_to').on('input', function () {
         getOverviewDiagramData();
     });

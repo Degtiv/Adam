@@ -58,7 +58,7 @@ public class OperationsController {
             @RequestParam String rule,
             @RequestParam String ruleParameter,
             @RequestParam String category,
-            Model model) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+            Model model) {
 
         Operation operation = Operation.builder()
                 .user(user)
@@ -97,6 +97,7 @@ public class OperationsController {
                                       Model model) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         if (!operation.getUser().is(user)) return redirectPage("notPermited");
 
+        operation.setTransactionType(TransactionType.byTitle(transactionType));
         operation.setTitle(title);
         operation.setStartDate(LocalDate.parse(startDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay());
         operation.setEndDate(LocalDate.parse(endDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay());
@@ -105,7 +106,6 @@ public class OperationsController {
         operation.setRule(OperationRule.byTitle(rule));
         operation.setRuleParameter(ruleParameter);
         operation.setCategory(Category.byTitle(category));
-        operation.setTransactionType(TransactionType.byTitle(transactionType));
 
         operationService.saveOperation(operation);
 

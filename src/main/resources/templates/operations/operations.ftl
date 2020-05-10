@@ -6,6 +6,15 @@
 
 <form method="post" enctype="multipart/form-data">
     <div class="input-group mb-2">
+        <div class="btn-group btn-group-toggle mr-1" data-toggle="buttons">
+            <label class="btn btn-outline-success active">
+                <input type="radio" name="transactionType" id="option1" autocomplete="off" checked value="Income"/>Income
+            </label>
+            <label class="btn btn-outline-warning">
+                <input type="radio" name="transactionType" id="option2" autocomplete="off" value="Cost"/>Cost
+            </label>
+        </div>
+
         <div class="input-group-prepend">
             <span class="input-group-text" id="title_input">Title</span>
         </div>
@@ -75,6 +84,21 @@
 <#list operations as operation>
 <form class="form-inline" method="post" action="/operations/save/${operation.uuid}" id="save_operation_form">
     <div class="clearfix input-group-sm">
+
+        <div class="btn-group btn-group-toggle ml-1" data-toggle="buttons">
+            <label class="btn btn-outline-success <#if operation.transactionType.title == "Income">active</#if>"
+                    style="padding: 1px; border-bottom-left-radius:0px;">
+                <input type="radio" name="transactionType" autocomplete="off"
+                    <#if operation.transactionType.title == "Income">checked</#if>
+                    value="Income"/>+
+            </label>
+            <label class="btn btn-outline-warning <#if operation.transactionType.title == "Cost">active</#if>"
+                    style="padding: 3px; border-top-right-radius:0px;">
+                <input type="radio" name="transactionType" autocomplete="off"
+                    <#if operation.transactionType.title == "Cost">checked</#if>
+                    value="Cost"/>-
+            </label>
+        </div>
 
         <label class="sr-only" for="title_input_${operation.uuid}">Title</label>
         <input type="text" class="form-control my-1 mr-sm-2" id="title_input_${operation.uuid}" value="${operation.title}" name="title" required>

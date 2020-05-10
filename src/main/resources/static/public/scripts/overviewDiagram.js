@@ -18,7 +18,6 @@ function drawDiagram(rawData) {
         futureDotColor = "#dddddd",
         activeDotColor = "#EA0037",
         goalDotColor = "#6FF8AD";
-    console.log(rawData);
     $('#overview-diagram').empty();
 
     var svg = d3.select("#overview-diagram").append("svg")
@@ -84,7 +83,6 @@ function drawDiagram(rawData) {
         }
     }
 
-    console.log(goalsTotal)
     // создаем ось X
     var xAxis = d3.svg.axis()
         .scale(scaleX)
@@ -179,8 +177,6 @@ function drawDiagram(rawData) {
                     .style("top", - 100 + "%");
             });
 
-        console.log(goalsTotal);
-
         svg.selectAll(".goal-dot")
             .data(goalsTotal)
             .enter().append("polygon")
@@ -256,11 +252,10 @@ function drawDiagram(rawData) {
                 .data(baseTransactions)
                 .html(function (d) {
                     var transactionTypeIcon;
-                    console.log(d);
                     if (d.transactionType == 'INCOME')
-                        transactionTypeIcon = '<i class="material-icons btn-outline-dark" style="border-radius:20px; font-size: 24px; padding:3px;">keyboard_arrow_up</i>';
+                        transactionTypeIcon = '<i class="material-icons btn-outline-dark" style="border-radius:20px; margin-bottom: 3px; color: #00C000;">keyboard_arrow_up</i>';
                     if (d.transactionType == 'COST')
-                        transactionTypeIcon = '<i class="material-icons btn-outline-dark" style="border-radius:20px; font-size: 24px; padding:3px;">keyboard_arrow_down</i>';
+                        transactionTypeIcon = '<i class="material-icons btn-outline-dark" style="border-radius:20px; margin-bottom: 3px; color: #C00000;">keyboard_arrow_down</i>';
                     return transactionTypeIcon + d.title + " " + d.amount + d.currency; })
 
             //Exit
