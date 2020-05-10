@@ -206,6 +206,7 @@ public class Operation {
 
         public Operation build() {
             Operation operation = new Operation();
+            operation.setTransactionType(transactionType);
             operation.setUser(user);
             operation.setDescription(description);
             operation.setTitle(title);
@@ -213,7 +214,6 @@ public class Operation {
             operation.setEndDate(endDate);
             operation.setAmount(amount);
             operation.setCurrency(currency);
-            operation.setTransactionType(transactionType);
             operation.setCategory(category);
             operation.setRule(rule);
             operation.setRuleParameter(ruleParameter);
