@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.operation.Operation;
 import space.deg.adam.domain.operation.operation_rule.OperationRule;
+import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.OperationRepository;
 import space.deg.adam.service.OperationService;
@@ -52,11 +53,12 @@ public class OperationsController {
             @RequestParam String startDateText,
             @RequestParam String endDateText,
             @RequestParam BigDecimal amount,
+            @RequestParam String transactionType,
             @RequestParam String description,
             @RequestParam String rule,
             @RequestParam String ruleParameter,
             @RequestParam String category,
-            Model model) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+            Model model) {
 
         Operation operation = Operation.builder()
                 .user(user)
@@ -69,6 +71,7 @@ public class OperationsController {
                 .ruleParameter(ruleParameter)
                 .category(Category.byTitle(category))
                 .currency("RUR")
+                .transactionType(TransactionType.byTitle(transactionType))
                 .build();
 
         operationService.addOperation(operation);
@@ -86,6 +89,7 @@ public class OperationsController {
                                       @RequestParam String startDateText,
                                       @RequestParam String endDateText,
                                       @RequestParam BigDecimal amount,
+                                      @RequestParam String transactionType,
                                       @RequestParam String description,
                                       @RequestParam String rule,
                                       @RequestParam String ruleParameter,
@@ -93,6 +97,7 @@ public class OperationsController {
                                       Model model) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         if (!operation.getUser().is(user)) return redirectPage("notPermited");
 
+        operation.setTransactionType(TransactionType.byTitle(transactionType));
         operation.setTitle(title);
         operation.setStartDate(LocalDate.parse(startDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay());
         operation.setEndDate(LocalDate.parse(endDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay());

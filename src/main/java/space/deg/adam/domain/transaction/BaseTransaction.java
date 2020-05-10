@@ -44,7 +44,19 @@ public class BaseTransaction {
     protected String currency;
 
     @NonNull
+    protected TransactionType transactionType;
+
+    @NonNull
     protected Status status;
+
+    public void setAmount (BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            transactionType = TransactionType.COST;
+            amount = amount.negate();
+        }
+
+        this.amount = amount;
+    }
 
     public void setDate(String dateText) {
         date = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
@@ -85,6 +97,7 @@ public class BaseTransaction {
         protected LocalDateTime date;
         protected BigDecimal amount = BigDecimal.ZERO;
         protected String currency = "RUR";
+        protected TransactionType transactionType = TransactionType.INCOME;
         protected Status status = Status.PLANNED;
 
         public Builder user(User user) {
@@ -122,12 +135,18 @@ public class BaseTransaction {
             return this;
         }
 
+        public Builder transactionType(TransactionType transactionType) {
+            this.transactionType = transactionType;
+            return this;
+        }
+
         public Builder status(Status status) {
             this.status = status;
             return this;
         }
 
         protected void fillFields(BaseTransaction baseTransaction) {
+            baseTransaction.setTransactionType(transactionType);
             baseTransaction.setUser(user);
             baseTransaction.setDescription(description);
             baseTransaction.setTitle(title);

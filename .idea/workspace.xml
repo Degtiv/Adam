@@ -2,139 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/BaseTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/MilestoneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/LandingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/ApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/overview/OverviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/overview/OverviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/Balance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/Milestone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/DetailBalance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/DetailBalance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/goals/Goal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/goals/Goal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/goals/GoalUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/goals/GoalUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryDayStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryDayStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryMonthStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryMonthStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryNDaysStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryNDaysStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryWeekStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryWeekStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryYearStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryYearStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/FirstWorkingDayAfterStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/FirstWorkingDayAfterStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/LastWorkingDayBeforeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/LastWorkingDayBeforeStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/events/FirstEnterUserEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/events/FirstEnterUserEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/GoalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/GoalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/BaseTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/BaseTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/BalanceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/MilestoneRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/BalanceService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/goals/Goal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="49" column="33" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/BaseTransaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="129" column="23" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/LastWorkingDayBeforeStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/LandingController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryNDaysStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="44" column="36" lean-forward="true" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryWeekStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/FirstWorkingDayAfterStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryDayStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -147,40 +35,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>pictureUrl</find>
-      <find>prima</find>
-      <find>addImage</find>
-      <find>freem</find>
-      <find>return</find>
-      <find>redirectPage</find>
-      <find>delet</find>
-      <find>admin</find>
-      <find>add n</find>
-      <find>registra</find>
-      <find>setTitle</find>
-      <find>set</find>
-      <find>Transaction.</find>
-      <find>uploadPath</find>
-      <find>userRepository</find>
-      <find>adjustInto</find>
-      <find>userservice</find>
-      <find>MANIF</find>
-      <find>datetext</find>
-      <find>startD</find>
-      <find>prim</find>
-      <find>status</find>
-      <find>get</find>
-      <find>rule</find>
-      <find>system</find>
-      <find>.parse</find>
-      <find>onetom</find>
-    </findStrings>
-    <dirStrings>
-      <dir>C:\Users\degti\IdeaProjects\adam</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -190,328 +44,10 @@
     </option>
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/TransactionRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/ApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/service/OperationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryDayStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/Operation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryMonthStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryWeekStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/OperationRule.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryNDaysStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/EveryYearStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/FirstWorkingDayAfterStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operationrule/strategies/LastWorkingDayBeforeStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/OperationsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/config/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/firstEnter.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/events/AbstractEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/events/AbstractUserEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/UserEventRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/parts/common.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/UserEventsRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/events/FirstEnterUserEventRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/events/UserEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/RegistrationController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/registration.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/administrative/login.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/parts/firstEnter.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/application-remote.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/events/FirstEnterUserEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/goals/Goal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/common/Status.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryYearStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryMonthStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryWeekStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/FirstWorkingDayAfterStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryDayStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/LandingController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryNDaysStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/LastWorkingDayBeforeStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/BaseTransaction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/goals/Goal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java" />
-      </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="adam" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="adam" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="adam" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-          <item name="compiler" type="36feed69:MavenProjectsStructure$PluginNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="465" />
-    <option name="y" value="116" />
-    <option name="width" value="974" />
-    <option name="height" value="1057" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="administrative" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="goals" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="transactions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="balance" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="transaction" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="transaction" type="462c0819:PsiDirectoryNode" />
-              <item name="goals" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="administrative" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="goals" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="parts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="transactions" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
+  <component name="ProjectId" id="1bc8qS2CU7KcnfOGgDmGMzB6zyU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -522,23 +58,9 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\static\public" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\static" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\static.public" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources" />
-      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\images" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="space.deg.adam.repository.events" />
-      <recent name="space.deg.adam.repository" />
-      <recent name="space.deg.adam.domain.common" />
-      <recent name="space.deg.adam.domain.operation.operationrule.strategies" />
-      <recent name="space.deg.adam.controller.transactions" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates\parts" />
       <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\templates" />
@@ -546,18 +68,20 @@
       <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\static" />
       <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\static\images" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="space.deg.adam.domain.transaction" />
+      <recent name="space.deg.adam.repository.events" />
+      <recent name="space.deg.adam.repository" />
+      <recent name="space.deg.adam.domain.common" />
+      <recent name="space.deg.adam.domain.operation.operationrule.strategies" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\static\public" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\static" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\static.public" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources" />
+      <recent name="C:\Users\degti\IdeaProjects\adam\src\main\resources\images" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Start adam" type="MavenRunConfiguration" factoryName="Maven">
@@ -624,64 +148,6 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26807564" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.7912772" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8001066" visible="true" weight="0.3219107" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.39978564" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3290461" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.74040514" weight="0.30218068" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7201493" weight="0.14018692" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.19989339" side_tool="true" weight="0.33226153" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3290461" />
-      <window_info anchor="bottom" id="Log Analyzer" order="11" />
-      <window_info anchor="bottom" id="SOQL Query" order="12" />
-      <window_info anchor="bottom" id="Anonymous Apex" order="13" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.10021322" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.1724138" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2502781" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.7912772" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8001066" visible="true" weight="0.3219107" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.39978564" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3290461" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.74040514" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7201493" weight="0.29581994" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.19989339" side_tool="true" weight="0.33226153" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3290461" />
-      <window_info anchor="bottom" id="Log Analyzer" order="11" />
-      <window_info anchor="bottom" id="SOQL Query" order="12" />
-      <window_info anchor="bottom" id="Anonymous Apex" order="13" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.10021322" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.4321663" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-    </layout-to-restore>
-  </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
       <list>
@@ -697,22 +163,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -731,25 +182,69 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="goals added" />
     <MESSAGE value="upgrade UI" />
     <option name="LAST_COMMIT_MESSAGE" value="upgrade UI" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="453" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588920496386">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="453" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog/78.0.1842.1080@78.0.1842.1080" timestamp="1588920496386" />
+    <state x="653" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588922753903">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="653" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/78.0.1842.1080@78.0.1842.1080" timestamp="1588922753903" />
+    <state width="1799" height="287" key="GridCell.Tab.0.bottom" timestamp="1588928585565">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1799" height="287" key="GridCell.Tab.0.bottom/78.0.1842.1080@78.0.1842.1080" timestamp="1588928585565" />
+    <state width="1799" height="287" key="GridCell.Tab.0.center" timestamp="1588928585564">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1799" height="287" key="GridCell.Tab.0.center/78.0.1842.1080@78.0.1842.1080" timestamp="1588928585564" />
+    <state width="1799" height="287" key="GridCell.Tab.0.left" timestamp="1588928585564">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1799" height="287" key="GridCell.Tab.0.left/78.0.1842.1080@78.0.1842.1080" timestamp="1588928585564" />
+    <state width="1799" height="287" key="GridCell.Tab.0.right" timestamp="1588928585565">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1799" height="287" key="GridCell.Tab.0.right/78.0.1842.1080@78.0.1842.1080" timestamp="1588928585565" />
+    <state x="814" y="473" key="ReplaceDuplicatesPrompt" timestamp="1588923189186">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="814" y="473" key="ReplaceDuplicatesPrompt/78.0.1842.1080@78.0.1842.1080" timestamp="1588923189186" />
+    <state x="650" y="163" key="SettingsEditor" timestamp="1588920385501">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="650" y="163" key="SettingsEditor/78.0.1842.1080@78.0.1842.1080" timestamp="1588920385501" />
+    <state x="729" y="301" key="extract.method.dialog" timestamp="1588923183876">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="729" y="301" key="extract.method.dialog/78.0.1842.1080@78.0.1842.1080" timestamp="1588923183876" />
+    <state x="705" y="273" width="587" height="534" key="find.popup" timestamp="1588924380208">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="705" y="273" width="587" height="534" key="find.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1588924380208" />
+    <state x="655" y="250" key="run.anything.popup" timestamp="1588922352144">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="655" y="250" key="run.anything.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1588922352144" />
+    <state x="662" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1588927808917">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="662" y="235" width="672" height="678" key="search.everywhere.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1588927808917" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java</url>
-          <line>56</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java</url>
-          <line>147</line>
-          <properties />
+          <line>148</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -759,390 +254,6 @@
         <watch expression="detailBalance" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/operations/operations.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/utils/RequestsUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding>
-            <element signature="e#111#112#0" expanded="true" />
-            <element signature="e#153#154#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/overview/OverviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/OperationsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/firstEnter.ftl" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/config/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/OperationRuleStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/OperationRule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/AbstractStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/Operation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/user.ftl">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/userEditForm.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="89" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/UserEventRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/pageTitle.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/navbar.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/security.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/UserEventsRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/common.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="101" column="8" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/repository/events/FirstEnterUserEventRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1535#1536#0" expanded="true" />
-            <element signature="e#1595#1596#0" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1680#1681#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
-            <element signature="e#1764#1765#0" expanded="true" />
-            <element signature="e#1826#1827#0" expanded="true" />
-            <element signature="e#1853#1854#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#1934#1935#0" expanded="true" />
-            <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2051#2052#0" expanded="true" />
-            <element signature="e#2087#2088#0" expanded="true" />
-            <element signature="e#2133#2134#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/RegistrationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="51" column="53" selection-start-line="51" selection-start-column="53" selection-end-line="51" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/login.ftl">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/registration.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administrative/login.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="86" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/parts/firstEnter.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="110" column="50" selection-start-line="110" selection-start-column="50" selection-end-line="110" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#button#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/service/BalanceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="15" selection-start-line="7" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-remote.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/events/UserEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#873#874#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/user/events/FirstEnterUserEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/common/Status.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="38" column="15" selection-start-line="38" selection-start-column="15" selection-end-line="40" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/goals/goalEdit.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="43" column="72" selection-start-line="43" selection-start-column="72" selection-end-line="43" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/transactions/transactions.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="85" column="81" selection-start-line="85" selection-start-column="81" selection-end-line="85" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/goals/goals.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="60" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/goals/GoalUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/common/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryYearStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryMonthStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="63" column="48" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryWeekStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/FirstWorkingDayAfterStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryDayStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/EveryNDaysStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/goals/GoalsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/operation/operation_rule/strategies/LastWorkingDayBeforeStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/controller/LandingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/BaseTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="129" column="23" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="44" column="36" lean-forward="true" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/goals/Goal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="49" column="33" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

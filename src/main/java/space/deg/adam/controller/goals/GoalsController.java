@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import space.deg.adam.domain.common.Category;
+import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.transaction.goals.Goal;
 import space.deg.adam.domain.transaction.goals.GoalUtils;
-import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.GoalRepository;
 
@@ -100,6 +100,7 @@ public class GoalsController {
         goal.setTitle(title);
         goal.setDate(dateText);
         goal.setAmount(amount);
+        goal.setCurrency("RUR");
         goal.setDescription(description);
         goal.setStatus(Status.byTitle(status));
         goal.setUrl(url);

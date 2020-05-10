@@ -8,6 +8,7 @@ import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.operation.operation_rule.OperationRule;
 import space.deg.adam.domain.transaction.Transaction;
+import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
 
 import javax.persistence.*;
@@ -55,6 +56,9 @@ public class Operation {
     private String currency;
 
     @NonNull
+    private TransactionType transactionType;
+
+    @NonNull
     private Category category;
 
     @NonNull
@@ -64,6 +68,15 @@ public class Operation {
     @OneToMany(mappedBy = "operation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Transaction> transactions = new HashSet<>();
+
+    public void setAmount (BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            transactionType = TransactionType.COST;
+            amount = amount.negate();
+        }
+
+        this.amount = amount;
+    }
 
     public Operation() {
         this.uuid = UUID.randomUUID().toString();
@@ -130,6 +143,7 @@ public class Operation {
         private LocalDateTime endDate;
         private BigDecimal amount = BigDecimal.ZERO;
         private String currency = "RUR";
+        private TransactionType transactionType;
         private Category category = Category.BASE;
         private OperationRule rule;
         private String ruleParameter;
@@ -179,6 +193,11 @@ public class Operation {
             return this;
         }
 
+        public OperationBuilder transactionType(TransactionType transactionType) {
+            this.transactionType = transactionType;
+            return this;
+        }
+
         public OperationBuilder category(Category category) {
             this.category = category;
             return this;
@@ -196,6 +215,7 @@ public class Operation {
 
         public Operation build() {
             Operation operation = new Operation();
+            operation.setTransactionType(transactionType);
             operation.setUser(user);
             operation.setDescription(description);
             operation.setTitle(title);
