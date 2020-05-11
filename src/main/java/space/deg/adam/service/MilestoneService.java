@@ -10,6 +10,7 @@ import space.deg.adam.repository.MilestoneRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
 
 @Service
 public class MilestoneService {
@@ -39,8 +40,9 @@ public class MilestoneService {
     }
 
     public BigDecimal getLastAmountOfMilestoneToDate(User user, LocalDateTime dateTime) {
+        LocalDateTime firstDayOfMonth = dateTime.with(ChronoField.DAY_OF_MONTH, 1).with(ChronoField.MICRO_OF_DAY, 0);
         return milestoneRepository
-                .findByUserAndDateBefore(user, dateTime, Sort.by(Sort.Direction.DESC, "date"))
+                .findByUserAndDate(user, firstDayOfMonth, Sort.by(Sort.Direction.DESC, "date"))
                 .iterator()
                 .next()
                 .getAmount();

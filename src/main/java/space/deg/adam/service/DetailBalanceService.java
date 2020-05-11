@@ -39,7 +39,7 @@ public class DetailBalanceService {
         detailBalance.setNow(LocalDateTime.now().toLocalDate());
 
         BigDecimal endOfPreviousDayBalance = milestoneService.getLastAmountOfMilestoneToDate(user, start);
-        LocalDateTime iteratorDateTime = start.with(FirstSecondOfMonth.adjust());
+        LocalDateTime iteratorDateTime = start.with(ChronoField.DAY_OF_MONTH, 1).with(ChronoField.MICRO_OF_DAY, 0);
         while (!iteratorDateTime.isAfter(end)) {
             DetailBalance.DayReport dayReport = new DetailBalance.DayReport();
             dayReport.setDateTime(iteratorDateTime.toLocalDate());

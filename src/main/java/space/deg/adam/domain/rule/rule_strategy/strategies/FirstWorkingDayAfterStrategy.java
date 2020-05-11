@@ -1,8 +1,8 @@
-package space.deg.adam.domain.operation.operation_rule.strategies;
+package space.deg.adam.domain.rule.rule_strategy.strategies;
 
 import space.deg.adam.domain.common.Status;
-import space.deg.adam.domain.operation.Operation;
-import space.deg.adam.domain.operation.operation_rule.OperationRule;
+import space.deg.adam.domain.rule.Rule;
+import space.deg.adam.domain.rule.rule_strategy.RuleStrategy;
 import space.deg.adam.domain.transaction.Transaction;
 
 import java.time.DayOfWeek;
@@ -11,14 +11,14 @@ import java.time.temporal.TemporalAdjusters;
 
 public class FirstWorkingDayAfterStrategy extends AbstractStrategy{
     public FirstWorkingDayAfterStrategy() {
-        super.operationRule = OperationRule.FIRST_WORKING_DAY_AFTER;
+        super.ruleStrategy = RuleStrategy.FIRST_WORKING_DAY_AFTER;
     }
 
     @Override
-    public void generateTransactions(Operation operation) {
-        LocalDateTime iteratorDateTime = operation.getStartDate();
-        LocalDateTime end = operation.getEndDate();
-        int parameterDay = Integer.valueOf(operation.getRuleParameter());
+    public void generateTransactions(Rule rule) {
+        LocalDateTime iteratorDateTime = rule.getStartDate();
+        LocalDateTime end = rule.getEndDate();
+        int parameterDay = Integer.valueOf(rule.getRuleParameter());
 
         if (iteratorDateTime.getDayOfMonth() > parameterDay)
             iteratorDateTime = iteratorDateTime.plusMonths(1);
@@ -31,20 +31,20 @@ public class FirstWorkingDayAfterStrategy extends AbstractStrategy{
                 iteratorDateTime.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
 
             Transaction transaction = ((Transaction.Builder) Transaction.builder()
-                    .user(operation.getUser())
-                    .title(operation.getTitle())
+                    .user(rule.getUser())
+                    .title(rule.getTitle())
                     .date(iteratorDateTime)
-                    .amount(operation.getAmount())
+                    .amount(rule.getAmount())
                     .currency("RUR")
-                    .transactionType(operation.getTransactionType())
-                    .description(operation.getDescription())
+                    .transactionType(rule.getTransactionType())
+                    .description(rule.getDescription())
                     .status(Status.PLANNED))
-                    .category(operation.getCategory())
+                    .category(rule.getCategory())
                     .build();
 
-            transaction.setOperation(operation);
+            transaction.setRule(rule);
             transactionService.addTransaction(transaction);
-            operation.addTransaction(transaction);
+            rule.addTransaction(transaction);
             iteratorDateTime = iteratorDateTime.plusMonths(1);
         }
     }

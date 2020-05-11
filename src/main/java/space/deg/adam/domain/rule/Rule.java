@@ -1,4 +1,4 @@
-package space.deg.adam.domain.operation;
+package space.deg.adam.domain.rule;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
-import space.deg.adam.domain.operation.operation_rule.OperationRule;
+import space.deg.adam.domain.rule.rule_strategy.RuleStrategy;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
@@ -22,11 +22,11 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "operations")
+@Table(name = "rules")
 @Data
 @EqualsAndHashCode(exclude = { "transactions"})
 @ToString(exclude = { "transactions"})
-public class Operation {
+public class Rule {
     @Id
     @Column(length = 100)
     private String uuid;
@@ -62,10 +62,10 @@ public class Operation {
     private Category category;
 
     @NonNull
-    private OperationRule rule;
+    private RuleStrategy ruleStrategy;
     private String ruleParameter;
 
-    @OneToMany(mappedBy = "operation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "rule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Transaction> transactions = new HashSet<>();
 
@@ -78,7 +78,7 @@ public class Operation {
         this.amount = amount;
     }
 
-    public Operation() {
+    public Rule() {
         this.uuid = UUID.randomUUID().toString();
     }
 
@@ -99,8 +99,8 @@ public class Operation {
     }
 
     @JsonIgnore
-    public String getRuleString() {
-        return rule.getTitle();
+    public String getRuleStrategyString() {
+        return ruleStrategy.getTitle();
     }
 
     @JsonIgnore
@@ -131,11 +131,11 @@ public class Operation {
         this.transactions.add(transaction);
     }
 
-    public static OperationBuilder builder() {
-        return new OperationBuilder();
+    public static RuleBuilder builder() {
+        return new RuleBuilder();
     }
 
-    public static class OperationBuilder {
+    public static class RuleBuilder {
         private User user;
         private String title = "No title";
         private String description;
@@ -145,88 +145,88 @@ public class Operation {
         private String currency = "RUR";
         private TransactionType transactionType;
         private Category category = Category.BASE;
-        private OperationRule rule;
+        private RuleStrategy ruleStrategy;
         private String ruleParameter;
 
-        public OperationBuilder user(User user) {
+        public RuleBuilder user(User user) {
             this.user = user;
             return this;
         }
 
-        public OperationBuilder title(String title) {
+        public RuleBuilder title(String title) {
             this.title = title;
             return this;
         }
 
-        public OperationBuilder description(String description) {
+        public RuleBuilder description(String description) {
             this.description = description;
             return this;
         }
 
-        public OperationBuilder startDate(LocalDateTime startDate) {
+        public RuleBuilder startDate(LocalDateTime startDate) {
             this.startDate = startDate;
             return this;
         }
 
-        public OperationBuilder startDate(String dateText) {
+        public RuleBuilder startDate(String dateText) {
             startDate = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
             return this;
         }
 
-        public OperationBuilder endDate(LocalDateTime endDate) {
+        public RuleBuilder endDate(LocalDateTime endDate) {
             this.endDate = endDate;
             return this;
         }
 
-        public OperationBuilder endDate(String dateText) {
+        public RuleBuilder endDate(String dateText) {
             endDate = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
             return this;
         }
 
-        public OperationBuilder amount(BigDecimal amount) {
+        public RuleBuilder amount(BigDecimal amount) {
             this.amount = amount;
             return this;
         }
 
-        public OperationBuilder currency(String currency) {
+        public RuleBuilder currency(String currency) {
             this.currency = currency;
             return this;
         }
 
-        public OperationBuilder transactionType(TransactionType transactionType) {
+        public RuleBuilder transactionType(TransactionType transactionType) {
             this.transactionType = transactionType;
             return this;
         }
 
-        public OperationBuilder category(Category category) {
+        public RuleBuilder category(Category category) {
             this.category = category;
             return this;
         }
 
-        public OperationBuilder rule(OperationRule rule) {
-            this.rule = rule;
+        public RuleBuilder ruleStrategy(RuleStrategy ruleStrategy) {
+            this.ruleStrategy = ruleStrategy;
             return this;
         }
 
-        public OperationBuilder ruleParameter(String ruleParameter) {
+        public RuleBuilder ruleParameter(String ruleParameter) {
             this.ruleParameter = ruleParameter;
             return this;
         }
 
-        public Operation build() {
-            Operation operation = new Operation();
-            operation.setTransactionType(transactionType);
-            operation.setUser(user);
-            operation.setDescription(description);
-            operation.setTitle(title);
-            operation.setStartDate(startDate);
-            operation.setEndDate(endDate);
-            operation.setAmount(amount);
-            operation.setCurrency(currency);
-            operation.setCategory(category);
-            operation.setRule(rule);
-            operation.setRuleParameter(ruleParameter);
-            return operation;
+        public Rule build() {
+            Rule rule = new Rule();
+            rule.setTransactionType(transactionType);
+            rule.setUser(user);
+            rule.setDescription(description);
+            rule.setTitle(title);
+            rule.setStartDate(startDate);
+            rule.setEndDate(endDate);
+            rule.setAmount(amount);
+            rule.setCurrency(currency);
+            rule.setCategory(category);
+            rule.setRuleStrategy(ruleStrategy);
+            rule.setRuleParameter(ruleParameter);
+            return rule;
         }
     }
 }
