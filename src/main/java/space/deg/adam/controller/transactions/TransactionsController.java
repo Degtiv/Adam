@@ -99,7 +99,6 @@ public class TransactionsController {
         transaction.setStatus(Status.byTitle(status));
         transaction.setCategory(Category.byTitle(category));
 
-        transactionRepository.save(transaction);
         transactionService.addTransaction(transaction);
 
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));

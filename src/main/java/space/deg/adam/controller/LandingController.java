@@ -12,8 +12,8 @@ import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.transaction.goals.Goal;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.domain.user.events.FirstEnterUserEvent;
-import space.deg.adam.repository.GoalRepository;
 import space.deg.adam.repository.UserRepository;
+import space.deg.adam.service.GoalService;
 
 import java.math.BigDecimal;
 
@@ -23,7 +23,7 @@ public class LandingController {
     UserRepository userRepository;
 
     @Autowired
-    GoalRepository goalRepository;
+    GoalService goalService;
 
     @GetMapping("/landing")
     public String greeting(Model model) {
@@ -61,7 +61,7 @@ public class LandingController {
 
         userRepository.save(user);
 
-        goalRepository.save(goal);
+        goalService.addGoal(goal);
         return "redirect:/goals";
     }
 

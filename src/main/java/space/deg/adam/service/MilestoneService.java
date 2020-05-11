@@ -3,6 +3,7 @@ package space.deg.adam.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import space.deg.adam.domain.transaction.BaseTransaction;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
@@ -17,23 +18,23 @@ public class MilestoneService {
     @Autowired
     private MilestoneRepository milestoneRepository;
 
-    public void addTransactionToMilestones(User user, Transaction transaction) {
-        milestoneRepository.findByUserAndDateAfter(user, transaction.getDate()).forEach(milestone -> {
-            if (transaction.getTransactionType() == TransactionType.INCOME)
-                milestone.increaseAmount(transaction.getAmount());
-            if (transaction.getTransactionType() == TransactionType.COST)
-                milestone.decreaseAmount(transaction.getAmount());
+    public void addTransactionToMilestones(User user, BaseTransaction baseTransaction) {
+        milestoneRepository.findByUserAndDateAfter(user, baseTransaction.getDate()).forEach(milestone -> {
+            if (baseTransaction.getTransactionType() == TransactionType.INCOME)
+                milestone.increaseAmount(baseTransaction.getAmount());
+            if (baseTransaction.getTransactionType() == TransactionType.COST)
+                milestone.decreaseAmount(baseTransaction.getAmount());
 
             milestoneRepository.save(milestone);
         });
     }
 
-    public void removeTransactionFromMilestones(User user, Transaction transaction) {
-        milestoneRepository.findByUserAndDateAfter(user, transaction.getDate()).forEach(balance -> {
-            if (transaction.getTransactionType() == TransactionType.INCOME)
-                balance.decreaseAmount(transaction.getAmount());
-            if (transaction.getTransactionType() == TransactionType.COST)
-                balance.increaseAmount(transaction.getAmount());
+    public void removeTransactionFromMilestones(User user, BaseTransaction baseTransaction) {
+        milestoneRepository.findByUserAndDateAfter(user, baseTransaction.getDate()).forEach(balance -> {
+            if (baseTransaction.getTransactionType() == TransactionType.INCOME)
+                balance.decreaseAmount(baseTransaction.getAmount());
+            if (baseTransaction.getTransactionType() == TransactionType.COST)
+                balance.increaseAmount(baseTransaction.getAmount());
 
             milestoneRepository.save(balance);
         });

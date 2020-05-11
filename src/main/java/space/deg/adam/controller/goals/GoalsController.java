@@ -13,6 +13,7 @@ import space.deg.adam.domain.transaction.goals.Goal;
 import space.deg.adam.domain.transaction.goals.GoalUtils;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.GoalRepository;
+import space.deg.adam.service.GoalService;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -26,6 +27,9 @@ import static space.deg.adam.utils.RequestsUtils.redirectPage;
 public class GoalsController {
     @Autowired
     private GoalRepository goalRepository;
+
+    @Autowired
+    private GoalService goalService;
 
     @Value("${upload.path}")
     private String uploadPath;
@@ -67,7 +71,7 @@ public class GoalsController {
 
         GoalUtils.saveImage(uploadPath, image, goal);
 
-        goalRepository.save(goal);
+        goalService.addGoal(goal);
         Iterable<Goal> goals = goalRepository.findByUser(user);
         model.addAttribute("goals", goals);
         model.addAttribute("categories", Category.values());
@@ -96,7 +100,7 @@ public class GoalsController {
                                    @RequestParam String category,
                                    Model model) throws ParseException {
         if (!goal.getUser().is(user)) return redirectPage("notPermited");
-
+        goalService.deleteGoal(goal);
         goal.setTitle(title);
         goal.setDate(dateText);
         goal.setAmount(amount);
@@ -106,7 +110,7 @@ public class GoalsController {
         goal.setUrl(url);
         goal.setCategory(Category.byTitle(category));
 
-        goalRepository.save(goal);
+        goalService.addGoal(goal);
         model.addAttribute("goal", goal);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
@@ -147,7 +151,7 @@ public class GoalsController {
                              @AuthenticationPrincipal User user,
                              Model model) {
         if (!goal.getUser().is(user)) return redirectPage("notPermited");
-        goalRepository.delete(goal);
+        goalService.deleteGoal(goal);
 
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
