@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/MilestoneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/ApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/administrative/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/overview/OverviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/overview/OverviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/controller/transactions/TransactionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/Balance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/Milestone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/DetailBalance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/DetailBalance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/BaseTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/transaction/BaseTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/BalanceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/repository/MilestoneRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/BalanceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/Milestone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/Milestone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/TransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/MilestoneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/MilestoneService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +26,12 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/goal_extends_transaction" />
+        <entry key="$PROJECT_DIR$" value="feature/goals_on_diagram_and_transaction_type" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectId" id="1bc8qS2CU7KcnfOGgDmGMzB6zyU" />
@@ -139,15 +129,6 @@
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
       <list>
@@ -198,22 +179,38 @@
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="653" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/78.0.1842.1080@78.0.1842.1080" timestamp="1588922753903" />
-    <state width="1799" height="287" key="GridCell.Tab.0.bottom" timestamp="1588928585565">
+    <state width="1799" height="287" key="GridCell.Tab.0.bottom" timestamp="1589188692625">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="1799" height="287" key="GridCell.Tab.0.bottom/78.0.1842.1080@78.0.1842.1080" timestamp="1588928585565" />
-    <state width="1799" height="287" key="GridCell.Tab.0.center" timestamp="1588928585564">
+    <state width="1799" height="287" key="GridCell.Tab.0.bottom/78.0.1842.1080@78.0.1842.1080" timestamp="1589188692625" />
+    <state width="1799" height="287" key="GridCell.Tab.0.center" timestamp="1589188692625">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="1799" height="287" key="GridCell.Tab.0.center/78.0.1842.1080@78.0.1842.1080" timestamp="1588928585564" />
-    <state width="1799" height="287" key="GridCell.Tab.0.left" timestamp="1588928585564">
+    <state width="1799" height="287" key="GridCell.Tab.0.center/78.0.1842.1080@78.0.1842.1080" timestamp="1589188692625" />
+    <state width="1799" height="287" key="GridCell.Tab.0.left" timestamp="1589188692625">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="1799" height="287" key="GridCell.Tab.0.left/78.0.1842.1080@78.0.1842.1080" timestamp="1588928585564" />
-    <state width="1799" height="287" key="GridCell.Tab.0.right" timestamp="1588928585565">
+    <state width="1799" height="287" key="GridCell.Tab.0.left/78.0.1842.1080@78.0.1842.1080" timestamp="1589188692625" />
+    <state width="1799" height="287" key="GridCell.Tab.0.right" timestamp="1589188692625">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="1799" height="287" key="GridCell.Tab.0.right/78.0.1842.1080@78.0.1842.1080" timestamp="1588928585565" />
+    <state width="1799" height="287" key="GridCell.Tab.0.right/78.0.1842.1080@78.0.1842.1080" timestamp="1589188692625" />
+    <state width="1799" height="363" key="GridCell.Tab.1.bottom" timestamp="1589109392685">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1799" height="363" key="GridCell.Tab.1.bottom/78.0.1842.1080@78.0.1842.1080" timestamp="1589109392685" />
+    <state width="1799" height="363" key="GridCell.Tab.1.center" timestamp="1589109392685">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1799" height="363" key="GridCell.Tab.1.center/78.0.1842.1080@78.0.1842.1080" timestamp="1589109392685" />
+    <state width="1799" height="363" key="GridCell.Tab.1.left" timestamp="1589109392685">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1799" height="363" key="GridCell.Tab.1.left/78.0.1842.1080@78.0.1842.1080" timestamp="1589109392685" />
+    <state width="1799" height="363" key="GridCell.Tab.1.right" timestamp="1589109392685">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1799" height="363" key="GridCell.Tab.1.right/78.0.1842.1080@78.0.1842.1080" timestamp="1589109392685" />
     <state x="814" y="473" key="ReplaceDuplicatesPrompt" timestamp="1588923189186">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
@@ -222,22 +219,26 @@
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="650" y="163" key="SettingsEditor/78.0.1842.1080@78.0.1842.1080" timestamp="1588920385501" />
+    <state x="170" y="92" width="1658" height="896" key="VCS.FileHistoryDialog" timestamp="1589105496444">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="170" y="92" width="1658" height="896" key="VCS.FileHistoryDialog/78.0.1842.1080@78.0.1842.1080" timestamp="1589105496444" />
     <state x="729" y="301" key="extract.method.dialog" timestamp="1588923183876">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="729" y="301" key="extract.method.dialog/78.0.1842.1080@78.0.1842.1080" timestamp="1588923183876" />
-    <state x="705" y="273" width="587" height="534" key="find.popup" timestamp="1588924380208">
+    <state x="705" y="273" width="632" height="534" key="find.popup" timestamp="1589105979332">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="705" y="273" width="587" height="534" key="find.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1588924380208" />
+    <state x="705" y="273" width="632" height="534" key="find.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1589105979332" />
     <state x="655" y="250" key="run.anything.popup" timestamp="1588922352144">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="655" y="250" key="run.anything.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1588922352144" />
-    <state x="662" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1588927808917">
+    <state x="662" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1589106000872">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="662" y="235" width="672" height="678" key="search.everywhere.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1588927808917" />
+    <state x="662" y="235" width="672" height="678" key="search.everywhere.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1589106000872" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -76,7 +76,6 @@ public class OperationsController {
 
         operationService.addOperation(operation);
 
-        System.out.println(operation);
         Iterable<Operation> operations = operationRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "startDate"));
         fillModel(model, operations);
         return redirectPage("operations");

@@ -9,7 +9,7 @@ function drawDiagram(rawData) {
         goalsTotal = [],
         min = d3.min(rawData.dayReports, function (d) { return d.endDayBalance; }),
         max = d3.max(rawData.dayReports, function (d) { return d.endDayBalance; }),
-        xOffset = 0.3 * (max - min),
+        xOffset = 100 + Math.abs(0.3 * (max - min)),
         startD = parseDate(rawData.start, "%Y-%m-%d"),
         todayD = parseDate(rawData.now, "%Y-%m-%d"),
         endD = parseDate(rawData.end, "%Y-%m-%d"),
@@ -19,7 +19,9 @@ function drawDiagram(rawData) {
         activeDotColor = "#EA0037",
         goalDotColor = "#6FF8AD";
     $('#overview-diagram').empty();
-
+    console.log(xOffset);
+    console.log(max + xOffset);
+    console.log(min - xOffset);
     var svg = d3.select("#overview-diagram").append("svg")
         .attr("class", "axis")
         .attr("width", width)
@@ -114,13 +116,23 @@ function drawDiagram(rawData) {
     createChart(futureLine, futureDotColor, g);
     createDots(baseTransactions);
 
+    //Линия сегодняшнего дня
     g.append("line")
         .attr("x1", scaleX(todayD) + margin)
         .attr("y1", 0 + margin)
         .attr("x2", scaleX(todayD) + margin)
         .attr("y2", yAxisLength + margin)
         .style("stroke", "#30d5c8")
-        .style("stroke-width", 2);
+        .style("stroke-width", 1);
+
+    //Линия нуля
+    g.append("line")
+        .attr("x1", 0 + margin)
+        .attr("y1", scaleY(0) + margin)
+        .attr("x2", xAxisLength + margin)
+        .attr("y2", scaleY(0) + margin)
+        .style("stroke", activeDotColor)
+        .style("stroke-width", 1);
 
     // общая функция для создания графиков
     function createChart(data, colorStroke, g) {
@@ -133,7 +145,7 @@ function drawDiagram(rawData) {
         g.append("path")
             .attr("d", line(data))
             .style("stroke", colorStroke)
-            .style("stroke-width", 2);
+            .style("stroke-width", );
     };
 
     function createDots(data) {

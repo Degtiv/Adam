@@ -38,25 +38,24 @@ public class DetailBalanceService {
         detailBalance.setEnd(end.toLocalDate());
         detailBalance.setNow(LocalDateTime.now().toLocalDate());
 
-        BigDecimal endOfPreviousDayBalance = milestoneService.getLastBalanceToDate(user, start);
+        BigDecimal endOfPreviousDayBalance = milestoneService.getLastAmountOfMilestoneToDate(user, start);
         LocalDateTime iteratorDateTime = start.with(FirstSecondOfMonth.adjust());
         while (!iteratorDateTime.isAfter(end)) {
+            DetailBalance.DayReport dayReport = new DetailBalance.DayReport();
+            dayReport.setDateTime(iteratorDateTime.toLocalDate());
+            dayReport.setStartDayBalance(endOfPreviousDayBalance);
+            dayReport.setEndDayBalance(endOfPreviousDayBalance);
+            getTransactions(user, iteratorDateTime).forEach(dayReport::addTransactionToDayReport);
+            getGoals(user, iteratorDateTime).forEach(dayReport::addGoalToDayReport);
+            endOfPreviousDayBalance = dayReport.getEndDayBalance();
+
             if (iteratorDateTime.isEqual(start) || iteratorDateTime.isEqual(end) ||
                     iteratorDateTime.isAfter(start) && iteratorDateTime.isBefore(end)) {
-                DetailBalance.DayReport dayReport = new DetailBalance.DayReport();
-                dayReport.setDateTime(iteratorDateTime.toLocalDate());
-                dayReport.setStartDayBalance(endOfPreviousDayBalance);
-                dayReport.setEndDayBalance(endOfPreviousDayBalance);
-                getTransactions(user, iteratorDateTime).forEach(dayReport::addTransactionToDayReport);
-                getGoals(user, iteratorDateTime).forEach(dayReport::addGoalToDayReport);
                 detailBalance.addDayReport(dayReport);
-
-                endOfPreviousDayBalance = dayReport.getEndDayBalance();
             }
 
             iteratorDateTime = iteratorDateTime.plusDays(1);
         }
-        System.out.println("exit detailBalance " + detailBalance);
         return detailBalance;
     }
 

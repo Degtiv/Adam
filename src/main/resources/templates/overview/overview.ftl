@@ -9,7 +9,6 @@
 
 <div class="input-group mb-3">
     <div class="input-group-prepend">
-
         <input type="date" class="form-control my-1 mr-sm-2" aria-label="From" aria-describedby="from-label"
                id="overview_diagram_date_from" value="2020-03-01" required>
 
@@ -17,17 +16,17 @@
                id="overview_diagram_date_to" value="2020-03-02" required>
 
         <input type="hidden" id="refresh-input" csrf="${_csrf.token}"/>
+
+        <div class="custom-control custom-checkbox col-12" style="margin: auto;">
+            <input type="checkbox" class="custom-control-input" id="show-dots-checkbox" checked>
+            <label class="custom-control-label" for="show-dots-checkbox">Show dots</label>
+        </div>
     </div>
 </div>
 
 <div id="overview-diagram">
 </div>
-<div>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="show-dots-checkbox" checked>
-        <label class="custom-control-label" for="show-dots-checkbox">Show dots</label>
-    </div>
-</div>
+
 
 <div  class="">
 

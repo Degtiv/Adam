@@ -38,7 +38,7 @@ public class MilestoneService {
         });
     }
 
-    public BigDecimal getLastBalanceToDate(User user, LocalDateTime dateTime) {
+    public BigDecimal getLastAmountOfMilestoneToDate(User user, LocalDateTime dateTime) {
         return milestoneRepository
                 .findByUserAndDateBefore(user, dateTime, Sort.by(Sort.Direction.DESC, "date"))
                 .iterator()

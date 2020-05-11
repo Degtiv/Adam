@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
 import java.util.UUID;
 
 @Entity
@@ -99,7 +100,7 @@ public class Milestone {
         public Milestone build() {
             Milestone milestone = new Milestone();
             milestone.setUser(user);
-            milestone.setDate(date);
+            milestone.setDate(date.with(ChronoField.MICRO_OF_DAY, 0));
             milestone.setAmount(amount);
             milestone.setCurrency(currency);
             return milestone;

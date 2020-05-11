@@ -27,7 +27,6 @@ public class ApiController {
     public DetailBalance status(
             @AuthenticationPrincipal User user,
             @RequestBody OverviewDates dates) {
-        System.out.println("enter status");
         return detailBalanceService.getDetailBalance(user, dates.getStart(), dates.getEnd());
     }
 
