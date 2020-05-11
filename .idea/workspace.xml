@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/Milestone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/domain/balance/Milestone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/DetailBalanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/MilestoneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/space/deg/adam/service/MilestoneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/public/scripts/overviewDiagram.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/overview/overview.ftl" afterDir="false" />
-    </list>
+    <list default="true" id="b9ad9eae-a73c-4a87-9247-d6e78fd3f89c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,22 +172,22 @@
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="653" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/78.0.1842.1080@78.0.1842.1080" timestamp="1588922753903" />
-    <state width="1799" height="287" key="GridCell.Tab.0.bottom" timestamp="1589188692625">
+    <state width="1799" height="287" key="GridCell.Tab.0.bottom" timestamp="1589188811466">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="1799" height="287" key="GridCell.Tab.0.bottom/78.0.1842.1080@78.0.1842.1080" timestamp="1589188692625" />
-    <state width="1799" height="287" key="GridCell.Tab.0.center" timestamp="1589188692625">
+    <state width="1799" height="287" key="GridCell.Tab.0.bottom/78.0.1842.1080@78.0.1842.1080" timestamp="1589188811466" />
+    <state width="1799" height="287" key="GridCell.Tab.0.center" timestamp="1589188811466">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="1799" height="287" key="GridCell.Tab.0.center/78.0.1842.1080@78.0.1842.1080" timestamp="1589188692625" />
-    <state width="1799" height="287" key="GridCell.Tab.0.left" timestamp="1589188692625">
+    <state width="1799" height="287" key="GridCell.Tab.0.center/78.0.1842.1080@78.0.1842.1080" timestamp="1589188811466" />
+    <state width="1799" height="287" key="GridCell.Tab.0.left" timestamp="1589188811466">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="1799" height="287" key="GridCell.Tab.0.left/78.0.1842.1080@78.0.1842.1080" timestamp="1589188692625" />
-    <state width="1799" height="287" key="GridCell.Tab.0.right" timestamp="1589188692625">
+    <state width="1799" height="287" key="GridCell.Tab.0.left/78.0.1842.1080@78.0.1842.1080" timestamp="1589188811466" />
+    <state width="1799" height="287" key="GridCell.Tab.0.right" timestamp="1589188811466">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="1799" height="287" key="GridCell.Tab.0.right/78.0.1842.1080@78.0.1842.1080" timestamp="1589188692625" />
+    <state width="1799" height="287" key="GridCell.Tab.0.right/78.0.1842.1080@78.0.1842.1080" timestamp="1589188811466" />
     <state width="1799" height="363" key="GridCell.Tab.1.bottom" timestamp="1589109392685">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
@@ -227,10 +220,10 @@
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="729" y="301" key="extract.method.dialog/78.0.1842.1080@78.0.1842.1080" timestamp="1588923183876" />
-    <state x="705" y="273" width="632" height="534" key="find.popup" timestamp="1589105979332">
+    <state x="705" y="273" width="632" height="534" key="find.popup" timestamp="1589188809533">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="705" y="273" width="632" height="534" key="find.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1589105979332" />
+    <state x="705" y="273" width="632" height="534" key="find.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1589188809533" />
     <state x="655" y="250" key="run.anything.popup" timestamp="1588922352144">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
