@@ -3,7 +3,7 @@ package space.deg.adam.domain.transaction;
 import lombok.Data;
 import org.springframework.lang.NonNull;
 import space.deg.adam.domain.common.Category;
-import space.deg.adam.domain.operation.Operation;
+import space.deg.adam.domain.rule.Rule;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,8 +17,8 @@ public class Transaction extends BaseTransaction {
     protected Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "operation_id")
-    protected Operation operation;
+    @JoinColumn(name = "rule_id")
+    protected Rule rule;
 
     public Transaction() {
         super();

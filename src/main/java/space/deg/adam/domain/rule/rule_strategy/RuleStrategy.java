@@ -1,12 +1,12 @@
-package space.deg.adam.domain.operation.operation_rule;
+package space.deg.adam.domain.rule.rule_strategy;
 
-import space.deg.adam.domain.operation.operation_rule.strategies.*;
+import space.deg.adam.domain.rule.rule_strategy.strategies.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-public enum OperationRule {
+public enum RuleStrategy {
     EVERY_DAY("Every day", EveryDayStrategy.class),
     EVERY_WEEK("Every week", EveryWeekStrategy.class),
     EVERY_MONTH("Every month", EveryMonthStrategy.class),
@@ -18,7 +18,7 @@ public enum OperationRule {
     private String title;
     private Class strategyClass;
 
-    OperationRule(String title, Class strategyClass) {
+    RuleStrategy(String title, Class strategyClass) {
         this.title = title;
         this.strategyClass = strategyClass;
     }
@@ -27,28 +27,28 @@ public enum OperationRule {
         return title;
     }
 
-    public OperationRuleStrategy getStrategyClass() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public AbstractStrategy getStrategyClass() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Constructor<?> cons = strategyClass.getConstructor();
         Object object = cons.newInstance();
-        return (OperationRuleStrategy) object;
+        return (AbstractStrategy) object;
     }
 
-    static public OperationRuleStrategy getStrategyByTitle(String title) throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
+    static public AbstractStrategy getStrategyByTitle(String title) throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
         Constructor<?> cons = byTitle(title).strategyClass.getConstructor();
         Object object = cons.newInstance();
-        return (OperationRuleStrategy) object;
+        return (AbstractStrategy) object;
     }
 
     public static String[] titles() {
         ArrayList<String> values = new ArrayList<>();
-        for (OperationRule status : OperationRule.values()) {
+        for (RuleStrategy status : RuleStrategy.values()) {
             values.add(status.getTitle());
         }
         return (String[]) values.toArray();
     }
 
-    public static OperationRule byTitle(String title) {
-        for (OperationRule status : values()) {
+    public static RuleStrategy byTitle(String title) {
+        for (RuleStrategy status : values()) {
             if (status.title.equals(title)) {
                 return status;
             }
@@ -58,7 +58,7 @@ public enum OperationRule {
 
     @Override
     public String toString() {
-        return "Operation rule {" +
+        return "Rule Strategy {" +
                 "title='" + title + '\'' +
                 "class='" + strategyClass.getName() + '\'' +
                 '}';

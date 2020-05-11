@@ -14,6 +14,7 @@ import space.deg.adam.repository.UserRepository;
 import space.deg.adam.utils.FirstSecondOfMonth;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.Map;
@@ -57,9 +58,9 @@ public class RegistrationController {
     }
 
     private void generateBalanceList(User user) {
-        LocalDateTime now = LocalDateTime.now().with(FirstSecondOfMonth.adjust());
-        LocalDateTime firstMonth = now.minusMonths(12);
-        LocalDateTime lastMonth = now.plusMonths(24);
+        LocalDateTime firstDayOfMonth = LocalDateTime.now().with(ChronoField.DAY_OF_MONTH, 1).with(ChronoField.MICRO_OF_DAY, 0);
+        LocalDateTime firstMonth = firstDayOfMonth.minusMonths(12);
+        LocalDateTime lastMonth = firstDayOfMonth.plusMonths(24);
         long monthsBetween = ChronoUnit.MONTHS.between(firstMonth, lastMonth);
         for (long month = 0; month < monthsBetween; month++) {
             LocalDateTime dateTime = firstMonth.plusMonths(month);

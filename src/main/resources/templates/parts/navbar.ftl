@@ -19,7 +19,7 @@
                 <a class="nav-link" href="/goals">Goals</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operations">Operations</a>
+                <a class="nav-link" href="/rules">Rules</a>
             </li>
             <#if isAdmin>
                 <li class="nav-item">

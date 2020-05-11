@@ -19,9 +19,6 @@ function drawDiagram(rawData) {
         activeDotColor = "#EA0037",
         goalDotColor = "#6FF8AD";
     $('#overview-diagram').empty();
-    console.log(xOffset);
-    console.log(max + xOffset);
-    console.log(min - xOffset);
     var svg = d3.select("#overview-diagram").append("svg")
         .attr("class", "axis")
         .attr("width", width)
