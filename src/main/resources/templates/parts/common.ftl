@@ -23,9 +23,16 @@
 
     <link rel="icon" type="image/png" href="public/adam.png">
     <style>
-        .form-control {
-            border-radius:100px;
+        .form-control, .form-control::after {
+            border-radius: 15px !important;
         }
+
+        .form-control::after {
+            border: 1px solid #007bff;
+            color: #007bff;
+            background-color: white;
+        }
+
         .btn {
             border-radius:100px;
         }

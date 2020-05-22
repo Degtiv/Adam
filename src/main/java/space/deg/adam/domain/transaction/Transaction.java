@@ -24,6 +24,12 @@ public class Transaction extends BaseTransaction {
         super();
     }
 
+    public Transaction(Transaction transaction) {
+        super(transaction);
+        this.category = transaction.category;
+        this.rule = transaction.rule;
+    }
+
     public static Builder builder() {
         return new Builder();
     }

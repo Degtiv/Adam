@@ -3,11 +3,13 @@
 <#import "/parts/pageTitle.ftl" as pt>
 <@c.page>
 <@pt.pageTitle "Registration"/>
+<div class="col-6 container-fluid">
     <div>
 
         <p style="color:red;">
             ${message?ifExists}
         </p>
     </div>
-<@l.login "/registration" "Register"/>
+    <@l.login "/registration" "Register"/>
+</div>
 </@c.page>

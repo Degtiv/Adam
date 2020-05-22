@@ -14,7 +14,7 @@ public class EveryYearStrategy extends AbstractStrategy{
     }
 
     @Override
-    public void generateTransactions(Rule rule) {
+    public void generateTransactions(Rule rule, Transaction referenceTransaction) {
         LocalDateTime iteratorDateTime = rule.getStartDate();
         LocalDateTime end = rule.getEndDate();
         LocalDateTime parameterDay = LocalDateTime.parse(rule.getRuleParameter(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
@@ -23,17 +23,8 @@ public class EveryYearStrategy extends AbstractStrategy{
             iteratorDateTime = iteratorDateTime.plusYears(1);
 
         while (!iteratorDateTime.isAfter(end)) {
-            Transaction transaction = ((Transaction.Builder) Transaction.builder()
-                    .user(rule.getUser())
-                    .title(rule.getTitle())
-                    .date(iteratorDateTime)
-                    .amount(rule.getAmount())
-                    .currency("RUR")
-                    .transactionType(rule.getTransactionType())
-                    .description(rule.getDescription())
-                    .status(Status.PLANNED))
-                    .category(rule.getCategory())
-                    .build();
+            Transaction transaction = new Transaction(referenceTransaction);
+            transaction.setDate(iteratorDateTime);
 
             transaction.setRule(rule);
             transactionService.addTransaction(transaction);

@@ -21,13 +21,13 @@ public class RuleService {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    public void addRule(Rule rule) {
+    public void addRule(Rule rule, Transaction referenceTransaction) {
         ruleRepository.save(rule);
 
         try {
             AbstractStrategy strategy = rule.getRuleStrategy().getStrategyClass();
             strategy.setTransactionService(transactionService);
-            strategy.generateTransactions(rule);
+            strategy.generateTransactions(rule, referenceTransaction);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
             e.printStackTrace();
         }
