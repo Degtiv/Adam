@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public enum Status {
     PLANNED("Planned"),
     IN_PROGRESS("In progress"),
-    COME_TRUE("Come true");
+    DECLINED("Declined"),
+    CONFIRMED("Confirmed");
 
     private String title;
 

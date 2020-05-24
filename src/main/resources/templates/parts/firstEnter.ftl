@@ -20,20 +20,20 @@
                                  class="modal-body first-enter-modal-showed-div col-lg-12 col-md-12">
                                 <div id="whatDoYouWantDiv" class="form-group first-enter-primary-div">
                                     <label for="whatDoYouWantLabel" id="whatDoYouWantLabel">Что вы хотите?</label>
-                                    <input type="text" class="form-control" id="whatDoYouWantInput"
+                                    <input type="text" class="bottom-border-only form-control" id="whatDoYouWantInput"
                                            placeholder="Например: Купить ноутбук" name="title" required>
                                 </div>
 
                                 <div id="whatDateDiv" class="form-group first-enter-hidden-div">
                                     <label for="whatDateInput" id="whatDateLabel">К какому числу?</label>
-                                    <input type="date" class="form-control" id="whatDateInput" name="dateText" required>
+                                    <input type="date" class="bottom-border-only form-control" id="whatDateInput" name="dateText" required>
                                 </div>
 
                                 <div id="howMuchItCostDiv" class="form-group first-enter-hidden-div">
                                     <label for="howMuchItCostInput" id="howMuchItCostLabel">Сколько это стоит?</label>
                                     <div class="input-group-prepend">
                                         <input style="border-radius: 50px 0 0 50px;"
-                                                type="number" step="0.01" class="form-control"
+                                                type="number" step="0.01" class="bottom-border-only form-control"
                                                id="howMuchItCostInput"
                                                placeholder="50000.00" name="amount" required>
                                         <div id="currencyDiv" class="input-group-append">
@@ -112,7 +112,7 @@
         });
     });
 
-    /* https://stackoverflow.com/a/27829144 */
+    /* https://stackoverflow.com/a/27829144 прочитано, понято и изменено под нужды*/
     $(document).ready(function() {
         $('#finish-first-enter input').keyup(function() {
             var empty = false;

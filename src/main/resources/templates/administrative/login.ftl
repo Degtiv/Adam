@@ -3,7 +3,9 @@
 <#import "/parts/pageTitle.ftl" as pt>
 <@c.page>
 <@pt.pageTitle "Login page"/>
-    <@l.login "/login" "Sign in"/>
-    <hr>
-    <a class="btn btn-outline-primary" href="/registration" role="button">Registration</a>
+    <div class="col-6 container-fluid">
+        <@l.login "/login" "Sign in"/>
+        <hr>
+        <a class="btn btn-outline-primary" href="/registration" role="button">Registration</a>
+    </div>
 </@c.page>

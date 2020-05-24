@@ -80,9 +80,20 @@ public class BaseTransaction {
         return amount.setScale(2, RoundingMode.HALF_UP).toString().replaceAll(" ", "");
     }
 
-
     public BaseTransaction() {
         this.uuid = UUID.randomUUID().toString();
+    }
+
+    public BaseTransaction(BaseTransaction baseTransaction) {
+        this();
+        this.user = baseTransaction.user;
+        this.title = baseTransaction.title;
+        this.description = baseTransaction.description;
+        this.date = baseTransaction.date;
+        this.amount = baseTransaction.amount;
+        this.currency = baseTransaction.currency;
+        this.transactionType = baseTransaction.transactionType;
+        this.status = baseTransaction.status;
     }
 
     public static Builder builder() {

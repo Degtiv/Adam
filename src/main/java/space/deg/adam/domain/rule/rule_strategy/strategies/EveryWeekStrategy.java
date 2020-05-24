@@ -15,7 +15,7 @@ public class EveryWeekStrategy extends AbstractStrategy{
     }
 
     @Override
-    public void generateTransactions(Rule rule) {
+    public void generateTransactions(Rule rule, Transaction referenceTransaction) {
         LocalDateTime iteratorDateTime = rule.getStartDate();
         LocalDateTime end = rule.getEndDate();
         DayOfWeek parameterDay = DayOfWeek.valueOf(rule.getRuleParameter());
@@ -24,17 +24,9 @@ public class EveryWeekStrategy extends AbstractStrategy{
             iteratorDateTime = iteratorDateTime.with(TemporalAdjusters.next(parameterDay));
 
         while (!iteratorDateTime.isAfter(end)) {
-            Transaction transaction = ((Transaction.Builder)Transaction.builder()
-                    .user(rule.getUser())
-                    .title(rule.getTitle())
-                    .date(iteratorDateTime)
-                    .amount(rule.getAmount())
-                    .currency("RUR")
-                    .transactionType(rule.getTransactionType())
-                    .description(rule.getDescription())
-                    .status(Status.PLANNED))
-                    .category(rule.getCategory())
-                    .build();
+            Transaction transaction = new Transaction(referenceTransaction);
+            transaction.setRule(rule);
+            transaction.setDate(iteratorDateTime);
 
             transaction.setRule(rule);
             transactionService.addTransaction(transaction);

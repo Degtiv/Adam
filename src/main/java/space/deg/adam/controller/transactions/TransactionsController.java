@@ -2,17 +2,21 @@ package space.deg.adam.controller.transactions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.lang.Nullable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.common.Status;
+import space.deg.adam.domain.rule.Rule;
+import space.deg.adam.domain.rule.rule_strategy.RuleStrategy;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
 import space.deg.adam.service.MilestoneService;
+import space.deg.adam.service.RuleService;
 import space.deg.adam.service.TransactionService;
 
 import java.math.BigDecimal;
@@ -27,6 +31,9 @@ import static space.deg.adam.utils.RequestsUtils.redirectPage;
 public class TransactionsController {
     @Autowired
     TransactionService transactionService;
+
+    @Autowired
+    RuleService ruleService;
 
     @Autowired
     MilestoneService milestoneService;
@@ -54,6 +61,11 @@ public class TransactionsController {
             @RequestParam String description,
             @RequestParam String status,
             @RequestParam String category,
+            @RequestParam(required = false, defaultValue = "false") boolean isRepeated,
+            @RequestParam(required = false) String startDateText,
+            @RequestParam(required = false) String endDateText,
+            @RequestParam(required = false) String ruleStrategy,
+            @RequestParam(required = false) String ruleParameter,
             Model model) {
 
         Transaction transaction = ((Transaction.Builder) Transaction.builder()
@@ -68,8 +80,19 @@ public class TransactionsController {
                 .category(Category.byTitle(category))
                 .build();
 
-        transactionService.addTransaction(transaction);
+        if (isRepeated) {
+            Rule rule = Rule.builder()
+                    .user(user)
+                    .startDate(LocalDate.parse(startDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay())
+                    .endDate(LocalDate.parse(endDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay())
+                    .ruleStrategy(RuleStrategy.byTitle(ruleStrategy))
+                    .ruleParameter(ruleParameter)
+                    .build();
 
+            ruleService.addRule(rule, transaction);
+        } else {
+            transactionService.addTransaction(transaction);
+        }
 
         Iterable<Transaction> transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         fillModel(model, transactions);
@@ -124,6 +147,7 @@ public class TransactionsController {
         model.addAttribute("transactions", transactions);
         model.addAttribute("categories", Category.values());
         model.addAttribute("statuses", Status.values());
+        model.addAttribute("ruleStrategies", RuleStrategy.values());
     }
 
     @GetMapping("/deleteAll")

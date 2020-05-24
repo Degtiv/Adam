@@ -16,12 +16,17 @@ public class Transaction extends BaseTransaction {
     @NonNull
     protected Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "rule_id")
     protected Rule rule;
 
     public Transaction() {
         super();
+    }
+
+    public Transaction(Transaction transaction) {
+        super(transaction);
+        this.category = transaction.category;
     }
 
     public static Builder builder() {
