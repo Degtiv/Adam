@@ -28,9 +28,10 @@ public class LastWorkingDayBeforeStrategy extends AbstractStrategy{
         while (!iteratorDateTime.isAfter(end)) {
             if (iteratorDateTime.getDayOfWeek() == DayOfWeek.SATURDAY ||
                     iteratorDateTime.getDayOfWeek() == DayOfWeek.SUNDAY)
-                iteratorDateTime.with(TemporalAdjusters.previous(DayOfWeek.FRIDAY));
+                iteratorDateTime = iteratorDateTime.with(TemporalAdjusters.previous(DayOfWeek.FRIDAY));
 
             Transaction transaction = new Transaction(referenceTransaction);
+            transaction.setRule(rule);
             transaction.setDate(iteratorDateTime);
 
             transaction.setRule(rule);

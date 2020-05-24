@@ -24,7 +24,7 @@
     <link rel="icon" type="image/png" href="public/adam.png">
     <style>
         .form-control, .form-control::after {
-            border-radius: 15px !important;
+            border-radius: 13px !important;
         }
 
         .form-control::after {
@@ -34,7 +34,7 @@
         }
 
         .btn {
-            border-radius:100px;
+            border-radius:13px;
         }
         .first-enter-hidden-div {
             font-size: 1rem;
@@ -88,9 +88,7 @@
             width: 300px;
             padding: 2px;
             border: 1px #000 solid;
-            border-radius: 12px;*/
-         /*  pointer-events: none;	This line needs to be removed */
-
+            border-radius: 13px;
         }
 
         #goals-info, #transactions-info {

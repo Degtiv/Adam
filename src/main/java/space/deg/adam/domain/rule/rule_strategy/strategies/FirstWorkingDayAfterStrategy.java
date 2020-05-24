@@ -28,9 +28,10 @@ public class FirstWorkingDayAfterStrategy extends AbstractStrategy{
         while (!iteratorDateTime.isAfter(end)) {
             if (iteratorDateTime.getDayOfWeek() == DayOfWeek.SATURDAY ||
                     iteratorDateTime.getDayOfWeek() == DayOfWeek.SUNDAY)
-                iteratorDateTime.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+                iteratorDateTime = iteratorDateTime.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
 
             Transaction transaction = new Transaction(referenceTransaction);
+            transaction.setRule(rule);
             transaction.setDate(iteratorDateTime);
 
             transaction.setRule(rule);

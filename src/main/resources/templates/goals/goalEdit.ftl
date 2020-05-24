@@ -76,7 +76,7 @@
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
 </form>
 
-<div style="padding: 40px; width:100%; border: 1px solid #0069d9; border-radius: 70px;">
+<div style="padding: 40px; width:100%; border: 1px solid #0069d9; border-radius: 13px;">
     <form method="post" style="display:inline-block" enctype="multipart/form-data" action="/goals/edit/addImage/${goal.uuid}" id="add_image_form">
         <div class="input-group mb-3">
             <div class="input-group-prepend">

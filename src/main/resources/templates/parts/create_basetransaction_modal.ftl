@@ -23,7 +23,7 @@
                     <div class="input-group mb-2">
                         <div class="col-2">
                             <div class="input-group-prepend">
-                                <label for="titleInput" class="mr-3 col-form-label"><b>Title</b></label>
+                                <label for="titleInput" class="col-form-label"><b>Title</b></label>
                             </div>
                         </div>
                         <div class="col-10">
@@ -35,7 +35,7 @@
                     <div class="input-group mb-2">
                         <div class="col-2">
                             <div class="input-group-prepend">
-                                <label for="dateInput" class="mr-3 col-form-label">Date</label>
+                                <label for="dateInput" class="col-form-label">Date</label>
                             </div>
                         </div>
                         <div class="col-10">
@@ -47,7 +47,7 @@
                     <div class="input-group mb-2">
                         <div class="col-2">
                             <div class="input-group-prepend">
-                                <label for="amountInput" class="mr-3 col-form-label">Amount</label>
+                                <label for="amountInput" class="col-form-label">Amount</label>
                             </div>
                         </div>
                         <div class="col-9">
@@ -65,11 +65,11 @@
                     <div class="input-group mb-2">
                         <div class="col-2">
                             <div class="input-group-prepend">
-                                <label for="categoryInput" class="mr-3 col-form-label">Category</label>
+                                <label for="categoryInput" class="col-form-label">Category</label>
                             </div>
                         </div>
                         <div class="col-10">
-                            <select class="custom-select" style="border-radius:15px;" id="categoryInput" name="category">
+                            <select class="custom-select" style="border-radius:13px;" id="categoryInput" name="category">
                                 <#list categories as category>
                                     <option value="${category.title}">${category.title}</option>
                                 </#list>
@@ -80,11 +80,11 @@
                     <div class="input-group mb-2">
                         <div class="col-2">
                             <div class="input-group-prepend">
-                                <label for="statusInput" class="mr-3 col-form-label">Status</label>
+                                <label for="statusInput" class="col-form-label">Status</label>
                             </div>
                         </div>
                         <div class="col-10">
-                            <select class="custom-select"  style="border-radius:15px;" id="statusInput" name="status">
+                            <select class="custom-select"  style="border-radius:13px;" id="statusInput" name="status">
                                 <#list statuses as status>
                                     <option value="${status.title}">${status.title}</option>
                                 </#list>
@@ -95,11 +95,11 @@
                     <div class="input-group mb-2">
                         <div class="col-2">
                             <div class="input-group-prepend">
-                                <label for="descriptionInput" class="mr-3 col-form-label">Description</label>
+                                <label for="descriptionInput" class="col-form-label">Description</label>
                             </div>
                         </div>
                         <div class="col-10">
-                            <textarea id="descriptionInput" class="form-control  " aria-label="description"
+                            <textarea id="descriptionInput" class="form-control" aria-label="description"
                                 aria-describedby="description_input"
                                 placeholder="Description" id="exampleFormControlTextarea1" rows="3"
                                 name="description"

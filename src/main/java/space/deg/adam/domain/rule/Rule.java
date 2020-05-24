@@ -45,7 +45,8 @@ public class Rule {
     private RuleStrategy ruleStrategy;
     private String ruleParameter;
 
-    @OneToMany(mappedBy = "rule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany
+    @JoinColumn(name = "rule_id")
     @JsonIgnore
     private Set<Transaction> transactions = new HashSet<>();
 
@@ -95,7 +96,7 @@ public class Rule {
     }
 
     public void addTransaction(Transaction transaction) {
-        this.transactions.add(transaction);
+        transactions.add(transaction);
     }
 
     public static RuleBuilder builder() {

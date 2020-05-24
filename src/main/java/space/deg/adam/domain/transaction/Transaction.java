@@ -16,7 +16,7 @@ public class Transaction extends BaseTransaction {
     @NonNull
     protected Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "rule_id")
     protected Rule rule;
 
@@ -27,7 +27,6 @@ public class Transaction extends BaseTransaction {
     public Transaction(Transaction transaction) {
         super(transaction);
         this.category = transaction.category;
-        this.rule = transaction.rule;
     }
 
     public static Builder builder() {

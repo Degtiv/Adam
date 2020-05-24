@@ -20,6 +20,7 @@ public class EveryDayStrategy extends AbstractStrategy {
 
         while (!iteratorDateTime.isAfter(end)) {
             Transaction transaction = new Transaction(referenceTransaction);
+            transaction.setRule(rule);
             transaction.setDate(iteratorDateTime);
 
             transactionService.addTransaction(transaction);

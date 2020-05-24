@@ -25,12 +25,13 @@ public class EveryNDaysStrategy extends AbstractStrategy{
 
         while (!iteratorDateTime.isAfter(end)) {
             Transaction transaction = new Transaction(referenceTransaction);
+            transaction.setRule(rule);
             transaction.setDate(iteratorDateTime);
 
             transaction.setRule(rule);
             transactionService.addTransaction(transaction);
             rule.addTransaction(transaction);
-            iteratorDateTime = iteratorDateTime.plusMonths(1);
+            iteratorDateTime = iteratorDateTime.plusDays(parameterDay);
         }
     }
 }

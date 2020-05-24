@@ -22,7 +22,7 @@ public class RuleService {
     private TransactionRepository transactionRepository;
 
     public void addRule(Rule rule, Transaction referenceTransaction) {
-        ruleRepository.save(rule);
+        saveRule(rule);
 
         try {
             AbstractStrategy strategy = rule.getRuleStrategy().getStrategyClass();
@@ -32,7 +32,7 @@ public class RuleService {
             e.printStackTrace();
         }
 
-        ruleRepository.save(rule);
+        saveRule(rule);
     }
 
     public void saveRule(Rule rule) {
