@@ -58,6 +58,20 @@ public class BaseTransaction {
         this.amount = amount;
     }
 
+    public BigDecimal getGrantedAmount() {
+        BigDecimal grantedAmount = BigDecimal.ZERO;
+        if (transactionType == TransactionType.INCOME)
+            grantedAmount = amount;
+        if (transactionType == TransactionType.COST)
+            grantedAmount = amount.negate();
+
+        return grantedAmount;
+    }
+
+    public boolean isAct() {
+        return status == Status.CONFIRMED || !date.isBefore(LocalDateTime.now());
+    }
+
     public void setDate(String dateText) {
         date = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
     }

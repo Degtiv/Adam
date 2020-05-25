@@ -20,23 +20,19 @@ public class MilestoneService {
 
     public void addTransactionToMilestones(User user, BaseTransaction baseTransaction) {
         milestoneRepository.findByUserAndDateAfter(user, baseTransaction.getDate()).forEach(milestone -> {
-            if (baseTransaction.getTransactionType() == TransactionType.INCOME)
-                milestone.increaseAmount(baseTransaction.getAmount());
-            if (baseTransaction.getTransactionType() == TransactionType.COST)
-                milestone.decreaseAmount(baseTransaction.getAmount());
+            if (baseTransaction.isAct())
+                milestone.increaseAmount(baseTransaction.getGrantedAmount());
 
             milestoneRepository.save(milestone);
         });
     }
 
     public void removeTransactionFromMilestones(User user, BaseTransaction baseTransaction) {
-        milestoneRepository.findByUserAndDateAfter(user, baseTransaction.getDate()).forEach(balance -> {
-            if (baseTransaction.getTransactionType() == TransactionType.INCOME)
-                balance.decreaseAmount(baseTransaction.getAmount());
-            if (baseTransaction.getTransactionType() == TransactionType.COST)
-                balance.increaseAmount(baseTransaction.getAmount());
+        milestoneRepository.findByUserAndDateAfter(user, baseTransaction.getDate()).forEach(milestone -> {
+            if(baseTransaction.isAct())
+                milestone.decreaseAmount(baseTransaction.getGrantedAmount());
 
-            milestoneRepository.save(balance);
+            milestoneRepository.save(milestone);
         });
     }
 
