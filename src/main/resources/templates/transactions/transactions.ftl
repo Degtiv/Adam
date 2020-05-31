@@ -3,11 +3,40 @@
 
 <#import "/parts/pageTitle.ftl" as pt>
 <@pt.pageTitle "Transactions"/>
+        <form class="form-inline" method="post" action="/transactions/filter" id="filter_transaction_form">
+            <div class="input-group-prepend input-group-sm mr-4">
+                <h5>Filter</h5>
+                <h6 class="ml-1">
+                <#if !filter.getClear()>
+                    <span class="badge badge-success">active</span>
+                </#if>
+                </h6>
+            </div>
+            <div class="clearfix input-group-sm">
+                <label class="sr-only" for="from_date_input">From date</label>
+                <input type="date" class="form-control my-1" id="from_date_input" name="fromDateText"
+                        <#if !filter.getClear()>
+                            value="${filter.fromDateField}"
+                        </#if>
+                       required>
+                -
+                <label class="sr-only" for="to_date_input">To date</label>
+                <input type="date" class="form-control my-1 mr-sm-2" id="to_date_input" name="toDateText"
+                        <#if !filter.getClear()>
+                            value="${filter.toDateField}"
+                        </#if>
+                       required>
+
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                <button type="submit" class="btn btn-outline-primary btn-sm rounded ml-1">Filter</button>
+                <a href="/transactions/clear_filter" class="btn btn-outline-dark btn-sm rounded ml-1">Clear filter</a>
+            </div>
+        </form>
+<hr>
 
 <#import "/parts/create_basetransaction_modal.ftl" as btm>
 <@btm.add_basetransaction "Transaction"/>
 
-<hr>
 <#list transactions as transaction>
 <form class="form-inline" method="post" action="/transactions/save/${transaction.uuid}" id="save_transaction_form">
     <div class="clearfix input-group-sm">
@@ -34,7 +63,7 @@
 
         <label class="sr-only" for="amount_input_${transaction.uuid}">Amount</label>
         <input type="number" step="0.01" class="form-control" id="amount_input_${transaction.uuid}" value="${transaction.amountString}" name="amount" required>
-        <small id="passwordHelpInline" class="text-muted my-1 mr-sm-2">${transaction.currency}</small>
+        <small class="text-muted my-1 mr-sm-2">${transaction.currency}</small>
 
         <label class="sr-only" for="category_input_${transaction.uuid}">Category</label>
         <select class="custom-select my-1 mr-sm-2" id="category_input_${transaction.uuid}" name="category">
@@ -58,7 +87,5 @@
         <button type="submit" class="btn btn-outline-danger btn-sm rounded" formaction="/transactions/delete/${transaction.uuid}">Delete</button>
     </div>
 </form>
-<#else>
-Add your first transaction
 </#list>
 </@c.page>
