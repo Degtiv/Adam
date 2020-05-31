@@ -22,89 +22,9 @@
           rel="stylesheet">
 
     <link rel="icon" type="image/png" href="public/adam.png">
-    <style>
-        .form-control, .form-control::after {
-            border-radius: 13px !important;
-        }
 
-        .form-control::after {
-            border: 1px solid #007bff;
-            color: #007bff;
-            background-color: white;
-        }
+    <link rel="stylesheet" type="text/css" href="public/styles/base-styles.css">
 
-        .btn {
-            border-radius:13px;
-        }
-        .first-enter-hidden-div {
-            font-size: 1rem;
-            display: none;
-        }
-
-        .first-enter-primary-div {
-            font-size: 24px;
-            display: block;
-        }
-
-        .first-enter-secondary-div {
-            font-size: 1rem;
-            display: block;
-        }
-
-        .first-enter-modal-hidden-div {
-            display: none;
-        }
-
-        .first-enter-modal-showed-div {
-            display: inline-block;
-            vertical-align: top;
-        }
-
-        .page-title {
-            margin: 0px 0px 30px 0px;
-            text-align: center;
-        }
-
-        .axis path, .axis line {
-            fill: none;
-            stroke: #333;
-        }
-        .axis .grid-line {
-            stroke: #000;
-            stroke-opacity: 0.2;
-        }
-        .axis text {
-            font: 10px Verdana;
-        }
-        .dot {
-            stroke: steelblue;
-            fill: lightblue;
-        }
-
-        .overview-info {
-            opacity: 0;
-            background: white;
-            position: absolute;
-            width: 300px;
-            padding: 2px;
-            border: 1px #000 solid;
-            border-radius: 13px;
-        }
-
-        #goals-info, #transactions-info {
-            padding-top: 3px;
-
-        }
-
-        #goals-info p, #transactions-info p {
-            margin-bottom: -2px;
-        }
-
-        #goals-info i, #transactions-info i {
-            vertical-align: middle;
-        }
-
-    </style>
     <title>Adam - finconsult</title>
 </head>
 <body>
