@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import space.deg.adam.domain.balance.DetailBalance;
+import space.deg.adam.domain.common.Status;
+import space.deg.adam.domain.transaction.BaseTransaction;
+import space.deg.adam.domain.transaction.TransactionType;
 import space.deg.adam.domain.transaction.goals.Goal;
 import space.deg.adam.domain.transaction.Transaction;
 import space.deg.adam.domain.user.User;
@@ -45,8 +48,16 @@ public class DetailBalanceService {
             dayReport.setDateTime(iteratorDateTime.toLocalDate());
             dayReport.setStartDayBalance(endOfPreviousDayBalance);
             dayReport.setEndDayBalance(endOfPreviousDayBalance);
-            getTransactions(user, iteratorDateTime).forEach(dayReport::addTransactionToDayReport);
-            getGoals(user, iteratorDateTime).forEach(dayReport::addGoalToDayReport);
+            getTransactions(user, iteratorDateTime).forEach(t -> {
+                dayReport.addTransactionToDayReport(t);
+                if (t.isAct())
+                    dayReport.addToEndDayBalance(t.getGrantedAmount());
+            });
+            getGoals(user, iteratorDateTime).forEach(t -> {
+                dayReport.addGoalToDayReport(t);
+                if (t.isAct())
+                    dayReport.addToEndDayBalance(t.getGrantedAmount());
+            });
             endOfPreviousDayBalance = dayReport.getEndDayBalance();
 
             if (iteratorDateTime.isEqual(start) || iteratorDateTime.isEqual(end) ||

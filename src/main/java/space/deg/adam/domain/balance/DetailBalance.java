@@ -32,21 +32,14 @@ public class DetailBalance {
 
         public void addTransactionToDayReport(Transaction transaction) {
             transactions.add(transaction);
-            addBaseTransactionToDayBalance(transaction);
         }
 
         public void addGoalToDayReport(Goal goal) {
             goals.add(goal);
-            addBaseTransactionToDayBalance(goal);
         }
 
-        private void addBaseTransactionToDayBalance(BaseTransaction baseTransaction) {
-            BigDecimal increaseAmount = BigDecimal.ZERO;
-            if (baseTransaction.getTransactionType() == TransactionType.INCOME)
-                increaseAmount = baseTransaction.getAmount();
-            if (baseTransaction.getTransactionType() == TransactionType.COST)
-                increaseAmount = baseTransaction.getAmount().negate();
-            endDayBalance = endDayBalance.add(increaseAmount);
+        public void addToEndDayBalance(BigDecimal amount) {
+            endDayBalance = endDayBalance.add(amount);
         }
     }
 }
