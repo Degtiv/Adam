@@ -2,6 +2,7 @@ package space.deg.adam.controller.goals;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,16 +10,24 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import space.deg.adam.domain.common.Category;
 import space.deg.adam.domain.common.Status;
+import space.deg.adam.domain.transaction.filter.TransactionFilter;
+import space.deg.adam.domain.transaction.filter.TransactionFilterType;
 import space.deg.adam.domain.transaction.goals.Goal;
 import space.deg.adam.domain.transaction.goals.GoalUtils;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.GoalRepository;
 import space.deg.adam.service.GoalService;
+import space.deg.adam.service.TransactionFilterService;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
 
+import static space.deg.adam.constants.CommonConstants.MICRO_SECONDS_IN_DAY;
 import static space.deg.adam.utils.RequestsUtils.getGoalPage;
 import static space.deg.adam.utils.RequestsUtils.redirectPage;
 
@@ -31,16 +40,16 @@ public class GoalsController {
     @Autowired
     private GoalService goalService;
 
+    @Autowired
+    private TransactionFilterService transactionFilterService;
+
     @Value("${upload.path}")
     private String uploadPath;
 
     @GetMapping
     public String goals(@AuthenticationPrincipal User user,
                         Model model) {
-        Iterable<Goal> goals = goalRepository.findByUser(user);
-        model.addAttribute("goals", goals);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+        fillModelForGoals(model,user);
         return getGoalPage("goals");
     }
 
@@ -72,19 +81,16 @@ public class GoalsController {
         GoalUtils.saveImage(uploadPath, image, goal);
 
         goalService.addGoal(goal);
-        Iterable<Goal> goals = goalRepository.findByUser(user);
-        model.addAttribute("goals", goals);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+
+        fillModelForGoals(model, user);
         return redirectPage("goals");
     }
 
     @GetMapping("/edit/{goal}")
     public String goalEditForm(@AuthenticationPrincipal User user, @PathVariable Goal goal, Model model) {
         if (!goal.getUser().is(user)) return redirectPage("notPermited");
-        model.addAttribute("goal", goal);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+
+        fillModelForOneGoal(model, user, goal);
         return getGoalPage("goalEdit");
     }
 
@@ -111,9 +117,7 @@ public class GoalsController {
         goal.setCategory(Category.byTitle(category));
 
         goalService.addGoal(goal);
-        model.addAttribute("goal", goal);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+        fillModelForOneGoal(model, user, goal);
         return redirectToEditGoalPage(goal);
     }
 
@@ -125,9 +129,7 @@ public class GoalsController {
         goal.setImage(null);
 
         goalRepository.save(goal);
-        model.addAttribute("goal", goal);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+        fillModelForOneGoal(model, user, goal);
         return redirectToEditGoalPage(goal);
     }
 
@@ -140,9 +142,7 @@ public class GoalsController {
         GoalUtils.saveImage(uploadPath, image, goal);
 
         goalRepository.save(goal);
-        model.addAttribute("goal", goal);
-        model.addAttribute("categories", Category.values());
-        model.addAttribute("statuses", Status.values());
+        fillModelForOneGoal(model, user, goal);
         return redirectToEditGoalPage(goal);
     }
 
@@ -158,7 +158,63 @@ public class GoalsController {
         return redirectPage("goals");
     }
 
+    @PostMapping("/filter")
+    public String filterTransaction(
+            @AuthenticationPrincipal User user,
+            @RequestParam String fromDateText,
+            @RequestParam String toDateText,
+            Model model) {
+
+        LocalDateTime fromDate =  LocalDate.parse(fromDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+        LocalDateTime toDate =  LocalDate.parse(toDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+
+        transactionFilterService.setup(user, fromDate, toDate, TransactionFilterType.GOAL);
+
+        fillModelForGoals(model, user);
+        return redirectPage("goals");
+    }
+
+    @GetMapping("/clear_filter")
+    public String clearFilter(
+            @AuthenticationPrincipal User user,
+            Model model) {
+
+        transactionFilterService.clearFilter(user, TransactionFilterType.GOAL);
+
+        fillModelForGoals(model, user);
+        return redirectPage("goals");
+    }
+
     public String redirectToEditGoalPage(Goal goal) {
         return redirectPage("goals/edit/" + goal.getUuid());
+    }
+
+    private void fillModelForOneGoal(Model model, User user, Goal goal) {
+        model.addAttribute("goal", goal);
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("statuses", Status.values());
+    }
+
+    private void fillModelForGoals(Model model, User user) {
+        TransactionFilter filter = transactionFilterService.getFilter(user, TransactionFilterType.GOAL);
+        Iterable<Goal> goals = getGoalsByFilter(user, filter);
+        model.addAttribute("filter", filter);
+        model.addAttribute("goals", goals);
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("statuses", Status.values());
+    }
+
+    private Iterable<Goal> getGoalsByFilter(User user, TransactionFilter filter) {
+        Iterable<Goal> goals;
+
+        if (!filter.getIsActive())
+            goals = goalRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
+        else
+            goals = goalRepository.findByUserAndDateAfterAndDateBefore(user,
+                    filter.getFromDate().with(ChronoField.MICRO_OF_DAY, MICRO_SECONDS_IN_DAY - 1L).minusDays(1),
+                    filter.getToDate().with(ChronoField.MICRO_OF_DAY, 0).plusDays(1),
+                    Sort.by(Sort.Direction.DESC, "date"));
+
+        return goals;
     }
 }

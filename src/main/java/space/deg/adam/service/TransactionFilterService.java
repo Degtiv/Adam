@@ -2,7 +2,8 @@ package space.deg.adam.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import space.deg.adam.domain.transaction.TransactionFilter;
+import space.deg.adam.domain.transaction.filter.TransactionFilter;
+import space.deg.adam.domain.transaction.filter.TransactionFilterType;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionFilterRepository;
 
@@ -13,30 +14,31 @@ public class TransactionFilterService {
     @Autowired
     TransactionFilterRepository transactionFilterRepository;
 
-    public TransactionFilter getFilter(User user) {
-        TransactionFilter transactionFilter = transactionFilterRepository.findByUser(user);
+    public TransactionFilter getFilter(User user, TransactionFilterType transactionFilterType) {
+        TransactionFilter transactionFilter = transactionFilterRepository.findByUserAndType(user, transactionFilterType);
         if (transactionFilter == null) {
             transactionFilter = new TransactionFilter();
             transactionFilter.setUser(user);
+            transactionFilter.setType(transactionFilterType);
             transactionFilterRepository.save(transactionFilter);
         }
 
-        return transactionFilterRepository.findByUser(user);
+        return transactionFilterRepository.findByUserAndType(user, transactionFilterType);
     }
 
-    public void setup(User user, LocalDateTime fromDate, LocalDateTime toDate) {
-        TransactionFilter transactionFilter = getFilter(user);
+    public void setup(User user, LocalDateTime fromDate, LocalDateTime toDate, TransactionFilterType transactionFilterType) {
+        TransactionFilter transactionFilter = getFilter(user, transactionFilterType);
         transactionFilter.setup(fromDate, toDate);
         transactionFilterRepository.save(transactionFilter);
     }
 
-    public void clearFilter(User user) {
-        TransactionFilter transactionFilter = getFilter(user);
+    public void clearFilter(User user, TransactionFilterType transactionFilterType) {
+        TransactionFilter transactionFilter = getFilter(user, transactionFilterType);
         transactionFilter.clear();
         transactionFilterRepository.save(transactionFilter);
     }
 
-    public boolean isClear(User user) {
-        return getFilter(user).getClear();
+    public boolean isActive(User user, TransactionFilterType transactionFilterType) {
+        return getFilter(user, transactionFilterType).getIsActive();
     }
 }

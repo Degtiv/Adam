@@ -1,4 +1,4 @@
-package space.deg.adam.domain.transaction;
+package space.deg.adam.domain.transaction.filter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -22,12 +22,14 @@ public class TransactionFilter {
     @JsonIgnore
     protected User user;
 
+    protected TransactionFilterType type;
+
     @Column(columnDefinition = "TIMESTAMP")
     protected LocalDateTime fromDate;
 
     @Column(columnDefinition = "TIMESTAMP")
     protected LocalDateTime toDate;
-    protected Boolean clear;
+    protected Boolean isActive;
 
     public TransactionFilter() {
         this.uuid = UUID.randomUUID().toString();
@@ -37,11 +39,11 @@ public class TransactionFilter {
     public void setup(LocalDateTime fromDate, LocalDateTime toDate) {
         this.fromDate = fromDate;
         this.toDate = toDate;
-        clear = false;
+        isActive = true;
     }
 
     public void clear() {
-        clear = true;
+        isActive = false;
     }
 
     public String getFromDateField() {

@@ -1,6 +1,7 @@
 package space.deg.adam.repository;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import space.deg.adam.domain.rule.Rule;
 import space.deg.adam.domain.transaction.Transaction;

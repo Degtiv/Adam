@@ -1,61 +1,31 @@
-<div class="custom-control custom-checkbox col-12 mb-2" style="margin: auto;">
-    <input type="checkbox" class="custom-control-input" id="create_rule_checkbox"
-           data-toggle="collapse" data-target="#collapseExample"
-           aria-expanded="false" aria-controls="collapseExample" name="isRepeated">
-    <label class="custom-control-label" for="create_rule_checkbox">Create repeat rule</label>
-</div>
+<#macro basetransaction_filter type>
+    <form class="form-inline" method="post" action="/${type}/filter" id="filter_${type}_form">
+        <div class="input-group-prepend input-group-sm mr-4">
+            <h5>Filter</h5>
+            <h6 class="ml-1">
+                <#if filter.getIsActive()>
+                    <span class="badge badge-success">active</span>
+                </#if>
+            </h6>
+        </div>
+        <div class="clearfix input-group-sm">
+            <label class="sr-only" for="from_date_input">From date</label>
+            <input type="date" class="form-control my-1" id="from_date_input" name="fromDateText"
+            <#if filter.getIsActive()>
+                value="${filter.fromDateField}"
+            </#if>
+            required>
+            -
+            <label class="sr-only" for="to_date_input">To date</label>
+            <input type="date" class="form-control my-1 mr-sm-2" id="to_date_input" name="toDateText"
+            <#if filter.getIsActive()>
+                value="${filter.toDateField}"
+            </#if>
+            required>
 
-<div class="collapse" id="collapseExample">
-    <div class="input-group mb-2">
-        <div class="col-2">
-            <div class="input-group-prepend">
-                <label for="startDateInput" class="col-form-label">Start Date</label>
-            </div>
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button type="submit" class="btn btn-outline-primary btn-sm rounded ml-1">Filter</button>
+            <a href="/${type}/clear_filter" class="btn btn-outline-dark btn-sm rounded ml-1">Clear filter</a>
         </div>
-
-        <div class="col-10">
-            <input id="startDateInput" type="date" class="req form-control" aria-label="date" aria-describedby="start_date_input"
-                   name="startDateText" req>
-        </div>
-    </div>
-
-    <div class="input-group mb-2">
-        <div class="col-2">
-            <div class="input-group-prepend">
-                <label for="endDateInput" class="col-form-label">End Date</label>
-            </div>
-        </div>
-
-        <div class="col-10">
-            <input id="endDateInput" type="date" class="req form-control" aria-label="date" aria-describedby="end_date_input"
-                   name="endDateText" req>
-        </div>
-    </div>
-    <div class="input-group mb-2">
-        <div class="col-2">
-            <div class="input-group-prepend">
-                <label for="ruleInput" class="col-form-label">Rule</label>
-            </div>
-        </div>
-
-        <div class="col-10">
-            <select class="custom-select form-control" id="ruleInput" name="ruleStrategy">
-                <#list ruleStrategies as ruleStrategy>
-                <option value="${ruleStrategy.title}">${ruleStrategy.title}</option>
-            </#list>
-            </select>
-        </div>
-    </div>
-
-    <div class="input-group mb-2">
-        <div class="col-2">
-            <div class="input-group-prepend">
-                <label for="ruleParameterInput" class="col-form-label">Parameter</label>
-            </div>
-        </div>
-        <div class="col-10">
-            <input id="ruleParameterInput" type="text" class="req form-control  " placeholder="Rule parameter" aria-label="ruleParameter" aria-describedby="rule_parameter_input"
-                   name="ruleParameter">
-        </div>
-    </div>
-</div>
+    </form>
+</#macro>

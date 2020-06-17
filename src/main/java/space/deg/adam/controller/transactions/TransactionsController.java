@@ -11,8 +11,9 @@ import space.deg.adam.domain.common.Status;
 import space.deg.adam.domain.rule.Rule;
 import space.deg.adam.domain.rule.rule_strategy.RuleStrategy;
 import space.deg.adam.domain.transaction.Transaction;
-import space.deg.adam.domain.transaction.TransactionFilter;
+import space.deg.adam.domain.transaction.filter.TransactionFilter;
 import space.deg.adam.domain.transaction.TransactionType;
+import space.deg.adam.domain.transaction.filter.TransactionFilterType;
 import space.deg.adam.domain.user.User;
 import space.deg.adam.repository.TransactionRepository;
 import space.deg.adam.service.MilestoneService;
@@ -24,7 +25,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
 
+import static space.deg.adam.constants.CommonConstants.MICRO_SECONDS_IN_DAY;
 import static space.deg.adam.utils.RequestsUtils.getTransactionPage;
 import static space.deg.adam.utils.RequestsUtils.redirectPage;
 
@@ -162,7 +165,7 @@ public class TransactionsController {
         LocalDateTime fromDate =  LocalDate.parse(fromDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
         LocalDateTime toDate =  LocalDate.parse(toDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
 
-        transactionFilterService.setup(user, fromDate, toDate);
+        transactionFilterService.setup(user, fromDate, toDate, TransactionFilterType.TRANSACTION);
 
         fillModel(model, user);
         return redirectPage("transactions");
@@ -173,14 +176,14 @@ public class TransactionsController {
             @AuthenticationPrincipal User user,
             Model model) {
 
-        transactionFilterService.clearFilter(user);
+        transactionFilterService.clearFilter(user, TransactionFilterType.TRANSACTION);
 
         fillModel(model, user);
         return redirectPage("transactions");
     }
 
     private void fillModel(Model model, User user) {
-        TransactionFilter filter = transactionFilterService.getFilter(user);
+        TransactionFilter filter = transactionFilterService.getFilter(user, TransactionFilterType.TRANSACTION);
         Iterable<Transaction> transactions = getTransactionByFilter(user, filter);
         model.addAttribute("filter", filter);
         model.addAttribute("transactionTypes", TransactionType.values());
@@ -193,12 +196,12 @@ public class TransactionsController {
     private Iterable<Transaction> getTransactionByFilter(User user, TransactionFilter filter) {
         Iterable<Transaction> transactions;
 
-        if (filter.getClear())
+        if (!filter.getIsActive())
             transactions = transactionRepository.findByUser(user, Sort.by(Sort.Direction.DESC, "date"));
         else
             transactions = transactionRepository.findByUserAndDateAfterAndDateBefore(user,
-                    filter.getFromDate(),
-                    filter.getToDate(),
+                    filter.getFromDate().with(ChronoField.MICRO_OF_DAY, MICRO_SECONDS_IN_DAY - 1L).minusDays(1),
+                    filter.getToDate().with(ChronoField.MICRO_OF_DAY, 0).plusDays(1),
                     Sort.by(Sort.Direction.DESC, "date"));
 
         return transactions;

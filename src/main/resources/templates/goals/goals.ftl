@@ -4,9 +4,13 @@
 <#import "/parts/pageTitle.ftl" as pt>
 <@pt.pageTitle "Goals"/>
 
+<#import "/parts/basetransaction_filter.ftl" as btf>
+<@btf.basetransaction_filter "goals"/>
+
+<hr>
+
 <#import "/parts/create_basetransaction_modal.ftl" as btm>
 <@btm.add_basetransaction "Goal"/>
-<hr>
 
 <div class="card-columns my-5">
     <#list goals as goal>
@@ -31,9 +35,11 @@
             </#if>
             <p class="card-text my-2">${goal.description?ifExists}</p>
             <#if goal.url??>
-                <a href="${goal.url}">
-                    Link
-                </a>
+                <#if goal.url != ''>
+                    <a href="${goal.url}">
+                        Link
+                    </a>
+                </#if>
             </#if>
         </div>
 
@@ -48,8 +54,6 @@
             </div>
         </div>
     </div>
-    <#else>
-    No goals
 </#list>
 </div>
 </@c.page>

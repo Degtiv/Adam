@@ -3,35 +3,10 @@
 
 <#import "/parts/pageTitle.ftl" as pt>
 <@pt.pageTitle "Transactions"/>
-        <form class="form-inline" method="post" action="/transactions/filter" id="filter_transaction_form">
-            <div class="input-group-prepend input-group-sm mr-4">
-                <h5>Filter</h5>
-                <h6 class="ml-1">
-                <#if !filter.getClear()>
-                    <span class="badge badge-success">active</span>
-                </#if>
-                </h6>
-            </div>
-            <div class="clearfix input-group-sm">
-                <label class="sr-only" for="from_date_input">From date</label>
-                <input type="date" class="form-control my-1" id="from_date_input" name="fromDateText"
-                        <#if !filter.getClear()>
-                            value="${filter.fromDateField}"
-                        </#if>
-                       required>
-                -
-                <label class="sr-only" for="to_date_input">To date</label>
-                <input type="date" class="form-control my-1 mr-sm-2" id="to_date_input" name="toDateText"
-                        <#if !filter.getClear()>
-                            value="${filter.toDateField}"
-                        </#if>
-                       required>
 
-                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                <button type="submit" class="btn btn-outline-primary btn-sm rounded ml-1">Filter</button>
-                <a href="/transactions/clear_filter" class="btn btn-outline-dark btn-sm rounded ml-1">Clear filter</a>
-            </div>
-        </form>
+<#import "/parts/basetransaction_filter.ftl" as btf>
+<@btf.basetransaction_filter "transactions"/>
+
 <hr>
 
 <#import "/parts/create_basetransaction_modal.ftl" as btm>
