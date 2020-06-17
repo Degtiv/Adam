@@ -2,8 +2,9 @@
 <#macro add_basetransaction type>
 <#import "transaction_modal_part.ftl" as t>
 <#import "goal_modal_part.ftl" as g>
-<button class="btn btn-outline-primary ml-2" type="button" id="add-${type}-button">Add ${type}</button>
-
+<div class="col-12 center-block">
+    <button class="btn btn-outline-primary center-button mb-4" type="button" id="add-${type}-button">Add ${type}</button>
+</div>
 <div class="modal fade" id="create${type}Modal" tabindex="-1" role="dialog" aria-labelledby="create${type}Modal"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

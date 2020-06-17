@@ -4,10 +4,14 @@
 <#import "/parts/pageTitle.ftl" as pt>
 <@pt.pageTitle "Transactions"/>
 
+<#import "/parts/basetransaction_filter.ftl" as btf>
+<@btf.basetransaction_filter "transactions"/>
+
+<hr>
+
 <#import "/parts/create_basetransaction_modal.ftl" as btm>
 <@btm.add_basetransaction "Transaction"/>
 
-<hr>
 <#list transactions as transaction>
 <form class="form-inline" method="post" action="/transactions/save/${transaction.uuid}" id="save_transaction_form">
     <div class="clearfix input-group-sm">
@@ -34,7 +38,7 @@
 
         <label class="sr-only" for="amount_input_${transaction.uuid}">Amount</label>
         <input type="number" step="0.01" class="form-control" id="amount_input_${transaction.uuid}" value="${transaction.amountString}" name="amount" required>
-        <small id="passwordHelpInline" class="text-muted my-1 mr-sm-2">${transaction.currency}</small>
+        <small class="text-muted my-1 mr-sm-2">${transaction.currency}</small>
 
         <label class="sr-only" for="category_input_${transaction.uuid}">Category</label>
         <select class="custom-select my-1 mr-sm-2" id="category_input_${transaction.uuid}" name="category">
@@ -58,7 +62,5 @@
         <button type="submit" class="btn btn-outline-danger btn-sm rounded" formaction="/transactions/delete/${transaction.uuid}">Delete</button>
     </div>
 </form>
-<#else>
-Add your first transaction
 </#list>
 </@c.page>

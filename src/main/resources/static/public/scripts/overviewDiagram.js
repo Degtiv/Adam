@@ -1,6 +1,6 @@
 function drawDiagram(rawData) {
-    var height = 500,
-        width = 1000,
+    var svgHeight = 500,
+        svgWidth = 1000,
         margin = 50,
         yOffset = 10,
         pastLine = [],
@@ -12,23 +12,20 @@ function drawDiagram(rawData) {
         xOffset = 100 + Math.abs(0.3 * (max - min)),
         startD = parseDate(rawData.start, "%Y-%m-%d"),
         todayD = parseDate(rawData.now, "%Y-%m-%d"),
-        endD = parseDate(rawData.end, "%Y-%m-%d"),
-        pastDotColor = "#10de9f",
-        nowDotColor = "#fe1010",
-        futureDotColor = "#dddddd",
-        activeDotColor = "#EA0037",
-        goalDotColor = "#6FF8AD";
+        endD = parseDate(rawData.end, "%Y-%m-%d");
+
+        console.log(rawData);
     $('#overview-diagram').empty();
     var svg = d3.select("#overview-diagram").append("svg")
-        .attr("class", "axis")
-        .attr("width", width)
-        .attr("height", height);
+        .classed("axis", true)
+        .attr("width", svgWidth)
+        .attr("height", svgHeight);
 
     // длина оси X= ширина контейнера svg - отступ слева и справа
-    var xAxisLength = width - 2 * margin;
+    var xAxisLength = svgWidth - 2 * margin;
 
     // длина оси Y = высота контейнера svg - отступ сверху и снизу
-    var yAxisLength = height - 2 * margin;
+    var yAxisLength = svgHeight - 2 * margin;
 
     var scaleX = d3.time.scale()
         .domain([startD, endD])
@@ -45,26 +42,22 @@ function drawDiagram(rawData) {
         var transactions = rawData.dayReports[i].transactions;
         var goals = rawData.dayReports[i].goals;
         var tense = "";
-        var dotColor = "";
 
         //Следующие три ифа - индусский код, не знаю как переписать по-нормальному
         if (!(todayD > dayDate) && !(todayD < dayDate)) {
             pastLine.push({ date: dayDate, balance: startDayBalance });
             futureLine.push({ date: dayDate, balance: startDayBalance });
             tense = "now";
-            dotColor = nowDotColor;
         }
 
         if (todayD > dayDate) {
             pastLine.push({ date: dayDate, balance: startDayBalance });
             tense = "past";
-            dotColor = pastDotColor;
         }
 
         if (todayD < dayDate) {
             futureLine.push({ date: dayDate, balance: startDayBalance });
             tense = "future";
-            dotColor = futureDotColor;
         }
 
         if (transactions.length > 0 || goals.length > 0) {
@@ -73,8 +66,7 @@ function drawDiagram(rawData) {
                 balance: startDayBalance,
                 transactions: transactions, 
                 goals: goals, 
-                tense: tense, 
-                dotColor: dotColor});
+                tense: tense});
         }
 
         if (typeof goals !== 'undefined' && goals.length > 0) {
@@ -94,14 +86,14 @@ function drawDiagram(rawData) {
 
     // отрисовка оси Х
     svg.append("g")
-        .attr("class", "x-axis")
+        .classed("x-axis", true)
         .attr("transform",  // сдвиг оси вниз и вправо
-            "translate(" + margin + "," + (height - margin) + ")")
+            "translate(" + margin + "," + (svgHeight - margin) + ")")
         .call(xAxis);
 
     // отрисовка оси Y
     svg.append("g")
-        .attr("class", "y-axis")
+        .classed("y-axis", true)
         .attr("transform", // сдвиг оси вниз и вправо на margin
             "translate(" + margin + "," + margin + ")")
         .call(yAxis);
@@ -109,8 +101,8 @@ function drawDiagram(rawData) {
     var g = svg.append("g");
     var overviewInfo = d3.select("#overview-info");
     var goalInfo = d3.select("#goal-info");
-    createChart(pastLine, pastDotColor, g);
-    createChart(futureLine, futureDotColor, g);
+    createChart(pastLine, "past", g);
+    createChart(futureLine, "future", g);
     createDots(baseTransactions);
 
     //Линия сегодняшнего дня
@@ -119,20 +111,21 @@ function drawDiagram(rawData) {
         .attr("y1", 0 + margin)
         .attr("x2", scaleX(todayD) + margin)
         .attr("y2", yAxisLength + margin)
-        .style("stroke", "#30d5c8")
-        .style("stroke-width", 1);
+        .classed("line", true)
+        .classed("line-now", true);
 
-    //Линия нуля
-    g.append("line")
-        .attr("x1", 0 + margin)
-        .attr("y1", scaleY(0) + margin)
-        .attr("x2", xAxisLength + margin)
-        .attr("y2", scaleY(0) + margin)
-        .style("stroke", activeDotColor)
-        .style("stroke-width", 1);
+    //Линия нуля, отрисовывает, только если она выше нижней границы (то есть её глубина меньше глубины нижней границы)
+    if (scaleY(0) < yAxisLength)
+        g.append("line")
+            .attr("x1", 0 + margin)
+            .attr("y1", scaleY(0) + margin)
+            .attr("x2", xAxisLength + margin)
+            .attr("y2", scaleY(0) + margin)
+            .classed("line", true)
+            .classed("line-zero", true);
 
     // общая функция для создания графиков
-    function createChart(data, colorStroke, g) {
+    function createChart(data, type, g) {
         // функция, создающая по массиву точек линии
         var line = d3.svg.line()
             .interpolate("monotone")
@@ -141,8 +134,8 @@ function drawDiagram(rawData) {
 
         g.append("path")
             .attr("d", line(data))
-            .style("stroke", colorStroke)
-            .style("stroke-width", );
+            .classed("line", true)
+            .classed("line-" + type, true);
     };
 
     function createDots(data) {
@@ -150,10 +143,11 @@ function drawDiagram(rawData) {
         svg.selectAll(".dot")
             .data(data)
             .enter().append("circle")
-            .style("stroke", "000")
-            .style("stroke-width", 1)
-            .style("fill", function (d) { return d.dotColor; })
-            .attr("class", "dot " + function (d) { return d.tense; })
+            .each(function (d) {
+                var thisDot = d3.select(this);
+                thisDot.classed("dot", true)
+                thisDot.classed("dot-" + d.tense, true);
+            })
             .attr("r", 3.5)
             .attr("cx", function (d) { return scaleX(d.date) + margin; })
             .attr("cy", function (d) { return scaleY(d.balance) + margin; })
@@ -166,7 +160,8 @@ function drawDiagram(rawData) {
                 $('#date-info h6').text("Date: " + formatDate(d.date, "%Y-%m-%d"));
                 svg.select('#dot-' + formatDate(d.date, "%Y-%m-%d"))
                     .attr("r", 7)
-                    .style("fill", activeDotColor);
+                    .classed("dot-" + d.tenseы, false)
+                    .classed("dot-active", true);
                 overviewInfo
                     .transition()
                     .duration(500)	
@@ -178,7 +173,8 @@ function drawDiagram(rawData) {
             .on("mouseout", function (d) {
                 svg.select('#dot-' + formatDate(d.date, "%Y-%m-%d"))
                     .attr("r", 3.5)
-                    .style("fill", d.dotColor);
+                    .classed("dot-active", false)
+                    .classed("dot-"+ d.tense, true);
                 overviewInfo
                     .style("opacity", 0);
                 overviewInfo
@@ -186,11 +182,9 @@ function drawDiagram(rawData) {
                     .style("top", - 100 + "%");
             });
 
-        svg.selectAll(".goal-dot")
+        svg.selectAll(".dot-goal")
             .data(goalsTotal)
             .enter().append("polygon")
-            .style("stroke", "#DDDDDD")
-            .style("stroke-width", "2")
             .attr("points", function (d) {
                     var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
                     var cy = scaleY(d.amount) + margin;
@@ -198,13 +192,11 @@ function drawDiagram(rawData) {
                     var triangleCoordinates = getTriangleCoordinates(cx, cy, 6);
                     return triangleCoordinates;
                 })
-            .style("stroke", "000")
-            .style("stroke-width", 1)
-            .style("fill", goalDotColor)
-            .attr("class", "goal-dot")
-            .attr("id", function (d) { return "goal-dot-" + d.uuid; })
+            .classed("dot", true)
+            .classed("dot-goal", true)
+            .attr("id", function (d) { return "dot-goal-" + d.uuid; })
             .on("mouseover", function (d) {
-                svg.select("#goal-dot-" + d.uuid)
+                svg.select("#dot-goal-" + d.uuid)
                     .attr("points", function (d) {
                         var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
                         var cy = scaleY(d.amount) + margin;
@@ -212,7 +204,8 @@ function drawDiagram(rawData) {
                         var triangleCoordinates = getTriangleCoordinates(cx, cy, 10);
                         return triangleCoordinates;
                     })
-                    .style("fill", activeDotColor);
+                    .classed("dot-goal", false)
+                    .classed("dot-goal-active", true);
 
                 $('#goal-title h5').text("Goal: " + d.title);
                 $('#goal-date h6').text("Date: " + formatDate(parseDate(d.date, "%Y-%m-%dT%H:%M:%S"), "%Y-%m-%d"));
@@ -227,7 +220,7 @@ function drawDiagram(rawData) {
                     .style("top", (d3.event.pageY - 100) + "px");
             })
             .on("mouseout", function (d) {
-                svg.select("#goal-dot-" + d.uuid)
+                svg.select("#dot-goal-" + d.uuid)
                     .attr("points", function (d) {
                         var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
                         var cy = scaleY(d.amount) + margin;
@@ -235,7 +228,8 @@ function drawDiagram(rawData) {
                         var triangleCoordinates = getTriangleCoordinates(cx, cy, 6);
                         return triangleCoordinates;
                     })
-                    .style("fill", goalDotColor);
+                    .classed("dot-goal-active", false)
+                    .classed("dot-goal", true);
 
                 goalInfo
                     .style("opacity", 0);

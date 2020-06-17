@@ -1,0 +1,131 @@
+.form-control, .form-control::after {
+    border-radius: 13px !important;
+}
+
+.form-control::after {
+    border: 1px solid #007bff;
+    color: #007bff;
+    background-color: white;
+}
+
+.btn {
+    border-radius:13px;
+}
+.first-enter-hidden-div {
+    font-size: 1rem;
+    display: none;
+}
+
+.first-enter-primary-div {
+    font-size: 24px;
+    display: block;
+}
+
+.first-enter-secondary-div {
+    font-size: 1rem;
+    display: block;
+}
+
+.first-enter-modal-hidden-div {
+    display: none;
+}
+
+.first-enter-modal-showed-div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.page-title {
+    margin: 0px 0px 30px 0px;
+    text-align: center;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #333;
+}
+.axis .grid-line {
+    stroke: #000;
+    stroke-opacity: 0.2;
+}
+.axis text {
+    font: 10px Verdana;
+}
+.dot {
+    stroke: #000 !important;
+    stroke-width: 1;
+}
+
+.dot-past {
+    fill: #10de9f !important;
+}
+
+.dot-future {
+    fill: #dddddd !important;
+}
+
+.dot-now {
+    fill: #fe1010 !important;
+}
+
+.dot-active {
+    fill: #EA0037 !important;
+}
+
+.dot-goal {
+    fill: #6FF8AD !important;
+}
+
+.dot-goal-active {
+    fill: #EA0037 !important;
+}
+
+.line {
+    stroke-width: 1;
+}
+
+.line-now {
+    stroke: #30d5c8 !important;
+}
+
+.line-zero {
+    stroke: #EA0037 !important;
+}
+
+.line-past {
+    stroke: #10de9f !important;
+    stroke-width: 2;
+}
+
+.line-future {
+    stroke: #dddddd !important;
+    stroke-width: 2;
+}
+
+.overview-info {
+    opacity: 0;
+    background: white;
+    position: absolute;
+    width: 300px;
+    padding: 2px;
+    border: 1px #000 solid;
+    border-radius: 13px;
+}
+
+#goals-info, #transactions-info {
+    padding-top: 3px;
+
+}
+
+#goals-info p, #transactions-info p {
+    margin-bottom: -2px;
+}
+
+#goals-info i, #transactions-info i {
+    vertical-align: middle;
+}
+
+.center-button {
+    display: block;
+    margin: 0 auto;
+}

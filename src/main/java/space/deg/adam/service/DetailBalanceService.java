@@ -21,11 +21,10 @@ import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.List;
 
+import static space.deg.adam.constants.CommonConstants.MICRO_SECONDS_IN_DAY;
+
 @Service
 public class DetailBalanceService {
-    private static final long SECONDS_IN_DAY = 86_400;
-    private static final long ONE_MILLION = 1_000_000;
-    private static final long MICRO_SECONDS_IN_DAY = SECONDS_IN_DAY * ONE_MILLION;
     @Autowired
     private MilestoneService milestoneService;
     @Autowired
