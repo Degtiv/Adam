@@ -1,3 +1,7 @@
+.container {
+    max-width: 90%;
+}
+
 .form-control, .form-control::after {
     border-radius: 13px !important;
 }
@@ -106,7 +110,7 @@
     opacity: 0;
     background: white;
     position: absolute;
-    width: 300px;
+    width: 36rem;
     padding: 2px;
     border: 1px #000 solid;
     border-radius: 13px;

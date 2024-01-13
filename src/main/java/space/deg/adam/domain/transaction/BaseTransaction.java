@@ -69,7 +69,7 @@ public class BaseTransaction {
     }
 
     public boolean isAct() {
-        return status == Status.CONFIRMED || !date.isBefore(LocalDateTime.now());
+        return !(status == Status.DRAFT) && (status == Status.CONFIRMED || !date.isBefore(LocalDateTime.now()));
     }
 
     public void setDate(String dateText) {

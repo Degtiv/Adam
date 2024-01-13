@@ -3,6 +3,7 @@ package space.deg.adam.domain.common;
 import java.util.ArrayList;
 
 public enum Status {
+    DRAFT("Draft"),
     PLANNED("Planned"),
     IN_PROGRESS("In progress"),
     DECLINED("Declined"),

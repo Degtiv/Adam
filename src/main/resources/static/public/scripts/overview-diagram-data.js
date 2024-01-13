@@ -1,17 +1,23 @@
 $(document).ready(function () {
-    var today = new Date(),
-        weekAgoDate = new Date(),
-        weekAfterDate = new Date();
+    const fromDateInput = $('#overview_diagram_date_from');
+    const toDateInput = $('#overview_diagram_date_to');
 
-    weekAgoDate.setDate(today.getDate() - 7);
-    weekAfterDate.setDate(today.getDate() + 7);
+    if (!fromDateInput.val() || !toDateInput.val()) {
+        const today = new Date(),
+            weekAgoDate = new Date(),
+            weekAfterDate = new Date();
 
-    var weekAgo = weekAgoDate.toISOString().split('T')[0];
-    var weekAfter = weekAfterDate.toISOString().split('T')[0];
-    $('#overview_diagram_date_from').val(weekAgo);
-    $('#overview_diagram_date_to').val(weekAfter);
+        weekAgoDate.setDate(today.getDate() - 7);
+        weekAfterDate.setDate(today.getDate() + 7);
+
+        var weekAgo = weekAgoDate.toISOString().split('T')[0];
+        var weekAfter = weekAfterDate.toISOString().split('T')[0];
+        fromDateInput.val(weekAgo);
+        toDateInput.val(weekAfter);
+    }
 
     getOverviewDiagramData();
+
 });
 
 $(document).ready(function () {
@@ -59,7 +65,7 @@ function getOverviewDiagramData() {
 }
 
 function download(data, filename, type) {
-    var file = new Blob([JSON.stringify(data, null, 2)], { type: type });
+    var file = new Blob([JSON.stringify(data, null, 2)], {type: type});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, filename);
     else { // Others

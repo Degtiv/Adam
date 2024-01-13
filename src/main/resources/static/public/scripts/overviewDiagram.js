@@ -1,6 +1,6 @@
 function drawDiagram(rawData) {
     var svgHeight = 500,
-        svgWidth = 1000,
+        svgWidth = 1200,
         margin = 50,
         yOffset = 10,
         pastLine = [],
@@ -62,10 +62,10 @@ function drawDiagram(rawData) {
 
         if (transactions.length > 0 || goals.length > 0) {
             baseTransactions.push({
-                date: dayDate, 
+                date: dayDate,
                 balance: startDayBalance,
-                transactions: transactions, 
-                goals: goals, 
+                transactions: transactions,
+                goals: goals,
                 tense: tense});
         }
 
@@ -148,7 +148,7 @@ function drawDiagram(rawData) {
                 thisDot.classed("dot", true)
                 thisDot.classed("dot-" + d.tense, true);
             })
-            .attr("r", 3.5)
+            .attr("r", 2.5)
             .attr("cx", function (d) { return scaleX(d.date) + margin; })
             .attr("cy", function (d) { return scaleY(d.balance) + margin; })
             .attr("id", function (d) { return "dot-" + formatDate(d.date, "%Y-%m-%d"); })
@@ -160,19 +160,19 @@ function drawDiagram(rawData) {
                 $('#date-info h6').text("Date: " + formatDate(d.date, "%Y-%m-%d"));
                 svg.select('#dot-' + formatDate(d.date, "%Y-%m-%d"))
                     .attr("r", 7)
-                    .classed("dot-" + d.tenseы, false)
+                    .classed("dot-" + d.tense, false)
                     .classed("dot-active", true);
                 overviewInfo
                     .transition()
-                    .duration(500)	
-                    .style("opacity", .9);	
-                overviewInfo	 
-                    .style("left", (d3.event.pageX + 50) + "px")			 
+                    .duration(500)
+                    .style("opacity", .9);
+                overviewInfo
+                    .style("left", (d3.event.pageX + 50) + "px")
                     .style("top", (d3.event.pageY - 100) + "px");
             })
             .on("mouseout", function (d) {
                 svg.select('#dot-' + formatDate(d.date, "%Y-%m-%d"))
-                    .attr("r", 3.5)
+                    .attr("r", 2.5)
                     .classed("dot-active", false)
                     .classed("dot-"+ d.tense, true);
                 overviewInfo
@@ -207,7 +207,7 @@ function drawDiagram(rawData) {
                     .classed("dot-goal", false)
                     .classed("dot-goal-active", true);
 
-                $('#goal-title h5').text("Goal: " + d.title);
+                $('#goal-title h5').text("Goal: " + d.title + " (" + d.status.toLowerCase() + ")");
                 $('#goal-date h6').text("Date: " + formatDate(parseDate(d.date, "%Y-%m-%dT%H:%M:%S"), "%Y-%m-%d"));
                 $('#goal-amount h6').text("Amount: " + d.amount + " RUR");
 
@@ -259,7 +259,7 @@ function drawDiagram(rawData) {
                         transactionTypeIcon = '<i class="material-icons btn-outline-dark" style="border-radius:20px; margin-bottom: 3px; color: #00C000;">keyboard_arrow_up</i>';
                     if (d.transactionType == 'COST')
                         transactionTypeIcon = '<i class="material-icons btn-outline-dark" style="border-radius:20px; margin-bottom: 3px; color: #C00000;">keyboard_arrow_down</i>';
-                    return transactionTypeIcon + d.title + " " + d.amount + d.currency; })
+                    return transactionTypeIcon + d.title + " " + d.amount + " " + d.currency + " (" + d.status.toLowerCase() + ")"; })
 
             //Exit
             d3.select(baseTransactionId)
