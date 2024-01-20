@@ -13,8 +13,9 @@
 }
 
 .btn {
-    border-radius:13px;
+    border-radius: 13px;
 }
+
 .first-enter-hidden-div {
     font-size: 1rem;
     display: none;
@@ -48,13 +49,16 @@
     fill: none;
     stroke: #333;
 }
+
 .axis .grid-line {
     stroke: #000;
     stroke-opacity: 0.2;
 }
+
 .axis text {
     font: 10px Verdana;
 }
+
 .dot {
     stroke: #000 !important;
     stroke-width: 1;
@@ -132,4 +136,16 @@
 .center-button {
     display: block;
     margin: 0 auto;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.card-confirmed {
+    border: 2px solid #00BB00;
+}
+
+.card-columns {
+    column-count: 6;
 }
