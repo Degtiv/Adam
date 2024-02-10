@@ -153,19 +153,23 @@ function drawDiagram(rawData) {
             .attr("cy", function (d) { return scaleY(d.balance) + margin; })
             .attr("id", function (d) { return "dot-" + formatDate(d.date, "%Y-%m-%d"); })
             .on("mouseover", function (d) {
+                $('#goal-info').css('display', 'none');
+
                 printBaseTransactions("#transactions-info", d.transactions);
                 printBaseTransactions("#goals-info", d.goals);
 
                 $('#balance-info h5').text("Balance: " + d.balance + " RUR");
                 $('#date-info h6').text("Date: " + formatDate(d.date, "%Y-%m-%d"));
+
                 svg.select('#dot-' + formatDate(d.date, "%Y-%m-%d"))
                     .attr("r", 7)
                     .classed("dot-" + d.tense, false)
                     .classed("dot-active", true);
+                overviewInfo.style("display", "block");
                 overviewInfo
                     .transition()
                     .duration(500)
-                    .style("opacity", .9);
+                    .style("opacity", .95);
                 overviewInfo
                     .style("left", (d3.event.pageX + 50) + "px")
                     .style("top", (d3.event.pageY - 100) + "px");
@@ -175,11 +179,19 @@ function drawDiagram(rawData) {
                     .attr("r", 2.5)
                     .classed("dot-active", false)
                     .classed("dot-"+ d.tense, true);
-                overviewInfo
-                    .style("opacity", 0);
-                overviewInfo
-                    .style("left", - 100 + "%")
-                    .style("top", - 100 + "%");
+
+                // Старый код по скрытию окошка
+                //
+                // overviewInfo
+                //     .transition()
+                //     .duration(20000)
+                //     .style("opacity", 0);
+                // overviewInfo
+                //     .transition()
+                //     .delay(20500)
+                //     .style("display", "none")
+                //     .style("left", - 100 + "%")
+                //     .style("top", - 100 + "%");
             });
 
         svg.selectAll(".dot-goal")
@@ -196,6 +208,7 @@ function drawDiagram(rawData) {
             .classed("dot-goal", true)
             .attr("id", function (d) { return "dot-goal-" + d.uuid; })
             .on("mouseover", function (d) {
+                $('#overview-info').css('display', 'none');
                 svg.select("#dot-goal-" + d.uuid)
                     .attr("points", function (d) {
                         var cx = scaleX(parseDate(d.date, "%Y-%m-%dT%H:%M:%S")) + margin;
@@ -211,10 +224,20 @@ function drawDiagram(rawData) {
                 $('#goal-date h6').text("Date: " + formatDate(parseDate(d.date, "%Y-%m-%dT%H:%M:%S"), "%Y-%m-%d"));
                 $('#goal-amount h6').text("Amount: " + d.amount + " RUR");
 
+                var src = d.image === null || d.image === "" ?
+                    "https://imgholder.ru/500x500/8493a8/adb9ca&text=Изображение/n+++отсутствует&font=matias" :
+                    "/img/" + d.image;
+
+                $('#goal-image img')
+                    .attr('src', src)
+                    .attr('alt', "Image for goal " + d.title);
+
+
+                goalInfo.style("display", "block");
                 goalInfo
                     .transition()
                     .duration(500)
-                    .style("opacity", .9);
+                    .style("opacity", .95);
                 goalInfo
                     .style("left", (d3.event.pageX + 50) + "px")
                     .style("top", (d3.event.pageY - 100) + "px");
@@ -231,11 +254,18 @@ function drawDiagram(rawData) {
                     .classed("dot-goal-active", false)
                     .classed("dot-goal", true);
 
-                goalInfo
-                    .style("opacity", 0);
-                goalInfo
-                    .style("left", - 100 + "%")
-                    .style("top", - 100 + "%");
+                // Старый код по скрытию окошка
+                //
+                // goalInfo
+                //     .transition()
+                //     .duration(20000)
+                //     .style("opacity", 0);
+                // goalInfo
+                //     .transition()
+                //     .delay(20500)
+                //     .style("display", "none")
+                //     .style("left", - 100 + "%")
+                //     .style("top", - 100 + "%");
             });;
 
 

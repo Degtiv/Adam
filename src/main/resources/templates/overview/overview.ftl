@@ -55,13 +55,17 @@
 </div>
 
 <div id="overview-info" class="card overview-info">
-    <div class="card-body">
+    <div class="card-header pb-0">
         <div id="balance-info">
+            <div class="icon-block-right"><i class="bi-x-lg" act="hide" target="#overview-info"></i></div>
             <h5 class="card-title"></h5>
+            <div id="date-info">
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+            </div>
         </div>
-        <div id="date-info">
-            <h6 class="card-subtitle mb-2 text-muted"></h6>
-        </div>
+    </div>
+
+    <div class="card-body">
         <div id="goals-info">
             <h7><b>Goals:</b></h7>
             <p class=""></p>
@@ -75,16 +79,34 @@
 </div>
 
 <div id="goal-info" class="card overview-info">
-    <div class="card-body">
+    <div class="card-header pb-0">
         <div id="goal-title">
+            <div class="icon-block-right"><i class="bi-x-lg" act="hide" target="#goal-info"></i></div>
             <h5 class="card-title"></h5>
+            <div id="goal-date">
+                <h6></h6>
+            </div>
         </div>
-        <div id="goal-date">
-            <h6></h6>
-        </div>
+    </div>
+
+    <div class="card-body">
         <div id="goal-amount">
             <h6></h6>
         </div>
+        <div id="goal-image">
+            <img src="https://imgholder.ru/500x500/8493a8/adb9ca&text=Изображение/n+++отсутствует&font=matias" class="w-100" alt="Заглушка">
+        </div>
     </div>
 </div>
+
+    <script>
+        $(function () {
+            $("i").on('click', function () {
+                const act = $(this).attr('act');
+                if (act === 'hide') {
+                    $($(this).attr('target')).css('display', 'none');
+                }
+            });
+        })
+    </script>
 </@c.page>

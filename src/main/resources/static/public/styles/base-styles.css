@@ -159,6 +159,16 @@
     border: 2px solid #EA0037;
 }
 
+.icon-block-right {
+    display: block;
+    position: absolute;
+    right: 18px;
+}
+
+.icon-block-right > i {
+    cursor: pointer;
+}
+
 @media screen and (min-width: 400px) {
     .card-columns {
         column-count: 1;
