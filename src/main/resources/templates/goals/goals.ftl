@@ -45,10 +45,10 @@
 
                 <div class="card-footer text-muted">
                     <div class="row">
-                        <div class="col-sm-8 text-left">
+                        <div class="col-sm-6 small text-left">
                             <em>${goal.amount} ${goal.currency}</em>
                         </div>
-                        <div class="col-sm-4 text-right">
+                        <div class="col-sm-6 small text-right">
                             ${goal.dateString}
                         </div>
                     </div>
