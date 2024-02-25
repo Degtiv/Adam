@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import space.deg.adam.utils.BotUtils;
+import space.deg.adam.telegram.utils.BotUtils;
 
 @Component
 public class StartCommand implements Command {
@@ -16,7 +16,7 @@ public class StartCommand implements Command {
 
   @Override
   public String getCommandCaption() {
-    return "Start bot";
+    return "Запустить бота";
   }
 
   @Override

@@ -28,4 +28,8 @@ public class RequestsUtils {
     public static String getOverviewPage(String page) {
         return "overview/" + page;
     }
+
+    public static String getSettingsPage(String page) {
+        return "settings/" + page;
+    }
 }

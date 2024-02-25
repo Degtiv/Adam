@@ -8,4 +8,5 @@ public interface Command {
   String getCommandCaption();
   SendMessage apply(Update update);
   SendMessage applyCallback(Update update);
+  default void changeChatState(String chatId) {}
 }

@@ -8,7 +8,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import space.deg.adam.telegram.commands.Command;
 import space.deg.adam.telegram.commands.Commands;
 import space.deg.adam.telegram.commands.buttons.Buttons;
-import space.deg.adam.utils.BotConsts;
+import space.deg.adam.telegram.utils.BotConsts;
 
 @Component
 public class CommandsHandler {
@@ -26,7 +26,7 @@ public class CommandsHandler {
 
     if (commandHandler != null) {
       SendMessage handled = commandHandler.apply(update);
-      handled.setReplyMarkup(buttons.inlineMarkup());
+//      handled.setReplyMarkup(buttons.inlineMarkup());
       return handled;
     }
 
@@ -42,7 +42,7 @@ public class CommandsHandler {
 
     if (commandHandler != null) {
       SendMessage handled = commandHandler.applyCallback(update);
-      handled.setReplyMarkup(buttons.inlineMarkup());
+//      handled.setReplyMarkup(buttons.inlineMarkup());
       return handled;
     }
 

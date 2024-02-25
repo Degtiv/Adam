@@ -21,6 +21,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/rules">Rules</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/settings">Settings</a>
+            </li>
             <#if isAdmin>
                 <li class="nav-item">
                     <a class="nav-link" href="/user">User</a>
